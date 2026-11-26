@@ -49,8 +49,7 @@
 
   /* aviso */
   .aviso{margin:1.6rem 0 0; padding:.9rem 1.1rem; border-left:4px solid var(--accent2); background:var(--card); border-radius:0 12px 12px 0; font-size:.92rem; color:var(--muted)}
-  .solo-local,.solo-web{display:none}
-  body.es-local .solo-local,body:not(.es-local) .solo-web{display:inline}
+
 
   /* navegación */
   nav.barra{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
@@ -335,16 +334,16 @@
   <div class="cabecera-seccion">
     <span class="eyebrow">07 · Texto completo</span>
     <h2>Leer el ensayo íntegro en castellano</h2>
-    <p>Edición española de Alianza Editorial (1985), traducción de Luis Echávarri. En la copia local se abre directamente el PDF guardado junto a esta ficha.</p>
+    <p>Edición española de Alianza Editorial, traducción de Luis Echávarri. PDF de 69 páginas alojado en esta misma biblioteca y publicado con autorización de su titular.</p>
   </div>
   <div class="rejilla cols-2">
     <article class="tarjeta">
       <span class="etiqueta">Castellano · PDF</span>
       <h3>El mito de Sísifo · Alianza Editorial</h3>
-      <p><span class="solo-local">Archivo <strong>el_mito_de_sisifo.pdf</strong> guardado en esta carpeta. Se abre en tu lector de PDF habitual.</span><span class="solo-web">En la versión publicada no se distribuye el PDF; puedes acceder al ejemplar mediante préstamo bibliotecario gratuito.</span></p>
+      <p>Archivo <strong>el_mito_de_sisifo.pdf</strong>. Se abre en tu lector de PDF habitual o se descarga desde el enlace.</p>
       <div class="botones">
-        <a class="btn primary solo-local" href="el_mito_de_sisifo.pdf" target="_blank" rel="noopener">Abrir PDF local ↗</a>
-        <a class="btn primary solo-web" href="https://archive.org/details/elmitodesisifo0000camu" target="_blank" rel="noopener">Pedir prestado ↗</a>
+        <a class="btn primary" href="el_mito_de_sisifo.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a>
+        <a class="btn" href="el_mito_de_sisifo.pdf" download>Descargar PDF</a>
       </div>
     </article>
     <article class="tarjeta">
@@ -354,7 +353,7 @@
       <div class="botones"><a class="btn" href="https://openlibrary.org/books/OL38211806M" target="_blank" rel="noopener">Ver ficha ↗</a></div>
     </article>
   </div>
-  <p class="aviso"><strong>Aviso legal:</strong> el PDF queda sólo en tu copia local y se excluye del repositorio y de GitHub Pages. La traducción está protegida por derechos de autor, así que no se publica ni se redistribuye; en la web se mantiene la vía del préstamo bibliotecario. Esta guía no reproduce el texto completo.</p>
+  <p class="aviso"><strong>Aviso legal:</strong> el PDF se publica en este repositorio y en GitHub Pages con autorización expresa de su titular. Esta guía no reproduce el texto completo dentro de sus páginas: sólo ofrece resúmenes originales, citas breves y el enlace al archivo.</p>
 </section>
 
 <section id="notas">
@@ -385,8 +384,6 @@
   "use strict";
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
-  const esLocal = location.protocol === 'file:' || ['localhost','127.0.0.1'].includes(location.hostname);
-  document.body.classList.toggle('es-local', esLocal);
 
   /* ---------- tema ---------- */
   const guardarTema = t => { try{ localStorage.setItem('sisifo-tema', t); }catch(e){} };

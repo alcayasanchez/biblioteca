@@ -14,7 +14,7 @@ biblioteca/
 ├── libros/
 │   ├── mito-de-sisifo/     # Primera ficha: guía interactiva
 │   │   ├── index.html
-│   │   └── el_mito_de_sisifo.pdf   # copia local, ignorada por git
+│   │   └── el_mito_de_sisifo.pdf   # PDF publicado (autorizado por su titular)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -39,11 +39,11 @@ Se ha eliminado a petición del propietario. Cada ficha conserva resumen, concep
 
 ## Enlaces a textos completos y derechos
 
-La ficha de *El mito de Sísifo* usa la **edición en castellano** de Alianza Editorial (traducción de Luis Echávarri). El PDF tomado de Descargas se guarda como [el_mito_de_sisifo.pdf](libros/mito-de-sisifo/el_mito_de_sisifo.pdf) dentro de `libros/mito-de-sisifo/`, para uso local, y **no se sube al repositorio** (regla `*.pdf` en `.gitignore`). Al abrir `index.html` desde tu equipo, el catálogo y la ficha enlazan ese archivo con un botón «Abrir PDF local». En GitHub Pages, donde el archivo no existe, muestran en su lugar el acceso legítimo al [préstamo bibliotecario de Internet Archive](https://archive.org/details/elmitodesisifo0000camu).
+La ficha de *El mito de Sísifo* incluye la **edición en castellano** de Alianza Editorial (traducción de Luis Echávarri) como [el_mito_de_sisifo.pdf](libros/mito-de-sisifo/el_mito_de_sisifo.pdf), un PDF de 69 páginas. Se publica en el repositorio y en GitHub Pages con **autorización expresa de su titular**, confirmada por el propietario de esta biblioteca. El catálogo y la ficha enlazan directamente al archivo con un botón «Abrir PDF ↗».
 
-La traducción está protegida por derechos de autor: no se publica ni se redistribuye el PDF. Esta biblioteca no reproduce textos completos dentro de sus páginas: sólo ofrece resúmenes originales, citas breves y enlaces legítimos.
+El archivo está exceptuado de la regla general `*.pdf` de `.gitignore`. Esta biblioteca no reproduce el texto completo dentro de sus propias páginas: sólo ofrece resúmenes originales, citas breves y el enlace al PDF.
 
-Al añadir un libro con `pdf`, usa `pdfLabel` / `pdfLabelWeb` para distinguir el botón local del público y `pdfLocal` para la ruta del archivo guardado sólo en tu equipo.
+Al añadir un libro con `pdf`, usa `pdfLabel` para el texto del botón y `pdfNota` para indicar la procedencia y los derechos. Si el PDF no puede publicarse, añade una regla de exclusión en `.gitignore`.
 
 ## Publicar cambios
 

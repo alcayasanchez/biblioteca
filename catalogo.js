@@ -3,8 +3,7 @@
    - ruta: ruta relativa desde la raíz del repositorio, p. ej. "libros/mi-libro/index.html"
    - portada: un emoji o carácter grande para la portada generada
    - color: par de colores para el degradado de la portada
-   - pdf: URL pública opcional (descarga o préstamo); deja "" si no hay enlace
-   - pdfLocal: ruta relativa a un PDF guardado sólo en local (no se publica)
+   - pdf: URL o ruta relativa al texto completo; deja "" si no hay enlace
    - pdfLabel: texto del botón (por defecto "PDF ↗")
    - pdfNota: advertencia corta sobre la fuente/derechos del acceso
 */
@@ -21,11 +20,9 @@ window.CATALOGO = [
     portada: "🪨",
     color: ["#9a3b2f", "#c2763a"],
     ruta: "libros/mito-de-sisifo/index.html",
-    pdf: "https://archive.org/details/elmitodesisifo0000camu",
-    pdfLocal: "libros/mito-de-sisifo/el_mito_de_sisifo.pdf",
-    pdfLabel: "Abrir PDF local ↗",
-    pdfLabelWeb: "Pedir prestado ↗",
-    pdfNota: "Copia local no publicada · Alianza Editorial, trad. Luis Echávarri",
+    pdf: "libros/mito-de-sisifo/el_mito_de_sisifo.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 69 páginas · publicado con autorización del titular",
     destacado: true
   }
 ];

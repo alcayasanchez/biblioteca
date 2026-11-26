@@ -3,7 +3,6 @@
   const $ = s => document.querySelector(s);
   const CAT = window.CATALOGO || [];
   let genero = "Todo";
-  const esLocal = location.protocol === "file:" || ["localhost","127.0.0.1"].includes(location.hostname);
 
   /* Tema */
   let tema = "claro";
@@ -47,15 +46,9 @@
 
   function tarjeta(l){
     const insignia = l.destacado ? '<span class="insignia">Destacado</span>' : "";
-    const usaLocal = esLocal && l.pdfLocal;
-    const destino = usaLocal ? l.pdfLocal : l.pdf;
-    const etiqueta = usaLocal ? (l.pdfLabel || "PDF local ↗") : (l.pdfLabelWeb || l.pdfLabel || "PDF ↗");
-    const nota = usaLocal
-      ? (l.pdfNota || "Copia local.")
-      : "Préstamo bibliotecario gratuito · el PDF no se publica en la web";
-    const pdf = destino
-      ? '<a class="btn" href="' + destino + '" target="_blank" rel="noopener">' + etiqueta + '</a>' +
-        '<p class="nota-pdf">' + nota + '</p>'
+    const pdf = l.pdf
+      ? '<a class="btn" href="' + l.pdf + '" target="_blank" rel="noopener">' + (l.pdfLabel || "PDF ↗") + '</a>' +
+        '<p class="nota-pdf">' + (l.pdfNota || "Enlace al texto completo.") + '</p>'
       : "";
     return '<article class="libro">' +
       '<div class="portada" style="background:linear-gradient(135deg,' + l.color[0] + ',' + l.color[1] + ')">' +
