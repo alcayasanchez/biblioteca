@@ -21,7 +21,7 @@ biblioteca/
 
 ## Cómo verla
 
-Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings → Pages → Deploy from a branch → main / root`.
+Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings → Pages → Deploy from a branch → master / root` (rama por defecto del repositorio).
 
 ## Cómo añadir un libro
 
