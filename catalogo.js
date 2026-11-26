@@ -24,5 +24,22 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 69 páginas · publicado con autorización del titular",
     destacado: true
+  },
+  {
+    id: "don-quijote",
+    titulo: "Don Quijote de la Mancha",
+    autor: "Miguel de Cervantes",
+    anio: "1605 / 1615",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Mapa de las dos partes, episodios fundamentales, personajes, vocabulario, línea temporal, notas personales y texto completo en dominio público.",
+    etiquetas: ["Siglo de Oro", "Sátira", "Dominio público"],
+    portada: "🐴",
+    color: ["#5b4636", "#b98b3f"],
+    ruta: "libros/don-quijote/index.html",
+    pdf: "libros/don-quijote/don_quijote.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 536 páginas · Project Gutenberg, dominio público",
+    destacado: true
   }
 ];

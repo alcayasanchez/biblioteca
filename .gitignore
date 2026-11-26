@@ -1,4 +1,5 @@
-# Por defecto los PDF se guardan en local; se exceptúa el libro publicado con autorización de su titular.
+# Por defecto los PDF se guardan en local; se exceptúan los libros publicados con autorización o en dominio público.
 *.pdf
 !libros/mito-de-sisifo/el_mito_de_sisifo.pdf
+!libros/don-quijote/don_quijote.pdf
 *.epub

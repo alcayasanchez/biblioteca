@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Don Quijote de la Mancha · Biblioteca digital</title>
+<meta name="description" content="Guía interactiva de lectura del Don Quijote de Cervantes: estructura, episodios, personajes, conceptos, texto completo y notas.">
+<style>
+  :root{
+    --bg:#f4efe4; --bg2:#ebe3d2; --card:#fffaf0; --ink:#26221c; --muted:#6e6558;
+    --accent:#8a5a2b; --accent2:#b98b3f; --line:#d8cdb8; --shadow:0 10px 30px rgba(60,45,25,.10);
+    --radius:16px; --max:1080px;
+  }
+  [data-theme="dark"]{
+    --bg:#191917; --bg2:#22211e; --card:#262521; --ink:#efe8da; --muted:#b0a697;
+    --accent:#d9a15c; --accent2:#c98b45; --line:#3c3933; --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:92px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7;
+    transition:background .25s,color .25s}
+  h1,h2,h3,.ui{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  h2{font-size:1.9rem; line-height:1.2; margin:0 0 .6rem}
+  h3{margin:.2rem 0 .5rem; font-size:1.05rem}
+  p{margin:.7rem 0}
+  a{color:var(--accent)}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 1.2rem}
+  .eyebrow{font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+
+  #barra-progreso{position:fixed; top:0; left:0; height:4px; width:0; background:linear-gradient(90deg,var(--accent),var(--accent2)); z-index:100; transition:width .1s linear}
+
+  header.hero{position:relative; overflow:hidden; background:linear-gradient(160deg,var(--bg2),var(--bg) 65%); border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center; padding:4.4rem 0 3.2rem}
+  .hero h1{font-size:clamp(2.3rem,5.5vw,4rem); line-height:1.03; margin:.4rem 0 .8rem; letter-spacing:-.03em}
+  .hero h1 em{color:var(--accent); font-style:normal}
+  .hero .lead{font-size:1.15rem; max-width:46ch; color:var(--muted)}
+  .botones{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem}
+  button,.btn{font:inherit; cursor:pointer; border-radius:999px; border:1px solid var(--line); padding:.55rem 1.05rem; background:var(--card); color:var(--ink); font-size:.9rem; text-decoration:none; display:inline-block; transition:transform .15s,border-color .15s}
+  button:hover,.btn:hover{transform:translateY(-2px); border-color:var(--accent)}
+  button.primary,.btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+  [data-theme="dark"] button.primary,[data-theme="dark"] .btn.primary{color:#191917}
+  .lienzo-marco{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:.8rem}
+  canvas{display:block; width:100%; height:auto; border-radius:10px}
+  .lienzo-controles{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:.55rem}
+  .lienzo-controles small{color:var(--muted); font-family:system-ui,sans-serif}
+
+  .aviso{margin:1.6rem 0 0; padding:.9rem 1.1rem; border-left:4px solid var(--accent2); background:var(--card); border-radius:0 12px 12px 0; font-size:.92rem; color:var(--muted)}
+
+  nav.barra{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.barra ul{display:flex; gap:.25rem; list-style:none; margin:0; padding:.55rem 0; overflow-x:auto; scrollbar-width:none}
+  nav.barra ul::-webkit-scrollbar{display:none}
+  nav.barra a{white-space:nowrap; text-decoration:none; color:var(--muted); font-family:system-ui,sans-serif; font-size:.85rem; padding:.45rem .75rem; border-radius:999px}
+  nav.barra a:hover,nav.barra a.activo{background:var(--card); color:var(--accent)}
+
+  section{padding:4rem 0 1rem}
+  section+section{border-top:1px solid var(--line)}
+  .cabecera-seccion{margin-bottom:1.8rem}
+  .cabecera-seccion p{color:var(--muted); max-width:70ch}
+  .rejilla{display:grid; gap:1rem}
+  .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:800px){.hero-grid,.cols-2,.cols-3{grid-template-columns:1fr}}
+
+  .tarjeta{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.3rem; box-shadow:var(--shadow)}
+  .tarjeta.num{position:relative; overflow:hidden}
+  .tarjeta.num .numero{font-family:system-ui,sans-serif; font-size:3.4rem; font-weight:800; line-height:1; color:var(--accent); opacity:.18; position:absolute; right:1rem; top:.6rem}
+  .tarjeta p{font-size:.93rem; color:var(--muted); margin-bottom:0}
+  .etiqueta{display:inline-block; font-family:system-ui,sans-serif; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--accent2); margin-bottom:.4rem}
+  .personaje{text-align:center}
+  .personaje .icono{font-size:2.2rem; display:block; margin-bottom:.3rem}
+
+  details.cap{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:.8rem; overflow:hidden}
+  details.cap summary{cursor:pointer; list-style:none; padding:1.1rem 1.2rem; display:flex; align-items:center; gap:.9rem; font-family:system-ui,sans-serif; font-weight:650}
+  details.cap summary::-webkit-details-marker{display:none}
+  details.cap summary::after{content:"＋"; margin-left:auto; color:var(--accent); font-size:1.2rem}
+  details.cap[open] summary::after{content:"－"}
+  details.cap summary .cifra{background:var(--accent); color:#fff; border-radius:8px; min-width:2rem; height:2rem; display:grid; place-items:center; font-size:.85rem}
+  [data-theme="dark"] details.cap summary .cifra{color:#191917}
+  .cuerpo-cap{padding:0 1.2rem 1.3rem}
+  .cuerpo-cap ul{padding-left:1.2rem}
+  .cuerpo-cap li{margin:.35rem 0}
+  .frase{border-left:3px solid var(--accent2); padding:.4rem 0 .4rem 1rem; margin:1.1rem 0; font-style:italic; color:var(--muted)}
+
+  .chip{border:1px solid var(--line); background:var(--card); border-radius:999px; padding:.5rem 1rem; cursor:pointer; font-family:system-ui,sans-serif; font-size:.87rem}
+  .chip:hover,.chip.activo{border-color:var(--accent); color:var(--accent)}
+  #definicion{margin-top:1rem; min-height:8.5rem}
+  #definicion h3{color:var(--accent); font-size:1.2rem}
+
+  .cita-hero{text-align:center; padding:2.5rem 1.5rem; border-radius:var(--radius); background:linear-gradient(145deg,var(--card),var(--bg2)); border:1px solid var(--line)}
+  .cita-hero blockquote{font-size:clamp(1.5rem,3.5vw,2.3rem); line-height:1.3; margin:0; font-style:italic}
+  .cita-hero .autor{font-family:system-ui,sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1.2rem}
+
+  .timeline{position:relative; padding-left:1.8rem; margin-top:1.5rem}
+  .timeline::before{content:""; position:absolute; left:.4rem; top:.4rem; bottom:.4rem; width:2px; background:var(--line)}
+  .hito{position:relative; margin-bottom:1.4rem}
+  .hito::before{content:""; position:absolute; left:-1.58rem; top:.6rem; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--bg)}
+  .hito strong{font-family:system-ui,sans-serif; color:var(--accent)}
+  .hito p{margin:.15rem 0; color:var(--muted); font-size:.93rem}
+
+  textarea{width:100%; min-height:190px; resize:vertical; padding:1rem; border-radius:14px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-family:Georgia,serif; font-size:1rem; line-height:1.6}
+  .guardado{font-family:system-ui,sans-serif; font-size:.8rem; color:var(--muted); min-height:1.2rem}
+
+  footer{padding:3rem 0 4rem; color:var(--muted); font-size:.88rem; border-top:1px solid var(--line); margin-top:3rem}
+  footer a{color:var(--accent)}
+  .progreso-leido{font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:.8rem}
+  .check-leido{display:flex; gap:.5rem; align-items:center; font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:1rem; cursor:pointer}
+
+  @media print{nav.barra,.botones,.lienzo-marco,#notas,#barra-progreso{display:none!important} section{padding:1.5rem 0;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="barra-progreso" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Miguel de Cervantes · 1605 / 1615</span>
+      <h1>Don Quijote de <em>la Mancha</em></h1>
+      <p class="lead">Guía interactiva de lectura: las dos partes, los episodios esenciales, los personajes, las ideas clave y el texto completo en dominio público.</p>
+      <div class="botones">
+        <a class="btn" href="../../index.html">← Biblioteca</a>
+        <a class="btn primary ui" href="#intro">Empezar la lectura ↓</a>
+        <button id="tema" aria-label="Cambiar tema">◐ Modo noche</button>
+        <button id="imprimir" aria-label="Imprimir documento">⎙ Imprimir</button>
+      </div>
+      <p class="aviso"><strong>Nota:</strong> esta guía contiene resúmenes, análisis y citas breves. La novela es de dominio público y el PDF completo se ofrece en la sección «Texto completo».</p>
+    </div>
+    <div class="lienzo-marco">
+      <canvas id="quijote" width="640" height="420" role="img" aria-label="Animación de Don Quijote y Sancho Panza ante un molino de viento"></canvas>
+      <div class="lienzo-controles">
+        <small>«No son gigantes, sino molinos de viento.»</small>
+        <button id="animacion">❚❚ Pausar</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="barra" aria-label="Navegación por secciones">
+  <div class="wrap">
+    <ul>
+      <li><a href="#intro">La locura</a></li>
+      <li><a href="#estructura">Estructura</a></li>
+      <li><a href="#episodios">Episodios</a></li>
+      <li><a href="#personajes">Personajes</a></li>
+      <li><a href="#conceptos">Conceptos</a></li>
+      <li><a href="#final">Desenlace</a></li>
+      <li><a href="#linea">Contexto</a></li>
+      <li><a href="#texto">Texto completo</a></li>
+      <li><a href="#notas">Mis notas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="intro">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">01 · El punto de partida</span>
+    <h2>Un hidalgo que leyó demasiado</h2>
+    <p>Alonso Quijano, un hidalgo pobre de La Mancha, se obsesiona con los libros de caballerías hasta perder el juicio. Decide llamarse Don Quijote de la Mancha, armarse caballero y salir a «desfacer entuertos» por el mundo.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">La locura</span>
+      <h3>El deseo vuelve real lo imposible</h3>
+      <p>Don Quijote no se engaña sobre los hechos: los transforma. Los molinos son gigantes, el rebaño un ejército, una bacinilla el yelmo de Mambrino. Cervantes convierte esa mirada en un juego entre lo que es y lo que se quiere que sea.</p>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">El método</span>
+      <h3>Reírse y pensar a la vez</h3>
+      <p>La novela se ríe de los libros de caballerías, pero también de la Vanidad, la violencia y las certezas de su tiempo. La comicidad no impide la hondura: es una de las primeras grandes obras sobre la imaginación y la realidad.</p>
+    </article>
+  </div>
+  <p class="frase">«Desfacer entuertos y socorrer a menesterosos»: la misión que inventa Don Quijote para su vida.</p>
+</section>
+
+<section id="estructura">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">02 · Mapa de la obra</span>
+    <h2>Dos partes, una misma aventura</h2>
+    <p>La primera parte apareció en 1605; la segunda, diez años después, cuando ya circulaba una continuación apócrifa. En total, 104 capítulos y una serie de prólogos que juegan con la ficción.</p>
+  </div>
+  <div class="rejilla cols-3">
+    <article class="tarjeta num"><span class="numero">I</span><span class="etiqueta">1605</span><h3>Primera parte</h3><p>52 capítulos. Las tres salidas, los molinos, los galeotes y la locura en Sierra Morena.</p></article>
+    <article class="tarjeta num"><span class="numero">II</span><span class="etiqueta">1615</span><h3>Segunda parte</h3><p>52 capítulos. Sancho gobernador, la cueva de Montesinos y la derrota en Barcelona.</p></article>
+    <article class="tarjeta num"><span class="numero">A</span><span class="etiqueta">1614</span><h3>El Quijote de Avellaneda</h3><p>Una continuación no autorizada que empuja a Cervantes a escribir la segunda parte y a responder en el prólogo.</p></article>
+    <article class="tarjeta num"><span class="numero">C</span><span class="etiqueta">Narrador</span><h3>Cide Hamete Benengeli</h3><p>El supuesto historiador árabe al que Cervantes atribuye la crónica: una de las grandes invenciones metaficcionales de la novela.</p></article>
+    <article class="tarjeta num"><span class="numero">P</span><span class="etiqueta">Umbrales</span><h3>Prólogos y dedicatorias</h3><p>Textos que mezclan ficción y realidad: el «Al lector» de 1615 responde a Avellaneda con ironía.</p></article>
+    <article class="tarjeta num"><span class="numero">✎</span><span class="etiqueta">Tu lectura</span><h3>Marca tu avance</h3><p>Abre los episodios de abajo y ve marcando los apartados que ya has trabajado.</p><label class="check-leido"><input type="checkbox" id="check-general"> He repasado la estructura</label></article>
+  </div>
+  <div class="progreso-leido" id="progreso-leido">Progreso: 0 de 6 apartados</div>
+</section>
+
+<section id="episodios">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">03 · Episodios clave</span>
+    <h2>Lee las aventuras fundamentales</h2>
+    <p>Pulsa cada título para desplegar el resumen del episodio y por qué importa en la novela.</p>
+  </div>
+
+  <details class="cap" open>
+    <summary><span class="cifra">I</span> Primera salida y armamiento de caballero</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>El propósito：</strong>tras leer toda la noche, Alonso Quijano decide hacerse caballero andante, darse nombre nuevo y consagrar su vida a la justicia.</li>
+        <li><strong>La venta：</strong>confunde una posada con un castillo y al ventero con su «señor feudal». Allí es armado caballero en una ceremonia burlesca.</li>
+        <li><strong>El primer fracaso：</strong>intenta defender a un mozo al que azota su amo; al no salirle bien, se retira a casa «herido» por sus propias ilusiones.</li>
+      </ul>
+      <p class="frase">La venta se convierte en castillo: el mundo cotidiano se resiste, pero la imaginación lo transforma.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap1"> Episodio leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">II</span> Los molinos de viento</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>La aventura：</strong>Don Quijote ve treinta o cuarenta molinos y los toma por gigantes de brazos largos. Picó a Rocinante y arremete con la lanza.</li>
+        <li><strong>El resultado：</strong>una de las aspas rompe la lanza y derriba al caballero. Sancho le advierte que «no son gigantes, sino molinos».</li>
+        <li><strong>La lección:</strong> la escena condensa el tema central: la fuerza del deseo frente a la materia; la risa nace del fracaso, no de la burla gratuita.</li>
+      </ul>
+      <p class="frase">«¿Quién da ahora por gigante al que hace poco era molino?»: la pregunta que sobrevive a la caída.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap2"> Episodio leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">III</span> Rebaños, galeotes y el yelmo de Mambrino</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Los rebaños：</strong> dos manadas de ovejas se vuelven ejércitos enfrentados; Don Quijote arremete y es apedreado.</li>
+        <li><strong>Los galeotes：</strong> decide liberar a unos presos que van a galeras, convencido de que la justicia está de su parte. Los liberados le responden con piedras.</li>
+        <li><strong>El yelmo：</strong> una bacinilla de barbero le parece el yelmo encantado de Mambrino. Sancho acepta el botín con pragmatismo.</li>
+        <li><strong>El contraste：</strong>la generosidad del propósito choca con la violencia del mundo; los «socorridos» no agradecen el socorro.</li>
+      </ul>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap3"> Episodio leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">IV</span> Sierra Morena: la locura y la carta a Dulcinea</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>La imitación：</strong>tras nuevas derrotas, Don Quijote imita la locura de los amantes despechados de los libros que leyó.</li>
+        <li><strong>El mensaje：</strong>envía a Sancho con una carta para Dulcinea del Toboso, la campesina Aldonza Lorenzo a quien ha convertido en dama ideal.</li>
+        <li><strong>El equívoco：</strong>Sancho no encuentra a Dulcinea y se las ingenia para fingir que se la ha entregado. Aquí se abre un juego de mentiras piadosas que atraviesa toda la obra.</li>
+      </ul>
+      <p class="frase">Dulcinea existe porque Don Quijote la nombra: el amor como acto de invención.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap4"> Episodio leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">V</span> La ínsula Barataria</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>El engaño：</strong>unos duques, Entertenidos, prometen a Sancho el gobierno de una isla inexistente para divertirse a su costa.</li>
+        <li><strong>El buen juicio：</strong>Sancho gobierna con sensatez y sentido común, dicta sentencias ingeniosas y acaba renunciando al cargo.</li>
+        <li><strong>La inversión:</strong> el «loco» resulta ser el más razonable y quienes se tienen por sensatos son los crueles. La escena invierte las jerarquías de la novela.</li>
+      </ul>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap5"> Episodio leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">VI</span> La cueva de Montesinos y la Blanca Luna</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>La cueva：</strong>Don Quijote baja a una sima y afirma haber visto cosas maravillosas. Su relato es imposible de verificar: ¿mentira, sueño o verdad?</li>
+        <li><strong>El desafío：</strong>en Barcelona, Sansón Carrasco disfrazado de Caballero de la Blanca Luna lo vence y le ordena volver a su pueblo.</li>
+        <li><strong>El regreso：</strong>Don Quijote obedece. El ideal se retira ante la derrota, pero la novela ya ha convertido esa derrota en materia literaria.</li>
+      </ul>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap6"> Episodio leído</label>
+    </div>
+  </details>
+</section>
+
+<section id="personajes">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">04 · Figuras</span>
+    <h2>Quienes habitan la novela</h2>
+    <p>Pulsa una tarjeta para ver quién es cada personaje y qué representa.</p>
+  </div>
+  <div class="rejilla cols-3" id="personajes-grid"></div>
+  <div class="tarjeta" id="ficha-personaje" aria-live="polite" style="margin-top:1rem; min-height:7rem">
+    <h3>Elige un personaje</h3>
+    <p>Sus descripciones aparecen aquí.</p>
+  </div>
+</section>
+
+<section id="conceptos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">05 · Vocabulario</span>
+    <h2>Las ideas que sostienen la novela</h2>
+    <p>Pulsa un término para ver su definición en el contexto del Quijote.</p>
+  </div>
+  <div class="rejilla" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))" id="chips">
+    <button class="chip" data-k="locura">Locura</button>
+    <button class="chip" data-k="idealismo">Idealismo</button>
+    <button class="chip" data-k="realidad">Realidad</button>
+    <button class="chip" data-k="parodia">Parodia</button>
+    <button class="chip" data-k="metaficcion">Metaficción</button>
+    <button class="chip" data-k="polifonia">Polifonía</button>
+    <button class="chip" data-k="entuertos">Desfacer entuertos</button>
+    <button class="chip" data-k="insula">Ínsula Barataria</button>
+    <button class="chip" data-k="honor">Honor</button>
+    <button class="chip" data-k="libertad">Libertad</button>
+  </div>
+  <div class="tarjeta" id="definicion" aria-live="polite" style="margin-top:1rem; min-height:8.5rem">
+    <h3>Elige un concepto</h3>
+    <p>Las definiciones aparecen aquí al pulsar cualquiera de las etiquetas.</p>
+  </div>
+</section>
+
+<section id="final">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">06 · El desenlace</span>
+    <h2>La muerte del ingenioso hidalgo</h2>
+  </div>
+  <div class="cita-hero">
+    <blockquote>«Vencido y rendido, vuelve Don Quijote a su aldea y allí, vuelto en su juicio, muere.»</blockquote>
+    <div class="autor">Último capítulo de la segunda parte · 1615</div>
+    <p style="max-width:62ch;margin:1.6rem auto 0;color:var(--muted)">Sansón Carrasco, convertido en el Caballero de la Blanca Luna, lo derrota en la playa de Barcelona y le impone volver al Toboso. Al regresar, Alonso Quijano recupera la razón, dicta su testamento y expira. Cervantes cierra así el libro que había hecho vivir a su personaje: la locura se va, pero la literatura queda.</p>
+  </div>
+</section>
+
+<section id="linea">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">07 · Contexto</span>
+    <h2>Alrededor de la novela</h2>
+    <p>Algunas fechas para situar la obra y a su autor.</p>
+  </div>
+  <div class="timeline">
+    <div class="hito"><strong>1547</strong><p>Nace Miguel de Cervantes Saavedra en Alcalá de Henares.</p></div>
+    <div class="hito"><strong>1571</strong><p>Participa en la batalla de Lepanto, donde pierde el uso de la mano izquierda.</p></div>
+    <div class="hito"><strong>1605</strong><p>Se publica en Madrid la primera parte del <em>Ingenioso hidalgo Don Quijote de la Mancha</em>.</p></div>
+    <div class="hito"><strong>1614</strong><p>Aparece una continuación apócrifa firmada por Alonso Fernández de Avellaneda.</p></div>
+    <div class="hito"><strong>1615</strong><p>Cervantes publica la segunda parte y responde a Avellaneda en el prólogo al lector.</p></div>
+    <div class="hito"><strong>1616</strong><p>Muere Cervantes. Ese mismo año se publica la primera traducción inglesa completa.</p></div>
+  </div>
+</section>
+
+<section id="texto">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">08 · Texto completo</span>
+    <h2>Leer la novela íntegra</h2>
+    <p>Edición en castellano en PDF, con las dos partes y sus 104 capítulos. Obra de dominio público.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">PDF · dominio público</span>
+      <h3>El ingenioso hidalgo Don Quijote de la Mancha</h3>
+      <p>536 páginas, texto de Project Gutenberg (ebook n.º 2000) distribuido vía Internet Archive. Descarga directa desde esta biblioteca.</p>
+      <div class="botones">
+        <a class="btn primary" href="don_quijote.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a>
+        <a class="btn" href="don_quijote.pdf" download>Descargar PDF</a>
+      </div>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">Origen del texto</span>
+      <h3>Project Gutenberg</h3>
+      <p>La edición digital original puede consultarse en el catálogo de Project Gutenberg; el PDF de esta biblioteca se ha generado a partir de ese texto libre.</p>
+      <div class="botones"><a class="btn" href="https://www.gutenberg.org/ebooks/2000" target="_blank" rel="noopener">Ver en Gutenberg ↗</a></div>
+    </article>
+  </div>
+  <p class="aviso"><strong>Dominio público:</strong> la novela fue publicada en 1605 y 1615. El texto puede reproducirse y compartirse libremente. Esta guía añade resúmenes y análisis originales.</p>
+</section>
+
+<section id="notas">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">09 · Tu espacio</span>
+    <h2>Mis notas de lectura</h2>
+    <p>Escribe aquí tus citas, dudas o ideas. El contenido se guarda automáticamente en este navegador y puedes descargarlo como texto.</p>
+  </div>
+  <textarea id="area-notas" placeholder="Ej.: ¿Por qué Sancho resulta más sensato que su amo?&#10;¿Qué cambia entre la primera y la segunda parte?"></textarea>
+  <div class="botones">
+    <button id="descargar">⬇ Descargar notas (.txt)</button>
+    <button id="borrar">Borrar notas</button>
+  </div>
+  <div class="guardado" id="estado-notas"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Don Quijote de la Mancha · guía interactiva.</strong> Resúmenes y definiciones originales para orientar la lectura. Novela de Miguel de Cervantes, en dominio público; véase la <a href="https://es.wikipedia.org/wiki/Don_Quijote_de_la_Mancha" target="_blank" rel="noopener">entrada de Wikipedia</a> para contrastar datos.</p>
+    <p><a href="../../index.html">← Volver a la biblioteca</a> · Hecho con HTML, CSS y JavaScript sin dependencias externas.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  /* Tema */
+  const guardarTema = t => { try{ localStorage.setItem('biblioteca-tema', t); }catch(e){} };
+  let tema = 'claro';
+  try{ tema = localStorage.getItem('biblioteca-tema') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro'); }catch(e){}
+  function aplicarTema(){
+    document.documentElement.dataset.theme = tema === 'oscuro' ? 'dark' : 'light';
+    $('#tema').textContent = tema === 'oscuro' ? '☀ Modo día' : '◐ Modo noche';
+    dibujarEscena();
+  }
+  $('#tema').addEventListener('click', () => { tema = tema === 'oscuro' ? 'claro' : 'oscuro'; guardarTema(tema); aplicarTema(); });
+  $('#imprimir').addEventListener('click', () => print());
+
+  /* Progreso y navegación */
+  const barra = $('#barra-progreso');
+  function actualizarProgreso(){
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    barra.style.width = (total > 0 ? (h.scrollTop / total) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', actualizarProgreso, {passive:true});
+  addEventListener('resize', actualizarProgreso);
+  actualizarProgreso();
+
+  const enlaces = $$('nav.barra a');
+  const observer = new IntersectionObserver(entradas => {
+    entradas.forEach(e => {
+      if(e.isIntersecting){
+        enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, {rootMargin:'-25% 0px -65% 0px'});
+  $$('main section').forEach(s => observer.observe(s));
+
+  /* Animación del molino */
+  const canvas = $('#quijote'), ctx = canvas.getContext('2d');
+  const btnAnim = $('#animacion');
+  let enMarcha = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0;
+  aplicarTema();
+  btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+  btnAnim.addEventListener('click', () => {
+    enMarcha = !enMarcha;
+    btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+    if(enMarcha) requestAnimationFrame(bucle);
+  });
+
+  function colores(){
+    const oscuro = document.documentElement.dataset.theme === 'dark';
+    return oscuro
+      ? {cielo:'#22211e',suelo:'#35312a',torre:'#4a4439',techo:'#6b4a32',vela:'#d9a15c',rocinante:'#a08b72',quijote:'#d9a15c',sancho:'#b0a697',texto:'#b0a697'}
+      : {cielo:'#efe5d2',suelo:'#cbb791',torre:'#b9a27e',techo:'#8a5a2b',vela:'#f0d8a8',rocinante:'#6d5a43',quijote:'#8a5a2b',sancho:'#6e6558',texto:'#6e6558'};
+  }
+  function dibujarEscena(){
+    if(!ctx) return;
+    const c = colores(), W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = c.cielo; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle = c.suelo; ctx.fillRect(0,H*0.78,W,H*0.22);
+
+    // Molino
+    const mx = 470, my = 165;
+    ctx.fillStyle = c.torre;
+    ctx.beginPath(); ctx.moveTo(mx-48,H*0.78); ctx.lineTo(mx+48,H*0.78); ctx.lineTo(mx+26,my); ctx.lineTo(mx-26,my); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = c.techo;
+    ctx.beginPath(); ctx.moveTo(mx-34,my); ctx.lineTo(mx,my-30); ctx.lineTo(mx+34,my); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = c.texto; ctx.lineWidth = 3;
+    for(let i=0;i<4;i++){
+      const a = t*0.012 + i*Math.PI/2;
+      const ex = mx + Math.cos(a)*96, ey = my + Math.sin(a)*96;
+      ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(ex,ey); ctx.stroke();
+      ctx.fillStyle = c.vela;
+      ctx.save(); ctx.translate(mx+Math.cos(a)*62, my+Math.sin(a)*62); ctx.rotate(a);
+      ctx.fillRect(-7,-22,54,26); ctx.restore();
+    }
+    ctx.fillStyle = c.techo; ctx.beginPath(); ctx.arc(mx,my,8,0,Math.PI*2); ctx.fill();
+
+    // Rocinante y Don Quijote
+    const bob = Math.sin(t*0.08)*3;
+    const hx = 140, hy = H*0.72 + bob;
+    ctx.fillStyle = c.rocinante;
+    ctx.beginPath(); ctx.ellipse(hx,hy,52,20,0,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle = c.rocinante; ctx.lineWidth = 6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(hx+38,hy); ctx.lineTo(hx+50,hy-30); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hx+50,hy-30); ctx.lineTo(hx+40,hy-42); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hx-38,hy); ctx.lineTo(hx-44,hy+34); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hx+28,hy); ctx.lineTo(hx+30,hy+34); ctx.stroke();
+    ctx.fillStyle = c.quijote;
+    ctx.beginPath(); ctx.arc(hx-6,hy-38,12,0,Math.PI*2); ctx.fill();
+    ctx.fillRect(hx-12,hy-28,16,24);
+    ctx.strokeStyle = c.quijote; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(hx+2,hy-24); ctx.lineTo(mx-95,my+30); ctx.stroke(); // lanza
+    ctx.fillStyle = c.texto; ctx.font = '15px system-ui,sans-serif';
+    ctx.fillText('«¡A por ellos, que son muchos!»', 28, 34);
+  }
+  function bucle(){
+    if(!enMarcha) return;
+    t += 1;
+    dibujarEscena();
+    requestAnimationFrame(bucle);
+  }
+  if(ctx){ if(enMarcha) requestAnimationFrame(bucle); else dibujarEscena(); }
+  addEventListener('resize', dibujarEscena);
+
+  /* Personajes */
+  const personajes = [
+    {n:'Don Quijote',i:'🗡️',d:'Alonso Quijano, hidalgo arruinado que se inventa una identidad caballeresca para vivir según los libros que leyó. Encarna el idealismo tenaz y la dignidad del fracaso.'},
+    {n:'Sancho Panza',i:'🧑‍🌾',d:'Campesino analfabeto y pragmático que acompaña a su amo como escudero. Su sentido común, sus refranes y su deseo de una ínsula lo convierten en el contrapunto indispensable.'},
+    {n:'Dulcinea',i:'🌹',d:'Aldonza Lorenzo, una campesina del Toboso transformada por Don Quijote en dama inaccesible. Es el objeto de un amor inventado y, por eso mismo, más poderoso.'},
+    {n:'Rocinante',i:'🐴',d:'El caballo flaco y viejo de Don Quijote, con nombre de caballo de novela. Su cuerpo degradado es la imagen cómica de las altas aspiraciones de su jinete.'},
+    {n:'Cide Hamete',i:'📜',d:'El historiador árabe al que Cervantes atribuye la crónica. Su supuesta existencia convierte la novela en un juego de voces, traducciones y verdades dudosas.'},
+    {n:'Sansón Carrasco',i:'⚔️',d:'Bachiller burlón que primero se bate con Don Quijote y después, disfrazado de Caballero de la Blanca Luna, lo vence para devolverlo a la razón.'}
+  ];
+  const pg = $('#personajes-grid');
+  personajes.forEach((p,i) => {
+    const b = document.createElement('button');
+    b.className = 'tarjeta personaje';
+    b.innerHTML = '<span class="icono">' + p.i + '</span><h3>' + p.n + '</h3>';
+    b.addEventListener('click', () => {
+      $$('#personajes-grid .tarjeta').forEach(x => x.style.borderColor = '');
+      b.style.borderColor = 'var(--accent)';
+      $('#ficha-personaje').innerHTML = '<h3>' + p.n + '</h3><p>' + p.d + '</p>';
+    });
+    pg.appendChild(b);
+  });
+
+  /* Conceptos */
+  const definiciones = {
+    locura:['Locura','No es simple demencia: es una forma de ver el mundo según un modelo literario. Don Quijote prefiere la mentira hermosa a la verdad vulgar.'],
+    idealismo:['Idealismo','La confianza en que la vida puede ajustarse a un ideal. La novela lo admira y se ríe de él al mismo tiempo.'],
+    realidad:['Realidad','Lo que se resiste a la imaginación: piedras, cuerpos, dinero, leyes. Cervantes la devuelve siempre, a golpes si hace falta.'],
+    parodia:['Parodia','La imitación burlesca de los libros de caballerías. Al ridiculizarlos, Cervantes crea una forma nueva de novela.'],
+    metaficcion:['Metaficción','La novela habla de sí misma: inventa un historiador árabe, comenta traducciones y hasta responde a la continuación de Avellaneda dentro del libro.'],
+    polifonia:['Polifonía','Muchas voces conviven: don Quijote, Sancho, el narrador, Cide Hamete, los duques... Cada una tiene su lenguaje y su verdad.'],
+    entuertos:['Desfacer entuertos','La misión que Don Quijote atribuye a su caballería: corregir injusticias. Cada intento acaba en resultado cómico o violento.'],
+    insula:['Ínsula Barataria','La «isla» falsa que los duques ofrecen gobernar a Sancho. Parodia del gobierno y demostración de que el buen juicio no está donde se espera.'],
+    honor:['Honor','La reputación caballeresca mueve a Don Quijote, pero la novela la somete al ridículo: la fama suele fabricarse con palabras.'],
+    libertad:['Libertad','Los galeotes son liberados por Don Quijote; Sancho renuncia a su gobierno. La libertad aparece como deseo y como decisión, no como doctrina.']
+  };
+  $$('#chips .chip').forEach(chip => chip.addEventListener('click', () => {
+    $$('#chips .chip').forEach(c => c.classList.remove('activo'));
+    chip.classList.add('activo');
+    const d = definiciones[chip.dataset.k];
+    $('#definicion').innerHTML = '<h3>' + d[0] + '</h3><p>' + d[1] + '</p>';
+  }));
+
+  /* Progreso de lectura */
+  const checks = $$('.cap-check');
+  const checkGeneral = $('#check-general');
+  const clave = 'quijote-leidos';
+  let leidos = {};
+  try{ leidos = JSON.parse(localStorage.getItem(clave) || '{}'); }catch(e){ leidos = {}; }
+  function sincronizar(){
+    checks.forEach(c => c.checked = !!leidos[c.value]);
+    checkGeneral.checked = !!leidos.general;
+    const n = Object.values(leidos).filter(Boolean).length;
+    $('#progreso-leido').textContent = 'Progreso: ' + n + ' de 6 apartados';
+  }
+  function guardarProgreso(){
+    leidos = {};
+    checks.forEach(c => { if(c.checked) leidos[c.value] = true; });
+    if(checkGeneral.checked) leidos.general = true;
+    try{ localStorage.setItem(clave, JSON.stringify(leidos)); }catch(e){}
+    sincronizar();
+  }
+  checks.forEach(c => c.addEventListener('change', guardarProgreso));
+  checkGeneral.addEventListener('change', guardarProgreso);
+  sincronizar();
+
+  /* Notas */
+  const area = $('#area-notas'), estado = $('#estado-notas');
+  try{ area.value = localStorage.getItem('quijote-notas') || ''; }catch(e){}
+  let temporizador;
+  area.addEventListener('input', () => {
+    clearTimeout(temporizador);
+    estado.textContent = 'Escribiendo…';
+    temporizador = setTimeout(() => {
+      try{ localStorage.setItem('quijote-notas', area.value); estado.textContent = 'Guardado ✔'; }
+      catch(e){ estado.textContent = 'No se pudo guardar en este navegador.'; }
+    }, 400);
+  });
+  $('#descargar').addEventListener('click', () => {
+    const blob = new Blob([area.value], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mis-notas-don-quijote.txt';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('#borrar').addEventListener('click', () => {
+    if(!confirm('¿Borrar todas las notas guardadas?')) return;
+    area.value = '';
+    try{ localStorage.removeItem('quijote-notas'); }catch(e){}
+    estado.textContent = 'Notas borradas.';
+  });
+})();
+</script>
+</body>
+</html>
