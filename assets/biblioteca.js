@@ -47,7 +47,7 @@
   function tarjeta(l){
     const insignia = l.destacado ? '<span class="insignia">Destacado</span>' : "";
     const pdf = l.pdf
-      ? '<a class="btn" href="' + l.pdf + '" target="_blank" rel="noopener">PDF ↗</a>' +
+      ? '<a class="btn" href="' + l.pdf + '" target="_blank" rel="noopener">' + (l.pdfLabel || "PDF ↗") + '</a>' +
         '<p class="nota-pdf">' + (l.pdfNota || "Enlace externo: comprueba los derechos según tu país.") + '</p>'
       : "";
     return '<article class="libro">' +

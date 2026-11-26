@@ -27,7 +27,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 
 1. Copia `libros/_plantilla/` a `libros/nombre-del-libro/`.
 2. Sustituye los marcadores `{{...}}` por los datos reales.
-3. Añade un objeto en `catalogo.js` con: `id`, `titulo`, `autor`, `anio`, `genero`, `tipo`, `descripcion`, `etiquetas`, `portada` (emoji), `color` (dos colores), `ruta`, `pdf` (URL o `""`), `pdfNota` y `destacado`.
+3. Añade un objeto en `catalogo.js` con: `id`, `titulo`, `autor`, `anio`, `genero`, `tipo`, `descripcion`, `etiquetas`, `portada` (emoji), `color` (dos colores), `ruta`, `pdf` (URL o `""`), `pdfLabel` (texto del botón), `pdfNota` y `destacado`.
 4. Comprueba que la ficha abre y que aparece en el catálogo.
 
 La ficha de *El mito de Sísifo* es autosuficiente (CSS y JS incluidos), así que puedes copiarla como base si quieres una guía más elaborada.
@@ -38,7 +38,9 @@ Se ha eliminado a petición del propietario. Cada ficha conserva resumen, concep
 
 ## Enlaces a textos completos y derechos
 
-La ficha de *El mito de Sísifo* enlaza al PDF y al EPUB alojados en Internet Archive (`le_mythe_de_sisyphe`). Los metadatos de ese elemento declaran «Public Domain Mark 1.0», pero la situación legal **varía según el país**: en la Unión Europea la obra sigue protegida hasta 2030. Antes de descargar o redistribuir, comprueba la normativa aplicable. Esta biblioteca no reproduce textos completos dentro de sus propias páginas: sólo ofrece resúmenes originales, citas breves y enlaces externos.
+La ficha de *El mito de Sísifo* enlaza a la **edición en castellano** de Alianza Editorial (1985, traducción de Luis Echávarri) a través del préstamo bibliotecario de Internet Archive (`elmitodesisifo0000camu`), que requiere cuenta gratuita. La traducción está protegida por derechos de autor, así que no se enlazan copias de descarga directa no autorizadas. Esta biblioteca no reproduce textos completos dentro de sus propias páginas: sólo ofrece resúmenes originales, citas breves y enlaces legítimos.
+
+Al añadir un libro con `pdf`, usa el campo `pdfLabel` para indicar si el botón lleva a una descarga, a un préstamo o a una ficha bibliográfica.
 
 ## Publicar cambios
 

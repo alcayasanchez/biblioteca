@@ -3,8 +3,9 @@
    - ruta: ruta relativa desde la raíz del repositorio, p. ej. "libros/mi-libro/index.html"
    - portada: un emoji o carácter grande para la portada generada
    - color: par de colores para el degradado de la portada
-   - pdf: URL externa opcional al texto completo; deja "" si no hay enlace
-   - pdfNota: advertencia corta sobre la fuente/derechos del PDF
+   - pdf: URL externa opcional al texto completo (descarga o préstamo); deja "" si no hay enlace
+   - pdfLabel: texto del botón (por defecto "PDF ↗")
+   - pdfNota: advertencia corta sobre la fuente/derechos del acceso
 */
 window.CATALOGO = [
   {
@@ -19,8 +20,9 @@ window.CATALOGO = [
     portada: "🪨",
     color: ["#9a3b2f", "#c2763a"],
     ruta: "libros/mito-de-sisifo/index.html",
-    pdf: "https://archive.org/download/le_mythe_de_sisyphe/mythe_de_sisyphe.pdf",
-    pdfNota: "Internet Archive · francés · metadatos con marca PD (el régimen varía por país)",
+    pdf: "https://archive.org/details/elmitodesisifo0000camu",
+    pdfLabel: "Leer en español ↗",
+    pdfNota: "Préstamo bibliotecario gratuito · Alianza Editorial, trad. Luis Echávarri",
     destacado: true
   }
 ];
