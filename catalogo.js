@@ -6,6 +6,7 @@
    - pdf: URL o ruta relativa al texto completo; deja "" si no hay enlace
    - pdfLabel: texto del botón (por defecto "PDF ↗")
    - pdfNota: advertencia corta sobre la fuente/derechos del acceso
+   - resumen: texto que aparece en la tarjeta de la portada (si falta, usa descripcion)
 */
 window.CATALOGO = [
   {
@@ -16,6 +17,7 @@ window.CATALOGO = [
     genero: "Filosofía",
     tipo: "Guía interactiva",
     descripcion: "Resumen capítulo a capítulo, vocabulario de conceptos, línea temporal, notas personales y enlaces al texto completo del ensayo.",
+    resumen: "Un condenado empuja una roca cuesta arriba y, al llegar arriba, la roca vuelve a caer. Camus pregunta qué nos queda cuando el esfuerzo no tiene sentido y responde con una invitación a rebelarse contra la desesperación: hay que imaginar a Sísifo feliz.",
     etiquetas: ["Absurdo", "Existencialismo", "Ensayo"],
     portada: "🪨",
     color: ["#9a3b2f", "#c2763a"],
@@ -33,6 +35,7 @@ window.CATALOGO = [
     genero: "Novela",
     tipo: "Guía interactiva",
     descripcion: "Mapa de las dos partes, episodios fundamentales, personajes, vocabulario, línea temporal, notas personales y texto completo en dominio público.",
+    resumen: "Un hidalgo arruinado lee tantos libros de caballerías que decide hacerse caballero andante y reparar injusticias. Cervantes se ríe de sus molinos convertidos en gigantes, pero también retrata con ternura la necesidad de inventar una vida más hermosa que la real.",
     etiquetas: ["Siglo de Oro", "Sátira", "Dominio público"],
     portada: "🐴",
     color: ["#5b4636", "#b98b3f"],

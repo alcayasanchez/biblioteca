@@ -15,9 +15,9 @@
     <div>
       <span class="eyebrow">Colección personal · en construcción</span>
       <h1>Mi <em>biblioteca</em> digital</h1>
-      <p class="lead">Un lugar para reunir guías de lectura, apuntes y enlaces a textos completos. Empieza por una obra y ve añadiendo más.</p>
+      <p class="lead">Elige un libro, lee su resumen y abre su texto completo. Cada obra tiene una guía interactiva para acompañarte página a página.</p>
       <div class="botones">
-        <a class="btn primary" href="#catalogo">Ver el catálogo ↓</a>
+        <a class="btn primary" href="#catalogo">Elegir un libro ↓</a>
         <button id="tema">◐ Modo noche</button>
         <a class="btn" href="README.md">Cómo añadir libros ↗</a>
       </div>
@@ -34,10 +34,18 @@
   <div class="cabecera-seccion">
     <div>
       <span class="eyebrow">Catálogo</span>
-      <h2>Obras de la biblioteca</h2>
+      <h2>Elige qué quieres leer</h2>
       <p id="contador">0 libros</p>
     </div>
   </div>
+
+  <noscript>
+    <div class="vacio">
+      <p><strong>Sin JavaScript puedes abrir directamente estos títulos:</strong></p>
+      <p><a href="libros/mito-de-sisifo/index.html">El mito de Sísifo</a> · <a href="libros/mito-de-sisifo/el_mito_de_sisifo.pdf">PDF</a><br>
+      <a href="libros/don-quijote/index.html">Don Quijote de la Mancha</a> · <a href="libros/don-quijote/don_quijote.pdf">PDF</a></p>
+    </div>
+  </noscript>
 
   <div class="controles">
     <input id="buscar" type="search" placeholder="Buscar por título, autor, género o etiqueta…" aria-label="Buscar en el catálogo">

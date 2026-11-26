@@ -47,20 +47,22 @@
   function tarjeta(l){
     const insignia = l.destacado ? '<span class="insignia">Destacado</span>' : "";
     const pdf = l.pdf
-      ? '<a class="btn" href="' + l.pdf + '" target="_blank" rel="noopener">' + (l.pdfLabel || "PDF ↗") + '</a>' +
+      ? '<a class="btn secondary" href="' + l.pdf + '" target="_blank" rel="noopener">' + (l.pdfLabel || "Abrir PDF ↗") + '</a>' +
         '<p class="nota-pdf">' + (l.pdfNota || "Enlace al texto completo.") + '</p>'
-      : "";
+      : '<p class="nota-pdf">Texto completo: consulta la ficha.</p>';
     return '<article class="libro">' +
       '<div class="portada" style="background:linear-gradient(135deg,' + l.color[0] + ',' + l.color[1] + ')">' +
-        insignia + "<span>" + l.portada + "</span></div>" +
+        insignia + "<span>" + l.portada + "</span>" +
+        '<span class="titulo-portada">' + l.genero + " · " + l.anio + "</span></div>" +
       '<div class="cuerpo">' +
         "<h3>" + l.titulo + "</h3>" +
-        '<div class="meta">' + l.autor + " · " + l.anio + " · " + l.genero + " · " + l.tipo + "</div>" +
-        "<p>" + l.descripcion + "</p>" +
+        '<div class="meta">' + l.autor + " · " + l.tipo + "</div>" +
+        '<span class="resumen-titulo">Resumen</span>' +
+        '<p class="resumen">' + (l.resumen || l.descripcion) + "</p>" +
         '<div class="etiquetas">' + l.etiquetas.map(t => "<i>" + t + "</i>").join("") + "</div>" +
       "</div>" +
       '<div class="acciones">' +
-        '<a class="btn primary" href="' + l.ruta + '">Abrir ficha →</a>' + pdf +
+        '<a class="btn primary" href="' + l.ruta + '">Leer la guía →</a>' + pdf +
       "</div></article>";
   }
 
@@ -68,7 +70,7 @@
     const q = $("#buscar").value.trim().toLowerCase();
     const lista = CAT.filter(l => {
       const okGenero = genero === "Todo" || l.genero === genero;
-      const texto = [l.titulo, l.autor, l.genero, l.tipo, l.descripcion].concat(l.etiquetas).join(" ").toLowerCase();
+      const texto = [l.titulo, l.autor, l.genero, l.tipo, l.descripcion, l.resumen].concat(l.etiquetas).join(" ").toLowerCase();
       return okGenero && (!q || texto.includes(q));
     });
     $("#rejilla").innerHTML = lista.length

@@ -31,7 +31,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 
 1. Copia `libros/_plantilla/` a `libros/nombre-del-libro/`.
 2. Sustituye los marcadores `{{...}}` por los datos reales.
-3. Añade un objeto en `catalogo.js` con: `id`, `titulo`, `autor`, `anio`, `genero`, `tipo`, `descripcion`, `etiquetas`, `portada` (emoji), `color` (dos colores), `ruta`, `pdf` (URL o `""`), `pdfLabel` (texto del botón), `pdfNota` y `destacado`.
+3. Añade un objeto en `catalogo.js` con: `id`, `titulo`, `autor`, `anio`, `genero`, `tipo`, `descripcion`, `resumen` (el que aparece en la tarjeta), `etiquetas`, `portada` (emoji), `color` (dos colores), `ruta`, `pdf` (URL o `""`), `pdfLabel` (texto del botón), `pdfNota` y `destacado`.
 4. Comprueba que la ficha abre y que aparece en el catálogo.
 
 Las fichas de *El mito de Sísifo* y *Don Quijote de la Mancha* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
