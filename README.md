@@ -14,7 +14,7 @@ biblioteca/
 ├── libros/
 │   ├── mito-de-sisifo/     # Primera ficha: guía interactiva
 │   │   ├── index.html
-│   │   └── El mito de Sísifo.pdf   # copia local, ignorada por git
+│   │   └── el_mito_de_sisifo.pdf   # copia local, ignorada por git
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -39,7 +39,7 @@ Se ha eliminado a petición del propietario. Cada ficha conserva resumen, concep
 
 ## Enlaces a textos completos y derechos
 
-La ficha de *El mito de Sísifo* usa la **edición en castellano** de Alianza Editorial (1985, traducción de Luis Echávarri). El PDF está guardado en `libros/mito-de-sisifo/` para uso local y **no se sube al repositorio** (regla `*.pdf` en `.gitignore`). Al abrir `index.html` desde tu equipo, el catálogo y la ficha enlazan ese archivo con un botón «Abrir PDF local». En GitHub Pages, donde el archivo no existe, muestran en su lugar el acceso legítimo al préstamo bibliotecario de Internet Archive (`elmitodesisifo0000camu`).
+La ficha de *El mito de Sísifo* usa la **edición en castellano** de Alianza Editorial (traducción de Luis Echávarri). El PDF tomado de Descargas se guarda como [el_mito_de_sisifo.pdf](libros/mito-de-sisifo/el_mito_de_sisifo.pdf) dentro de `libros/mito-de-sisifo/`, para uso local, y **no se sube al repositorio** (regla `*.pdf` en `.gitignore`). Al abrir `index.html` desde tu equipo, el catálogo y la ficha enlazan ese archivo con un botón «Abrir PDF local». En GitHub Pages, donde el archivo no existe, muestran en su lugar el acceso legítimo al [préstamo bibliotecario de Internet Archive](https://archive.org/details/elmitodesisifo0000camu).
 
 La traducción está protegida por derechos de autor: no se publica ni se redistribuye el PDF. Esta biblioteca no reproduce textos completos dentro de sus páginas: sólo ofrece resúmenes originales, citas breves y enlaces legítimos.
 

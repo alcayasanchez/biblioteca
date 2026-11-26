@@ -22,7 +22,7 @@ window.CATALOGO = [
     color: ["#9a3b2f", "#c2763a"],
     ruta: "libros/mito-de-sisifo/index.html",
     pdf: "https://archive.org/details/elmitodesisifo0000camu",
-    pdfLocal: "libros/mito-de-sisifo/El%20mito%20de%20S%C3%ADsifo.pdf",
+    pdfLocal: "libros/mito-de-sisifo/el_mito_de_sisifo.pdf",
     pdfLabel: "Abrir PDF local ↗",
     pdfLabelWeb: "Pedir prestado ↗",
     pdfNota: "Copia local no publicada · Alianza Editorial, trad. Luis Echávarri",
