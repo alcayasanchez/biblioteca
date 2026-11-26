@@ -18,6 +18,9 @@ biblioteca/
 │   ├── don-quijote/        # Ficha: guía interactiva
 │   │   ├── index.html
 │   │   └── don_quijote.pdf        # PDF publicado (dominio público)
+│   ├── bodas-de-sangre/    # Ficha: guía interactiva
+│   │   ├── index.html
+│   │   └── bodas_de_sangre.pdf    # PDF publicado (dominio público)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -34,8 +37,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 3. Añade un objeto en `catalogo.js` con: `id`, `titulo`, `autor`, `anio`, `genero`, `tipo`, `descripcion`, `resumen` (el que aparece en la tarjeta), `etiquetas`, `portada` (emoji), `color` (dos colores), `ruta`, `pdf` (URL o `""`), `pdfLabel` (texto del botón), `pdfNota` y `destacado`.
 4. Comprueba que la ficha abre y que aparece en el catálogo.
 
-Las fichas de *El mito de Sísifo* y *Don Quijote de la Mancha* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
-
+Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha* y *Bodas de sangre* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
 ## Publicar cambios
 
@@ -44,5 +46,7 @@ git add .
 git commit -m "Añade un libro"
 git push
 ```
- ## Página web
- https://alcayasanchez.github.io/biblioteca/
+
+## Página web
+
+https://alcayasanchez.github.io/biblioteca/

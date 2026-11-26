@@ -44,5 +44,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 536 páginas · Project Gutenberg, dominio público",
     destacado: true
+  },
+  {
+    id: "bodas-de-sangre",
+    titulo: "Bodas de sangre",
+    autor: "Federico García Lorca",
+    anio: "1931",
+    genero: "Teatro",
+    tipo: "Guía interactiva",
+    descripcion: "Los tres actos y siete cuadros, personajes, símbolos, contexto y texto completo de la tragedia.",
+    resumen: "Una novia huye el día de su boda con el hombre que ama y el novio sale en su busca. Lorca convierte un suceso real almeriense en una tragedia de deseos, honra y cuchillos donde la luna y la muerte acompañan el final.",
+    etiquetas: ["Tragedia rural", "Lorca", "Dominio público"],
+    portada: "🌙",
+    color: ["#5a2026", "#b06a4a"],
+    ruta: "libros/bodas-de-sangre/index.html",
+    pdf: "libros/bodas-de-sangre/bodas_de_sangre.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 46 páginas · Wikisource, dominio público en España",
+    destacado: true
   }
 ];
