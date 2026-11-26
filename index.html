@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biblioteca digital</title>
+<meta name="description" content="Biblioteca digital personal: fichas de lectura, guías interactivas y enlaces a textos completos.">
+<link rel="stylesheet" href="assets/biblioteca.css">
+</head>
+<body>
+<div id="barra-progreso" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Colección personal · en construcción</span>
+      <h1>Mi <em>biblioteca</em> digital</h1>
+      <p class="lead">Un lugar para reunir guías de lectura, apuntes y enlaces a textos completos. Empieza por una obra y ve añadiendo más.</p>
+      <div class="botones">
+        <a class="btn primary" href="#catalogo">Ver el catálogo ↓</a>
+        <button id="tema">◐ Modo noche</button>
+        <a class="btn" href="README.md">Cómo añadir libros ↗</a>
+      </div>
+    </div>
+    <div class="estadisticas" aria-label="Estadísticas de la biblioteca">
+      <div><strong id="total">0</strong><span>Libros</span></div>
+      <div><strong id="generos">0</strong><span>Géneros</span></div>
+      <div><strong>∞</strong><span>Por venir</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="catalogo">
+  <div class="cabecera-seccion">
+    <div>
+      <span class="eyebrow">Catálogo</span>
+      <h2>Obras de la biblioteca</h2>
+      <p id="contador">0 libros</p>
+    </div>
+  </div>
+
+  <div class="controles">
+    <input id="buscar" type="search" placeholder="Buscar por título, autor, género o etiqueta…" aria-label="Buscar en el catálogo">
+    <div class="filtros" id="filtros" aria-label="Filtrar por género"></div>
+  </div>
+
+  <div class="rejilla" id="rejilla"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Biblioteca digital.</strong> Cada ficha es una página HTML independiente; el catálogo se edita en <span class="code">catalogo.js</span>. Sin bases de datos ni servicios externos: funciona abriendo <span class="code">index.html</span> o publicándolo con GitHub Pages.</p>
+    <p>Los enlaces a textos completos son externos y su situación de derechos puede variar según el país. Consulta las notas de cada ficha.</p>
+  </div>
+</footer>
+
+<script src="catalogo.js"></script>
+<script src="assets/biblioteca.js"></script>
+</body>
+</html>

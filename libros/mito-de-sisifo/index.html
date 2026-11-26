@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El mito de Sísifo · Guía interactiva</title>
+<meta name="description" content="Guía interactiva de lectura del ensayo El mito de Sísifo, de Albert Camus: resumen por capítulos, conceptos, texto completo y notas.">
+<style>
+  :root{
+    --bg:#f4efe4; --bg2:#ebe3d2; --card:#fffaf0; --ink:#26221c; --muted:#6e6558;
+    --accent:#9a3b2f; --accent2:#c2763a; --line:#d8cdb8; --shadow:0 10px 30px rgba(60,45,25,.10);
+    --radius:16px; --max:1080px;
+  }
+  [data-theme="dark"]{
+    --bg:#191917; --bg2:#22211e; --card:#262521; --ink:#efe8da; --muted:#b0a697;
+    --accent:#e4876e; --accent2:#e0a45e; --line:#3c3933; --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:92px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7;
+    transition:background .25s,color .25s}
+  h1,h2,h3,.ui{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  h2{font-size:1.9rem; line-height:1.2; margin:0 0 .6rem}
+  h3{margin:.2rem 0 .5rem; font-size:1.05rem}
+  p{margin:.7rem 0}
+  a{color:var(--accent)}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 1.2rem}
+  .eyebrow{font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+
+  /* progreso de lectura */
+  #barra-progreso{position:fixed; top:0; left:0; height:4px; width:0; background:linear-gradient(90deg,var(--accent),var(--accent2)); z-index:100; transition:width .1s linear}
+
+  /* cabecera */
+  header.hero{position:relative; overflow:hidden; background:linear-gradient(160deg,var(--bg2),var(--bg) 65%); border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center; padding:4.4rem 0 3.2rem}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem); line-height:1.03; margin:.4rem 0 .8rem; letter-spacing:-.03em}
+  .hero h1 em{color:var(--accent); font-style:normal}
+  .hero .lead{font-size:1.15rem; max-width:46ch; color:var(--muted)}
+  .botones{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem}
+  button,.btn{font:inherit; cursor:pointer; border-radius:999px; border:1px solid var(--line); padding:.55rem 1.05rem; background:var(--card); color:var(--ink); font-size:.9rem; transition:transform .15s,border-color .15s,background .15s}
+  button:hover,.btn:hover{transform:translateY(-2px); border-color:var(--accent)}
+  button.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+  [data-theme="dark"] button.primary{color:#191917}
+  .lienzo-marco{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:.8rem; position:relative}
+  canvas{display:block; width:100%; height:auto; border-radius:10px}
+  .lienzo-controles{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:.55rem}
+  .lienzo-controles small{color:var(--muted); font-family:system-ui,sans-serif}
+
+  /* aviso */
+  .aviso{margin:1.6rem 0 0; padding:.9rem 1.1rem; border-left:4px solid var(--accent2); background:var(--card); border-radius:0 12px 12px 0; font-size:.92rem; color:var(--muted)}
+
+  /* navegación */
+  nav.barra{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.barra ul{display:flex; gap:.25rem; list-style:none; margin:0; padding:.55rem 0; overflow-x:auto; scrollbar-width:none}
+  nav.barra ul::-webkit-scrollbar{display:none}
+  nav.barra a{white-space:nowrap; text-decoration:none; color:var(--muted); font-family:system-ui,sans-serif; font-size:.85rem; padding:.45rem .75rem; border-radius:999px}
+  nav.barra a:hover,nav.barra a.activo{background:var(--card); color:var(--accent)}
+
+  /* secciones */
+  section{padding:4rem 0 1rem}
+  section+section{border-top:1px solid var(--line)}
+  .cabecera-seccion{margin-bottom:1.8rem}
+  .cabecera-seccion p{color:var(--muted); max-width:70ch}
+  .rejilla{display:grid; gap:1rem}
+  .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:800px){.hero-grid,.cols-2,.cols-3{grid-template-columns:1fr}}
+
+  .tarjeta{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.3rem; box-shadow:var(--shadow)}
+  .tarjeta.num{position:relative; overflow:hidden}
+  .tarjeta.num .numero{font-family:system-ui,sans-serif; font-size:3.4rem; font-weight:800; line-height:1; color:var(--accent); opacity:.18; position:absolute; right:1rem; top:.6rem}
+  .tarjeta p{font-size:.93rem; color:var(--muted); margin-bottom:0}
+  .etiqueta{display:inline-block; font-family:system-ui,sans-serif; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--accent2); margin-bottom:.4rem}
+
+  /* acordeones */
+  details.cap{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:.8rem; overflow:hidden}
+  details.cap summary{cursor:pointer; list-style:none; padding:1.1rem 1.2rem; display:flex; align-items:center; gap:.9rem; font-family:system-ui,sans-serif; font-weight:650}
+  details.cap summary::-webkit-details-marker{display:none}
+  details.cap summary::after{content:"＋"; margin-left:auto; color:var(--accent); font-size:1.2rem}
+  details.cap[open] summary::after{content:"－"}
+  details.cap summary .cifra{background:var(--accent); color:#fff; border-radius:8px; min-width:2rem; height:2rem; display:grid; place-items:center; font-size:.85rem}
+  [data-theme="dark"] details.cap summary .cifra{color:#191917}
+  .cuerpo-cap{padding:0 1.2rem 1.3rem}
+  .cuerpo-cap ul{padding-left:1.2rem}
+  .cuerpo-cap li{margin:.35rem 0}
+  .frase{border-left:3px solid var(--accent2); padding:.4rem 0 .4rem 1rem; margin:1.1rem 0; font-style:italic; color:var(--muted)}
+
+  /* conceptos */
+  .chip{border:1px solid var(--line); background:var(--card); border-radius:999px; padding:.5rem 1rem; cursor:pointer; font-family:system-ui,sans-serif; font-size:.87rem}
+  .chip:hover,.chip.activo{border-color:var(--accent); color:var(--accent)}
+  #definicion{margin-top:1rem; min-height:8.5rem}
+  #definicion h3{color:var(--accent); font-size:1.2rem}
+
+  /* cita final */
+  .cita-hero{text-align:center; padding:2.5rem 1.5rem; border-radius:var(--radius); background:linear-gradient(145deg,var(--card),var(--bg2)); border:1px solid var(--line)}
+  .cita-hero blockquote{font-size:clamp(1.5rem,3.5vw,2.4rem); line-height:1.3; margin:0; font-style:italic}
+  .cita-hero .autor{font-family:system-ui,sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1.2rem}
+
+  /* línea temporal */
+  .timeline{position:relative; padding-left:1.8rem; margin-top:1.5rem}
+  .timeline::before{content:""; position:absolute; left:.4rem; top:.4rem; bottom:.4rem; width:2px; background:var(--line)}
+  .hito{position:relative; margin-bottom:1.4rem}
+  .hito::before{content:""; position:absolute; left:-1.58rem; top:.6rem; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--bg)}
+  .hito strong{font-family:system-ui,sans-serif; color:var(--accent)}
+  .hito p{margin:.15rem 0; color:var(--muted); font-size:.93rem}
+
+  /* notas */
+  textarea{width:100%; min-height:190px; resize:vertical; padding:1rem; border-radius:14px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-family:Georgia,serif; font-size:1rem; line-height:1.6}
+  .guardado{font-family:system-ui,sans-serif; font-size:.8rem; color:var(--muted); min-height:1.2rem}
+
+  footer{padding:3rem 0 4rem; color:var(--muted); font-size:.88rem; border-top:1px solid var(--line); margin-top:3rem}
+  footer a{color:var(--accent)}
+  .progreso-leido{font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:.8rem}
+  .check-leido{display:flex; gap:.5rem; align-items:center; font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:1rem; cursor:pointer}
+
+  @media print{nav.barra,.botones,.lienzo-marco,#notas,#barra-progreso{display:none!important} section{padding:1.5rem 0;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="barra-progreso" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Albert Camus · 1942</span>
+      <h1>El mito de <em>Sísifo</em></h1>
+      <p class="lead">Guía interactiva de lectura: la pregunta fundamental, los cuatro capítulos, las ideas clave y la imagen final del hombre que empuja la roca.</p>
+      <div class="botones">
+        <a class="btn ui" href="../../index.html">← Biblioteca</a>
+        <a class="btn primary ui" href="#intro">Empezar la lectura ↓</a>
+        <button id="tema" aria-label="Cambiar tema">◐ Modo noche</button>
+        <button id="imprimir" aria-label="Imprimir documento">⎙ Imprimir</button>
+      </div>
+      <p class="aviso"><strong>Nota:</strong> este documento es un resumen y análisis original con citas breves. No reproduce el ensayo completo, que sigue protegido por derechos de autor. Si tienes un ejemplar con licencia, puedes pegar aquí tus propios apuntes en la sección «Mis notas».</p>
+    </div>
+    <div class="lienzo-marco">
+      <canvas id="sisifo" width="640" height="420" role="img" aria-label="Animación de Sísifo empujando una roca cuesta arriba"></canvas>
+      <div class="lienzo-controles">
+        <small>La roca vuelve a caer. Sísifo, no.</small>
+        <button id="animacion">❚❚ Pausar</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="barra" aria-label="Navegación por secciones">
+  <div class="wrap">
+    <ul>
+      <li><a href="#intro">La pregunta</a></li>
+      <li><a href="#estructura">Estructura</a></li>
+      <li><a href="#capitulos">Capítulos</a></li>
+      <li><a href="#conceptos">Conceptos</a></li>
+      <li><a href="#final">Desenlace</a></li>
+      <li><a href="#linea">Contexto</a></li>
+      <li><a href="#texto">Texto completo</a></li>
+      <li><a href="#notas">Mis notas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="intro">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">01 · El punto de partida</span>
+    <h2>¿Vivimos o esperamos vivir?</h2>
+    <p>Camus abre su ensayo con una pregunta que considera la única verdaderamente seria: ante la ausencia de sentido, ¿debe el ser humano renunciar a la vida? Su respuesta será un «no» sostenido durante casi doscientas páginas.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">La experiencia</span>
+      <h3>Vivimos como si no fuéramos a morir</h3>
+      <p>Organizamos la existencia en torno al mañana, mientras ese mañana nos acerca a la muerte. Despojado de romanticismo, el mundo se nos aparece como un lugar extraño e inhumano que no responde a nuestras preguntas.</p>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">El hallazgo</span>
+      <h3>Lo absurdo no está en nosotros ni en el mundo</h3>
+      <p>Surge en el entre: en el choque entre nuestro apetito de unidad y claridad y el silencio del universo. Reconocerlo no es una conclusión tranquila, sino una pasión que exige ser sostenida.</p>
+    </article>
+  </div>
+  <p class="frase">«La lucha misma hacia las cumbres basta para llenar el corazón de un hombre.»</p>
+</section>
+
+<section id="estructura">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">02 · Mapa de la obra</span>
+    <h2>Cuatro movimientos y un apéndice</h2>
+    <p>El ensayo, dedicado a Pascal Pia, avanza como un razonamiento encadenado: diagnosticar, encarnar, crear y, por fin, volver al mito.</p>
+  </div>
+  <div class="rejilla cols-3">
+    <article class="tarjeta num"><span class="numero">I</span><span class="etiqueta">Diagnóstico</span><h3>Un razonamiento absurdo</h3><p>La pregunta del suicidio, los límites del conocimiento y el «suicidio filosófico».</p></article>
+    <article class="tarjeta num"><span class="numero">II</span><span class="etiqueta">Encarnación</span><h3>El hombre absurdo</h3><p>Don Juan, el actor y el conquistador como figuras de una vida vivida sin apelación.</p></article>
+    <article class="tarjeta num"><span class="numero">III</span><span class="etiqueta">Creación</span><h3>La creación absurda</h3><p>El arte que describe sin explicar ni consolar, a propósito de Dostoievski.</p></article>
+    <article class="tarjeta num"><span class="numero">IV</span><span class="etiqueta">Imagen final</span><h3>El mito de Sísifo</h3><p>El castigo inútil se convierte en la figura de nuestra propia condición.</p></article>
+    <article class="tarjeta num"><span class="numero">A</span><span class="etiqueta">Apéndice</span><h3>Kafka: ¿esperanza y absurdo?</h3><p>Una lectura de Kafka como describiente magistral del absurdo que, sin embargo, deja una rendija de esperanza.</p></article>
+    <article class="tarjeta num"><span class="numero">✎</span><span class="etiqueta">Tu lectura</span><h3>Marca tu avance</h3><p>Abre los acordeones de abajo y ve marcando los apartados que ya has trabajado.</p><label class="check-leido"><input type="checkbox" id="check-general"> He repasado la estructura</label></article>
+  </div>
+  <div class="progreso-leido" id="progreso-leido">Progreso: 0 de 6 apartados</div>
+</section>
+
+<section id="capitulos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">03 · Resumen detallado</span>
+    <h2>Lee el argumento capítulo a capítulo</h2>
+    <p>Pulsa sobre cada título para desplegar las ideas centrales. Es un resumen para orientarte, no un sustituto del texto de Camus.</p>
+  </div>
+
+  <details class="cap" open>
+    <summary><span class="cifra">I</span> Un razonamiento absurdo</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>La pregunta:</strong>¿el descubrimiento del absurdo obliga al suicidio? Camus decide examinar la pregunta hasta el final, sin escapatorias.</li>
+        <li><strong>El tiempo vivido:</strong>el ser humano se proyecta hacia el futuro, olvidando que la muerte es la realidad cierta. El despertar rompe esa ilusión.</li>
+        <li><strong>Los límites de la razón:</strong>la ciencia y la filosofía explican con conceptos, metáforas y sistemas, pero no logran volver el mundo «claro».</li>
+        <li><strong>Suicidio filosófico:</strong>Kierkegaard, Jaspers, Shestov, Husserl o Heidegger son criticados por dar un «salto» que contradice el punto de partida: apelar a Dios, a la fe o a un Trascendente para salir de la contradicción.</li>
+        <li><strong>Tres consecuencias:</strong>rebelión, libertad y pasión. Sin esperanza en un «más allá», el hombre absurdo se siente libre respecto de las reglas comunes y quiere vivir «lo más» antes que «lo mejor».</li>
+        <li><strong>Rechazo del suicidio:</strong>si el hombre desaparece, también desaparece la relación que constituye lo absurdo. Hay que mantener viva la contradicción.</li>
+      </ul>
+      <p class="frase">«No hay destino que no se venza con el desprecio.»</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap1"> Apartado leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">II</span> El hombre absurdo</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Sin reglas superiores:</strong>una moral que se apoya en una justificación trascendente ya no vale. «Todo está permitido» se presenta como un reconocimiento amargo, no como una licencia alegre.</li>
+        <li><strong>Don Juan:</strong>el seductor que agota el presente y busca en cada encuentro lo irrepetible; su amor es intenso precisamente porque sabe que es breve.</li>
+        <li><strong>El actor:</strong>vive vidas efímeras y alcanza una gloria igual de efímera; en tres horas recorre un destino entero. «Aparecer» se convierte en una forma de «ser».</li>
+        <li><strong>El conquistador:</strong>elige la acción antes que la contemplación, sin promesas de eternidad. Camus lo emparenta con el hombre absurdo que actúa en la historia sabiendo que nada perdura.</li>
+        <li><strong>La honradez:</strong>en las tres figuras, la grandeza está en la conciencia lúcida de la propia condición.</li>
+      </ul>
+      <p class="frase">«No hay amor noble sino el que se reconoce a la vez como breve y excepcional.»</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap2"> Apartado leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">III</span> La creación absurda</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Describir, no explicar:</strong>si el mundo fuera transparente, no haría falta el arte. La obra absurda se limita a desplegar las experiencias del mundo sin emitir un juicio último.</li>
+        <li><strong>Sin esperanza:</strong>debe evitar incluso una leve insinuación de consuelo metafísico; si lo introduce, traiciona el punto de partida.</li>
+        <li><strong>Dostoievski:</strong><em>Diario de un escritor</em> y <em>Los demonios</em> exploran el suicidio filosófico desde la condición absurda, pero <em>Los hermanos Karamázov</em> y el propio <em>Diario</em> acaban abriendo un camino hacia la fe y la esperanza.</li>
+        <li><strong>La obra como ejercicio:</strong>crear es una manera de sostener la rebelión: no resuelve el enigma, pero lo mantiene despierto.</li>
+      </ul>
+      <p class="frase">«Si el mundo fuera claro, el arte no existiría.»</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap3"> Apartado leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">IV</span> El mito de Sísifo</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>El relato:</strong>Sísifo desafió a los dioses, encadenó a la Muerte y engañó al Hades para volver al mundo. Como castigo, debe empujar una roca hasta la cima de una montaña; al llegar, la piedra rueda y debe empezar de nuevo.</li>
+        <li><strong>El héroe absurdo:</strong>ama la vida, odia la muerte y realiza una tarea sin sentido con lucidez. Su grandeza está en la conciencia, no en el resultado.</li>
+        <li><strong>El momento decisivo:</strong>no es la subida, sino el regreso: el instante en que, al ver caer la roca, comprende la totalidad de su condición.</li>
+        <li><strong>Espejo del trabajo moderno:</strong>el obrero repite hoy tareas igualmente absurdas en fábricas y oficinas; la tragedia aparece sólo cuando ese destino se vuelve consciente.</li>
+        <li><strong>La conclusión:</strong>no hay destino que no se venza con el desprecio; la lucha hacia lo alto basta para llenar el corazón. Hay que imaginarse a Sísifo feliz.</li>
+      </ul>
+      <p class="frase">«Hay que imaginarse a Sísifo feliz.»</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap4"> Apartado leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">A</span> Apéndice · Esperanza y absurdo en la obra de Kafka</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Descripción magistral:</strong>Camus admira en Kafka la pintura exacta, fría y lúcida de la condición absurda.</li>
+        <li><strong>La objeción:</strong>sus personajes no llegan a una rebelión plena: siguen buscando una salida, un sentido, una gracia. Esa rendija de esperanza lo aleja, para Camus, del arte estrictamente absurdo.</li>
+      </ul>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap5"> Apartado leído</label>
+    </div>
+  </details>
+</section>
+
+<section id="conceptos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">04 · Vocabulario</span>
+    <h2>Las palabras que sostienen el ensayo</h2>
+    <p>Pulsa un término para ver su definición en el contexto del libro.</p>
+  </div>
+  <div class="rejilla" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))" id="chips">
+    <button class="chip" data-k="absurdo">Lo absurdo</button>
+    <button class="chip" data-k="suicidio">Suicidio filosófico</button>
+    <button class="chip" data-k="rebelion">Rebelión</button>
+    <button class="chip" data-k="libertad">Libertad</button>
+    <button class="chip" data-k="pasión">Pasión</button>
+    <button class="chip" data-k="desprecio">Desprecio</button>
+    <button class="chip" data-k="honradez">Honradez intelectual</button>
+    <button class="chip" data-k="esperanza">Esperanza</button>
+  </div>
+  <div class="tarjeta" id="definicion" aria-live="polite">
+    <h3>Elige un concepto</h3>
+    <p>Las definiciones aparecen aquí al pulsar cualquiera de las etiquetas de arriba.</p>
+  </div>
+  <label class="check-leido"><input type="checkbox" class="cap-check" value="cap6"> Vocabulario repasado</label>
+</section>
+
+<section id="final">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">05 · La imagen final</span>
+    <h2>Dejando a Sísifo al pie de la montaña</h2>
+  </div>
+  <div class="cita-hero">
+    <blockquote>«Hay que imaginarse a Sísifo feliz.»</blockquote>
+    <div class="autor">Albert Camus · El mito de Sísifo</div>
+    <p style="max-width:62ch;margin:1.6rem auto 0;color:var(--muted)">Camus deja al héroe abajo, con su carga otra vez al alcance de la mano. El universo ya no le parece estéril ni fútil: cada piedra de la montaña es un mundo. La felicidad no está en la cima —que nunca se alcanza— sino en el gesto de seguir empujando con lucidez.</p>
+  </div>
+</section>
+
+<section id="linea">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">06 · Contexto</span>
+    <h2>Alrededor del ensayo</h2>
+    <p>Algunas fechas para situar la obra en la vida y la trayectoria de Camus.</p>
+  </div>
+  <div class="timeline">
+    <div class="hito"><strong>1940</strong><p>Camus comienza a escribir el ensayo durante la caída de Francia y el éxodo de refugiados.</p></div>
+    <div class="hito"><strong>1942</strong><p>Publicación de <em>El mito de Sísifo</em> y de <em>El extranjero</em>; también se estrena <em>El malentendido</em>.</p></div>
+    <div class="hito"><strong>1944</strong><p><em>Calígula</em>, el otro gran desarrollo dramático de la idea del absurdo.</p></div>
+    <div class="hito"><strong>1951</strong><p><em>El hombre rebelde</em> amplía la reflexión desde la rebelión individual a la colectiva.</p></div>
+    <div class="hito"><strong>1955</strong><p>La traducción inglesa incluye un prólogo del propio Camus: incluso sin creer en Dios, el suicidio no es legítimo.</p></div>
+    <div class="hito"><strong>1960</strong><p>Muerte de Camus. La obra sigue siendo hoy uno de los textos centrales del pensamiento del siglo XX.</p></div>
+  </div>
+</section>
+
+<section id="texto">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">07 · Texto completo</span>
+    <h2>Leer el ensayo íntegro</h2>
+    <p>Edición digital en francés alojada en Internet Archive. Enlaces directos al PDF y al EPUB, además de la ficha del elemento.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">PDF</span>
+      <h3>Le Mythe de Sisyphe · 1942</h3>
+      <p>Archivo PDF de 411 KB, 60 páginas, con OCR. Descarga directa desde Internet Archive.</p>
+      <div class="botones"><a class="btn primary" href="https://archive.org/download/le_mythe_de_sisyphe/mythe_de_sisyphe.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a></div>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">EPUB y ficha</span>
+      <h3>Otros formatos</h3>
+      <p>También disponible como EPUB, y con ficha y metadatos completos en el repositorio.</p>
+      <div class="botones">
+        <a class="btn" href="https://archive.org/download/le_mythe_de_sisyphe/mythe_de_sisyphe.epub" target="_blank" rel="noopener">EPUB ↗</a>
+        <a class="btn" href="https://archive.org/details/le_mythe_de_sisyphe" target="_blank" rel="noopener">Ficha ↗</a>
+      </div>
+    </article>
+  </div>
+  <p class="aviso"><strong>Aviso legal:</strong> los metadatos de Internet Archive indican «Public Domain Mark 1.0» según quien subió el archivo, pero el régimen de derechos varía por país: en la Unión Europea la obra permanece protegida hasta 2030. Comprueba la legislación aplicable y prefiere una edición autorizada cuando sea necesario. Esta guía no reproduce el texto completo.</p>
+</section>
+
+<section id="notas">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">08 · Tu espacio</span>
+    <h2>Mis notas de lectura</h2>
+    <p>Escribe aquí tus citas, dudas o ideas. El contenido se guarda automáticamente en este navegador y puedes descargarlo como texto.</p>
+  </div>
+  <textarea id="area-notas" placeholder="Ej.: ¿Por qué Camus rechaza el «salto» de Kierkegaard?&#10;¿Estoy de acuerdo con la felicidad de Sísifo?"></textarea>
+  <div class="botones">
+    <button id="descargar">⬇ Descargar notas (.txt)</button>
+    <button id="borrar">Borrar notas</button>
+  </div>
+  <div class="guardado" id="estado-notas"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>El mito de Sísifo · guía interactiva.</strong> Resúmenes y definiciones originales para orientar la lectura; las citas son breves. Los enlaces al texto completo y las advertencias sobre derechos están en la sección «Texto completo». Para contrastar datos, véase la <a href="https://es.wikipedia.org/wiki/El_mito_de_S%C3%ADsifo" target="_blank" rel="noopener">entrada de Wikipedia</a>.</p>
+    <p><a href="../../index.html">← Volver a la biblioteca</a> · Hecho con HTML, CSS y JavaScript sin dependencias externas.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  /* ---------- tema ---------- */
+  const guardarTema = t => { try{ localStorage.setItem('sisifo-tema', t); }catch(e){} };
+  let tema = 'claro';
+  try{ tema = localStorage.getItem('sisifo-tema') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro'); }catch(e){}
+  function aplicarTema(){
+    document.documentElement.dataset.theme = tema === 'oscuro' ? 'dark' : 'light';
+    $('#tema').textContent = tema === 'oscuro' ? '☀ Modo día' : '◐ Modo noche';
+    dibujarEscena();
+  }
+  $('#tema').addEventListener('click', () => { tema = tema === 'oscuro' ? 'claro' : 'oscuro'; guardarTema(tema); aplicarTema(); });
+  $('#imprimir').addEventListener('click', () => print());
+
+  /* ---------- barra de progreso y navegación activa ---------- */
+  const barra = $('#barra-progreso');
+  function actualizarProgreso(){
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    barra.style.width = (total > 0 ? (h.scrollTop / total) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', actualizarProgreso, {passive:true});
+  addEventListener('resize', actualizarProgreso);
+  actualizarProgreso();
+
+  const enlaces = $$('nav.barra a');
+  const observer = new IntersectionObserver(entradas => {
+    entradas.forEach(e => {
+      if(e.isIntersecting){
+        enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, {rootMargin:'-25% 0px -65% 0px'});
+  $$('main section').forEach(s => observer.observe(s));
+
+  /* ---------- animación de Sísifo ---------- */
+  const canvas = $('#sisifo'), ctx = canvas.getContext('2d');
+  const btnAnim = $('#animacion');
+  let enMarcha = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0;
+  aplicarTema();
+  btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+  btnAnim.addEventListener('click', () => {
+    enMarcha = !enMarcha;
+    btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+    if(enMarcha) requestAnimationFrame(bucle);
+  });
+
+  function colores(){
+    const oscuro = document.documentElement.dataset.theme === 'dark';
+    return oscuro
+      ? {cielo:'#22211e',mont:'#3a3730',mont2:'#4a463d',roca:'#b9ab93',cuerpo:'#e4876e',sombra:'#171613',texto:'#b0a697'}
+      : {cielo:'#efe5d2',mont:'#c9b596',mont2:'#b49b74',roca:'#6d6455',cuerpo:'#9a3b2f',sombra:'#8c7a5e',texto:'#6e6558'};
+  }
+  function dibujarEscena(){
+    if(!ctx) return;
+    const c = colores(), W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = c.cielo; ctx.fillRect(0,0,W,H);
+    // montaña: pendiente de izquierda a derecha
+    ctx.fillStyle = c.mont;
+    ctx.beginPath(); ctx.moveTo(0,H); ctx.lineTo(20,H*0.77); ctx.lineTo(470,H*0.24); ctx.lineTo(560,H*0.30); ctx.lineTo(640,H); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = c.mont2;
+    ctx.beginPath(); ctx.moveTo(20,H*0.77); ctx.lineTo(470,H*0.24); ctx.lineTo(500,H*0.32); ctx.lineTo(80,H*0.83); ctx.closePath(); ctx.fill();
+    // cima y roca caída
+    ctx.fillStyle = c.sombra;
+    ctx.beginPath(); ctx.ellipse(488,H*0.26,26,8,0,0,Math.PI*2); ctx.fill();
+    // posición de la roca según el ciclo
+    const ciclo = (t % 420) / 420;           // 0..1
+    const subiendo = ciclo < 0.72;
+    const p = subiendo ? ciclo / 0.72 : (ciclo - 0.72) / 0.28;
+    const x = subiendo ? 60 + p * 390 : 450 - p * 390;
+    const y = subiendo ? H*0.73 - p * H*0.45 : H*0.28 + p * H*0.45;
+    const r = 30;
+    // Sísifo
+    const px = x - (subiendo ? 46 : -46), py = y + 16;
+    ctx.strokeStyle = c.cuerpo; ctx.fillStyle = c.cuerpo; ctx.lineWidth = 7; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(px,py+34); ctx.lineTo(px+(subiendo?6:-6),py); ctx.stroke();       // pierna
+    ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(x-(subiendo?18:-18), y+6); ctx.stroke();      // brazo hacia la roca
+    ctx.beginPath(); ctx.arc(px+(subiendo?-4:4),py-9,11,0,Math.PI*2); ctx.fill();                 // cabeza
+    // roca
+    ctx.fillStyle = c.roca;
+    ctx.beginPath();
+    for(let i=0;i<9;i++){
+      const a = i/9*Math.PI*2, rr = r*(0.86+0.13*Math.sin(i*2.3));
+      const vx = x+Math.cos(a)*rr, vy = y+Math.sin(a)*rr;
+      i?ctx.lineTo(vx,vy):ctx.moveTo(vx,vy);
+    }
+    ctx.closePath(); ctx.fill();
+    // flecha / etiqueta
+    ctx.fillStyle = c.texto; ctx.font = '15px system-ui,sans-serif';
+    ctx.fillText(subiendo ? 'La subida' : 'El regreso: el momento que importa', 28, 34);
+  }
+  function bucle(){
+    if(!enMarcha) return;
+    t += 1;
+    dibujarEscena();
+    requestAnimationFrame(bucle);
+  }
+  if(!ctx){ /* navegador sin canvas: nada más que hacer */ }
+  else if(enMarcha) requestAnimationFrame(bucle); else dibujarEscena();
+  addEventListener('resize', dibujarEscena);
+
+  /* ---------- conceptos ---------- */
+  const definiciones = {
+    absurdo: ['Lo absurdo','No es una propiedad del mundo ni del hombre, sino la relación entre ambos: nuestro deseo de sentido y el silencio del universo. Esa contradicción debe vivirse, no resolverse.'],
+    suicidio: ['Suicidio filosófico','Nombre que Camus da a las doctrinas que, partiendo del absurdo, «saltan» hacia Dios, la fe o un principio trascendente. Para él es una forma de abandonar la razón y el problema.'],
+    rebelion: ['Rebelión','La respuesta de quien, sin esperanza de solución, sostiene la contradicción y se niega a refugiarse en una explicación última. Es una actividad permanente, no un gesto único.'],
+    libertad: ['Libertad','No la libertad metafísica, sino la concreta: liberado del mañana y de la obligación de dar sentido, el hombre absurdo se siente libre frente a las reglas habituales.'],
+    pasión: ['Pasión','La consecuencia vital del absurdo: vivir con la intensidad máxima, sin jerarquía de valores trascendente. «Lo que cuenta no es el mejor vivir, sino el más vivir.»'],
+    desprecio: ['Desprecio','La actitud que permite sobrellevar el destino: reconocerlo y no temerle. «No hay destino que no se venza con el desprecio.»'],
+    honradez: ['Honradez intelectual','La lucidez que impide las escapatorias: aceptar los límites de la razón sin inventar consuelos. Es la virtud de Don Juan, el actor, el conquistador y el creador absurdo.'],
+    esperanza: ['Esperanza','Para Camus, la ilusión que desarma la rebelión. Aparece en los «saltos» filosóficos y, en el apéndice, en la obra de Kafka: por eso la esperanza no es aquí una virtud sino un obstáculo.']
+  };
+  $$('#chips .chip').forEach(chip => chip.addEventListener('click', () => {
+    $$('#chips .chip').forEach(c => c.classList.remove('activo'));
+    chip.classList.add('activo');
+    const d = definiciones[chip.dataset.k];
+    $('#definicion').innerHTML = '<h3>' + d[0] + '</h3><p>' + d[1] + '</p>';
+  }));
+
+  /* ---------- progreso de lectura ---------- */
+  const checks = $$('.cap-check');
+  const checkGeneral = $('#check-general');
+  const clave = 'sisifo-leidos';
+  let leidos = {};
+  try{ leidos = JSON.parse(localStorage.getItem(clave) || '{}'); }catch(e){ leidos = {}; }
+  function sincronizar(){
+    checks.forEach(c => c.checked = !!leidos[c.value]);
+    checkGeneral.checked = !!leidos.general;
+    const n = Object.values(leidos).filter(Boolean).length;
+    $('#progreso-leido').textContent = 'Progreso: ' + n + ' de 6 apartados';
+  }
+  function guardarProgreso(){
+    leidos = {};
+    checks.forEach(c => { if(c.checked) leidos[c.value] = true; });
+    if(checkGeneral.checked) leidos.general = true;
+    try{ localStorage.setItem(clave, JSON.stringify(leidos)); }catch(e){}
+    sincronizar();
+  }
+  checks.forEach(c => c.addEventListener('change', guardarProgreso));
+  checkGeneral.addEventListener('change', guardarProgreso);
+  sincronizar();
+
+  /* ---------- notas ---------- */
+  const area = $('#area-notas'), estado = $('#estado-notas');
+  try{ area.value = localStorage.getItem('sisifo-notas') || ''; }catch(e){}
+  let temporizador;
+  area.addEventListener('input', () => {
+    clearTimeout(temporizador);
+    estado.textContent = 'Escribiendo…';
+    temporizador = setTimeout(() => {
+      try{ localStorage.setItem('sisifo-notas', area.value); estado.textContent = 'Guardado ✔'; }
+      catch(e){ estado.textContent = 'No se pudo guardar en este navegador.'; }
+    }, 400);
+  });
+  $('#descargar').addEventListener('click', () => {
+    const blob = new Blob([area.value], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mis-notas-el-mito-de-sisifo.txt';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('#borrar').addEventListener('click', () => {
+    if(!confirm('¿Borrar todas las notas guardadas?')) return;
+    area.value = '';
+    try{ localStorage.removeItem('sisifo-notas'); }catch(e){}
+    estado.textContent = 'Notas borradas.';
+  });
+})();
+</script>
+</body>
+</html>

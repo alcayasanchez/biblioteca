@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+  PLANTILLA PARA UN NUEVO LIBRO
+  1. Copia esta carpeta a libros/nombre-del-libro/
+  2. Sustituye todos los {{MARCADORES}} por los datos reales.
+  3. Añade una entrada en ../../catalogo.js apuntando a libros/nombre-del-libro/index.html
+  4. Sube los cambios con git add / git commit / git push.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITULO}} · Biblioteca digital</title>
+<style>
+  :root{--bg:#f4efe4;--bg2:#ebe3d2;--card:#fffaf0;--ink:#26221c;--muted:#6e6558;--accent:#9a3b2f;--accent2:#c2763a;--line:#d8cdb8;--shadow:0 10px 30px rgba(60,45,25,.10);--max:1000px;--radius:16px}
+  [data-theme="dark"]{--bg:#191917;--bg2:#22211e;--card:#262521;--ink:#efe8da;--muted:#b0a697;--accent:#e4876e;--accent2:#e0a45e;--line:#3c3933;--shadow:0 10px 30px rgba(0,0,0,.35)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,serif;line-height:1.7}
+  h1,h2,h3,.ui{font-family:system-ui,sans-serif}
+  .wrap{max-width:var(--max);margin:auto;padding:0 1.2rem}
+  .eyebrow{font-family:system-ui,sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+  header{background:linear-gradient(160deg,var(--bg2),var(--bg));border-bottom:1px solid var(--line);padding:3.5rem 0}
+  h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;margin:.4rem 0}
+  .lead{font-size:1.1rem;color:var(--muted);max-width:60ch}
+  .botones{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+  button,.btn{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:.55rem 1rem;background:var(--card);color:var(--ink);font-size:.9rem;text-decoration:none}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+  nav ul{display:flex;gap:.3rem;list-style:none;margin:0;padding:.6rem 0;overflow-x:auto}
+  nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem;padding:.4rem .75rem;border-radius:999px}
+  nav a:hover{background:var(--card);color:var(--accent)}
+  section{padding:3rem 0 1rem}section+section{border-top:1px solid var(--line)}
+  h2{font-size:1.8rem;margin:0 0 .8rem}
+  .tarjeta{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem;box-shadow:var(--shadow);margin-bottom:1rem}
+  .frase{border-left:3px solid var(--accent2);padding-left:1rem;color:var(--muted);font-style:italic}
+  textarea{width:100%;min-height:180px;padding:1rem;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:Georgia,serif;font-size:1rem}
+  .guardado{font-family:system-ui,sans-serif;font-size:.8rem;color:var(--muted)}
+  footer{padding:2.5rem 0 3rem;border-top:1px solid var(--line);margin-top:3rem;color:var(--muted);font-size:.88rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="eyebrow">{{AUTOR}} · {{ANIO}} · {{GENERO}}</span>
+    <h1>{{TITULO}}</h1>
+    <p class="lead">{{DESCRIPCION_BREVE}}</p>
+    <div class="botones">
+      <a class="btn" href="../../index.html">← Biblioteca</a>
+      <a class="btn primary" href="#resumen">Empezar ↓</a>
+      <button id="tema">◐ Modo noche</button>
+    </div>
+  </div>
+</header>
+<nav><div class="wrap"><ul>
+  <li><a href="#resumen">Resumen</a></li>
+  <li><a href="#ideas">Ideas clave</a></li>
+  <li><a href="#texto">Texto completo</a></li>
+  <li><a href="#notas">Mis notas</a></li>
+</ul></div></nav>
+
+<main class="wrap">
+  <section id="resumen">
+    <h2>Resumen</h2>
+    <div class="tarjeta"><p>{{RESUMEN}}</p></div>
+    <p class="frase">{{CITA_BREVE_OPCIONAL}}</p>
+  </section>
+
+  <section id="ideas">
+    <h2>Ideas clave</h2>
+    <div class="tarjeta"><ul>{{IDEAS_EN_LI}}</ul></div>
+  </section>
+
+  <section id="texto">
+    <h2>Texto completo</h2>
+    <div class="tarjeta">
+      <p>{{ENLACE_PDF_O_NOTA_DERECHOS}}</p>
+    </div>
+  </section>
+
+  <section id="notas">
+    <h2>Mis notas</h2>
+    <p>Se guardan en este navegador.</p>
+    <textarea id="notas" placeholder="Tus apuntes..."></textarea>
+    <div class="guardado" id="estado"></div>
+  </section>
+</main>
+
+<footer><div class="wrap"><a href="../../index.html">← Volver a la biblioteca</a> · {{FUENTES}}</div></footer>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  let tema="claro";
+  try{tema=localStorage.getItem("biblioteca-tema")||"claro"}catch(e){}
+  function aplicar(){document.documentElement.dataset.theme=tema==="oscuro"?"dark":"light";$("#tema").textContent=tema==="oscuro"?"☀ Modo día":"◐ Modo noche"}
+  $("#tema").addEventListener("click",()=>{tema=tema==="oscuro"?"claro":"oscuro";try{localStorage.setItem("biblioteca-tema",tema)}catch(e){}aplicar()});
+  aplicar();
+  const area=$("#notas"),estado=$("#estado");
+  try{area.value=localStorage.getItem("{{ID}}-notas")||""}catch(e){}
+  let t;area.addEventListener("input",()=>{clearTimeout(t);estado.textContent="Escribiendo…";t=setTimeout(()=>{try{localStorage.setItem("{{ID}}-notas",area.value);estado.textContent="Guardado ✔"}catch(e){estado.textContent="No se pudo guardar"}},400)});
+})();
+</script>
+</body>
+</html>
