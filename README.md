@@ -13,7 +13,8 @@ biblioteca/
 │   └── biblioteca.js       # Tema, búsqueda, filtros y render del catálogo
 ├── libros/
 │   ├── mito-de-sisifo/     # Primera ficha: guía interactiva
-│   │   └── index.html
+│   │   ├── index.html
+│   │   └── El mito de Sísifo.pdf   # copia local, ignorada por git
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -38,9 +39,11 @@ Se ha eliminado a petición del propietario. Cada ficha conserva resumen, concep
 
 ## Enlaces a textos completos y derechos
 
-La ficha de *El mito de Sísifo* enlaza a la **edición en castellano** de Alianza Editorial (1985, traducción de Luis Echávarri) a través del préstamo bibliotecario de Internet Archive (`elmitodesisifo0000camu`), que requiere cuenta gratuita. La traducción está protegida por derechos de autor, así que no se enlazan copias de descarga directa no autorizadas. Esta biblioteca no reproduce textos completos dentro de sus propias páginas: sólo ofrece resúmenes originales, citas breves y enlaces legítimos.
+La ficha de *El mito de Sísifo* usa la **edición en castellano** de Alianza Editorial (1985, traducción de Luis Echávarri). El PDF está guardado en `libros/mito-de-sisifo/` para uso local y **no se sube al repositorio** (regla `*.pdf` en `.gitignore`). Al abrir `index.html` desde tu equipo, el catálogo y la ficha enlazan ese archivo con un botón «Abrir PDF local». En GitHub Pages, donde el archivo no existe, muestran en su lugar el acceso legítimo al préstamo bibliotecario de Internet Archive (`elmitodesisifo0000camu`).
 
-Al añadir un libro con `pdf`, usa el campo `pdfLabel` para indicar si el botón lleva a una descarga, a un préstamo o a una ficha bibliográfica.
+La traducción está protegida por derechos de autor: no se publica ni se redistribuye el PDF. Esta biblioteca no reproduce textos completos dentro de sus páginas: sólo ofrece resúmenes originales, citas breves y enlaces legítimos.
+
+Al añadir un libro con `pdf`, usa `pdfLabel` / `pdfLabelWeb` para distinguir el botón local del público y `pdfLocal` para la ruta del archivo guardado sólo en tu equipo.
 
 ## Publicar cambios
 

@@ -1,0 +1,3 @@
+# Archivos de los libros: se guardan en local, no se publican en el repo
+*.pdf
+*.epub
