@@ -36,19 +36,6 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 
 Las fichas de *El mito de Sísifo* y *Don Quijote de la Mancha* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
-## Cuestionario
-
-Se ha eliminado a petición del propietario. Cada ficha conserva resumen, conceptos, línea de tiempo, notas y progreso de lectura.
-
-## Enlaces a textos completos y derechos
-
-La ficha de *El mito de Sísifo* incluye la **edición en castellano** de Alianza Editorial (traducción de Luis Echávarri) como [el_mito_de_sisifo.pdf](libros/mito-de-sisifo/el_mito_de_sisifo.pdf), un PDF de 69 páginas. Se publica en el repositorio y en GitHub Pages con **autorización expresa de su titular**, confirmada por el propietario de esta biblioteca. El catálogo y la ficha enlazan directamente al archivo con un botón «Abrir PDF ↗».
-
-La ficha de *Don Quijote de la Mancha* incluye la novela completa en castellano como [don_quijote.pdf](libros/don-quijote/don_quijote.pdf), un PDF de 536 páginas generado a partir del texto libre de [Project Gutenberg (ebook n.º 2000)](https://www.gutenberg.org/ebooks/2000) y distribuido también vía [Internet Archive](https://archive.org/details/DonQuijoteMiguelDeCervantesSaavedra). La obra es de **dominio público**, así que puede descargarse y compartirse libremente.
-
-Ambos archivos están exceptuados de la regla general `*.pdf` de `.gitignore`. Esta biblioteca no reproduce el texto completo dentro de sus propias páginas: sólo ofrece resúmenes originales, citas breves y los enlaces a los PDF.
-
-Al añadir un libro con `pdf`, usa `pdfLabel` para el texto del botón y `pdfNota` para indicar la procedencia y los derechos. Si el PDF no puede publicarse, añade una regla de exclusión en `.gitignore`.
 
 ## Publicar cambios
 
