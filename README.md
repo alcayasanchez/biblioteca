@@ -27,6 +27,9 @@ biblioteca/
 │   ├── arte-de-la-guerra/  # Ficha: guía interactiva
 │   │   ├── index.html
 │   │   └── el_arte_de_la_guerra.pdf  # PDF publicado (libre difusión)
+│   ├── el-extranjero/      # Ficha: guía interactiva
+│   │   ├── index.html
+│   │   └── el_extranjero.pdf       # PDF publicado (autorización del titular)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -39,6 +42,7 @@ biblioteca/
 - *Bodas de sangre*, de Federico García Lorca: dominio público en España; texto de Wikisource.
 - *La Ilíada*, de Homero: PDF publicado con autorización de distribución confirmada por el usuario. No se considera automáticamente de dominio público; cualquier redistribución debe respetar esa autorización.
 - *El arte de la guerra*, de Sun Tzu: clásico antiguo; el PDF publicado es la edición digital de la Biblioteca Virtual Omegalfa (enero de 2018), que declara expresamente «Texto de libre difusión».
+- *El extranjero*, de Albert Camus: novela protegida por derechos de autor (Camus murió en 1960). El PDF se publica con autorización confirmada del titular de los derechos de distribución, igual que *El mito de Sísifo*.
 
 Las guías interactivas son elaboraciones originales: contienen resúmenes propios, análisis y citas breves, no una copia de las obras.
 
@@ -55,7 +59,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 5. Comprueba que la ficha abre y que aparece en el catálogo.
 6. Antes de publicar un texto, confirma que es de dominio público o que tienes autorización de distribución, y anótalo aquí y en la sección «Derechos de los textos publicados».
 
-Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada* y *El arte de la guerra* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
+Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra* y *El extranjero* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
 ## Publicar cambios
 

@@ -98,5 +98,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 57 páginas · texto de libre difusión",
     destacado: true
+  },
+  {
+    id: "el-extranjero",
+    titulo: "El extranjero",
+    autor: "Albert Camus",
+    anio: "1942",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Las dos partes y once capítulos, personajes, claves del absurdo, línea temporal y texto completo en castellano.",
+    resumen: "Meursault narra con una calma desconcertante la muerte de su madre, un amor, un disparo en la playa y un juicio que lo condena menos por el crimen que por no haber llorado. Camus convierte esa voz en una pregunta incómoda sobre la honestidad, las emociones esperadas y la manera en que uno se sitúa en un mundo sin sentido previo.",
+    etiquetas: ["Absurdo", "Existencialismo", "Autorizada"],
+    portada: "☀️",
+    color: ["#9a6b32", "#d8b45c"],
+    ruta: "libros/el-extranjero/index.html",
+    pdf: "libros/el-extranjero/el_extranjero.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 79 páginas · publicado con autorización del titular",
+    destacado: true
   }
 ];
