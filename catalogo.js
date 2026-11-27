@@ -188,5 +188,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 173 páginas · edición eBooket (2001); difusión autorizada",
     destacado: true
+  },
+  {
+    id: "conde-de-montecristo",
+    titulo: "El conde de Montecristo",
+    autor: "Alejandro Dumas",
+    anio: "1844",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Las cinco partes, setenta y ocho capítulos, personajes, ideas, línea temporal y texto completo en castellano.",
+    resumen: "Edmundo Dantés tiene veinte años, una prometida y un barco cuando una carta anónima lo convierte en el preso 34 del castillo de If. Catorce años después emerge con un tesoro, una identidad nueva y una paciencia que le permite mover a sus antiguos enemigos como piezas de un ajedrez. La venganza termina con una partida hacia el horizonte y dos palabras: confiar y esperar.",
+    etiquetas: ["Aventura", "Venganza", "Autorizada"],
+    portada: "🏝️",
+    color: ["#2f5d52", "#9a6b32"],
+    ruta: "libros/conde-de-montecristo/index.html",
+    pdf: "libros/conde-de-montecristo/conde_de_montecristo.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 568 páginas · edición Ediciones La Cueva/escolar.com; difusión autorizada",
+    destacado: true
   }
 ];
