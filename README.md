@@ -2,16 +2,6 @@
 
 Una biblioteca personal en HTML: catálogo con búsqueda y filtros, fichas de lectura interactivas y enlaces a textos completos. No necesita servidor, base de datos ni dependencias.
 
-
-## Derechos de los textos publicados
-
-- *El mito de Sísifo*, de Albert Camus: PDF publicado con autorización confirmada de su titular.
-- *Don Quijote de la Mancha*, de Miguel de Cervantes: dominio público; texto de Project Gutenberg (ebook n.º 2000).
-- *Bodas de sangre*, de Federico García Lorca: dominio público en España; texto de Wikisource.
-- *La Ilíada*, de Homero: PDF publicado con autorización de distribución confirmada por el usuario. No se considera automáticamente de dominio público; cualquier redistribución debe respetar esa autorización.
-
-Las guías interactivas son elaboraciones originales: contienen resúmenes propios, análisis y citas breves, no una copia de las obras.
-
 ## Cómo verla
 
 Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings → Pages → Deploy from a branch → master / root` (rama por defecto del repositorio).
