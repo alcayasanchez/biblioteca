@@ -170,5 +170,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 796 páginas · traducción de 2021; difusión autorizada",
     destacado: true
+  },
+  {
+    id: "cien-anos-de-soledad",
+    titulo: "Cien años de soledad",
+    autor: "Gabriel García Márquez",
+    anio: "1967",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Los veinte capítulos, siete generaciones de los Buendía, personajes, ideas, contexto y texto completo en castellano.",
+    resumen: "En Macondo, José Arcadio Buendía y Úrsula Iguarán fundan una familia cuyos nombres se repiten generación tras generación. Entre el hielo, los pergaminos de Melquíades, la guerra, el tren bananero y la lluvia de cuatro años, Gabriel García Márquez convierte la historia de una estirpe en un espejo de la memoria y de la violencia de un continente.",
+    etiquetas: ["Realismo mágico", "Macondo", "Autorizada"],
+    portada: "🦋",
+    color: ["#8a6a1f", "#6a7c46"],
+    ruta: "libros/cien-anos-de-soledad/index.html",
+    pdf: "libros/cien-anos-de-soledad/cien_anios_de_soledad.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 173 páginas · edición eBooket (2001); difusión autorizada",
+    destacado: true
   }
 ];
