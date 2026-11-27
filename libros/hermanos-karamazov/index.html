@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los hermanos Karamázov · Biblioteca digital</title>
+<meta name="description" content="Guía interactiva de lectura de Los hermanos Karamázov de Fiódor Dostoyevski: cuatro partes, doce libros y epílogo, personajes, ideas, contexto y texto completo en castellano.">
+<style>
+  :root{
+    --bg:#f0ebdf; --bg2:#e3d9c6; --card:#fdfbf6; --ink:#2b2521; --muted:#6e665d;
+    --accent:#6d2f3a; --accent2:#a2762f; --line:#d8cdbb; --shadow:0 10px 30px rgba(70,45,30,.12);
+    --radius:16px; --max:1080px;
+  }
+  [data-theme="dark"]{
+    --bg:#19161a; --bg2:#242027; --card:#27232a; --ink:#f0e9e4; --muted:#b9ada8;
+    --accent:#d59aa4; --accent2:#dfbd7c; --line:#403840; --shadow:0 10px 30px rgba(0,0,0,.42);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:92px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7;
+    transition:background .25s,color .25s}
+  h1,h2,h3,.ui{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  h2{font-size:1.9rem; line-height:1.2; margin:0 0 .6rem}
+  h3{margin:.2rem 0 .5rem; font-size:1.05rem}
+  p{margin:.7rem 0}
+  a{color:var(--accent)}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 1.2rem}
+  .eyebrow{font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+
+  #barra-progreso{position:fixed; top:0; left:0; height:4px; width:0; background:linear-gradient(90deg,var(--accent),var(--accent2)); z-index:100; transition:width .1s linear}
+
+  header.hero{position:relative; overflow:hidden; background:linear-gradient(160deg,var(--bg2),var(--bg) 65%); border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center; padding:4.4rem 0 3.2rem}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem); line-height:1.05; margin:.4rem 0 .8rem; letter-spacing:-.03em}
+  .hero h1 em{color:var(--accent); font-style:normal}
+  .hero .lead{font-size:1.15rem; max-width:46ch; color:var(--muted)}
+  .botones{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem}
+  button,.btn{font:inherit; cursor:pointer; border-radius:999px; border:1px solid var(--line); padding:.55rem 1.05rem; background:var(--card); color:var(--ink); font-size:.9rem; text-decoration:none; display:inline-block; transition:transform .15s,border-color .15s}
+  button:hover,.btn:hover{transform:translateY(-2px); border-color:var(--accent)}
+  button.primary,.btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+  [data-theme="dark"] button.primary,[data-theme="dark"] .btn.primary{color:#19161a}
+  .lienzo-marco{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:.8rem}
+  canvas{display:block; width:100%; height:auto; border-radius:10px}
+  .lienzo-controles{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:.55rem}
+  .lienzo-controles small{color:var(--muted); font-family:system-ui,sans-serif}
+
+  .aviso{margin:1.6rem 0 0; padding:.9rem 1.1rem; border-left:4px solid var(--accent2); background:var(--card); border-radius:0 12px 12px 0; font-size:.92rem; color:var(--muted)}
+
+  nav.barra{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.barra ul{display:flex; gap:.25rem; list-style:none; margin:0; padding:.55rem 0; overflow-x:auto; scrollbar-width:none}
+  nav.barra ul::-webkit-scrollbar{display:none}
+  nav.barra a{white-space:nowrap; text-decoration:none; color:var(--muted); font-family:system-ui,sans-serif; font-size:.85rem; padding:.45rem .75rem; border-radius:999px}
+  nav.barra a:hover,nav.barra a.activo{background:var(--card); color:var(--accent)}
+
+  section{padding:4rem 0 1rem}
+  section+section{border-top:1px solid var(--line)}
+  .cabecera-seccion{margin-bottom:1.8rem}
+  .cabecera-seccion p{color:var(--muted); max-width:70ch}
+  .rejilla{display:grid; gap:1rem}
+  .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:800px){.hero-grid,.cols-2,.cols-3{grid-template-columns:1fr}}
+
+  .tarjeta{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.3rem; box-shadow:var(--shadow)}
+  .tarjeta.num{position:relative; overflow:hidden}
+  .tarjeta.num .numero{font-family:system-ui,sans-serif; font-size:2.9rem; font-weight:800; line-height:1; color:var(--accent); opacity:.18; position:absolute; right:1rem; top:.6rem}
+  .tarjeta p{font-size:.93rem; color:var(--muted); margin-bottom:0}
+  .etiqueta{display:inline-block; font-family:system-ui,sans-serif; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--accent2); margin-bottom:.4rem}
+  .personaje{text-align:center}
+  .personaje .icono{font-size:2.2rem; display:block; margin-bottom:.3rem}
+
+  details.cap{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:.8rem; overflow:hidden}
+  details.cap summary{cursor:pointer; list-style:none; padding:1.1rem 1.2rem; display:flex; align-items:center; gap:.9rem; font-family:system-ui,sans-serif; font-weight:650}
+  details.cap summary::-webkit-details-marker{display:none}
+  details.cap summary::after{content:"＋"; margin-left:auto; color:var(--accent); font-size:1.2rem}
+  details.cap[open] summary::after{content:"－"}
+  details.cap summary .cifra{background:var(--accent); color:#fff; border-radius:8px; min-width:2rem; height:2rem; display:grid; place-items:center; font-size:.85rem}
+  [data-theme="dark"] details.cap summary .cifra{color:#19161a}
+  .cuerpo-cap{padding:0 1.2rem 1.3rem}
+  .cuerpo-cap ul{padding-left:1.2rem}
+  .cuerpo-cap li{margin:.35rem 0}
+  .frase{border-left:3px solid var(--accent2); padding:.4rem 0 .4rem 1rem; margin:1.1rem 0; font-style:italic; color:var(--muted)}
+
+  .chip{border:1px solid var(--line); background:var(--card); border-radius:999px; padding:.5rem 1rem; cursor:pointer; font-family:system-ui,sans-serif; font-size:.87rem}
+  .chip:hover,.chip.activo{border-color:var(--accent); color:var(--accent)}
+  #definicion{margin-top:1rem; min-height:8.5rem}
+  #definicion h3{color:var(--accent2); font-size:1.2rem}
+
+  .cita-hero{text-align:center; padding:2.5rem 1.5rem; border-radius:var(--radius); background:linear-gradient(145deg,var(--card),var(--bg2)); border:1px solid var(--line)}
+  .cita-hero blockquote{font-size:clamp(1.35rem,3.1vw,2rem); line-height:1.35; margin:0; font-style:italic}
+  .cita-hero .autor{font-family:system-ui,sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1.2rem}
+
+  .timeline{position:relative; padding-left:1.8rem; margin-top:1.5rem}
+  .timeline::before{content:""; position:absolute; left:.4rem; top:.4rem; bottom:.4rem; width:2px; background:var(--line)}
+  .hito{position:relative; margin-bottom:1.4rem}
+  .hito::before{content:""; position:absolute; left:-1.58rem; top:.6rem; width:12px; height:12px; border-radius:50%; background:var(--accent2); box-shadow:0 0 0 4px var(--bg)}
+  .hito strong{font-family:system-ui,sans-serif; color:var(--accent2)}
+  .hito p{margin:.15rem 0; color:var(--muted); font-size:.93rem}
+
+  textarea{width:100%; min-height:190px; resize:vertical; padding:1rem; border-radius:14px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-family:Georgia,serif; font-size:1rem; line-height:1.6}
+  .guardado{font-family:system-ui,sans-serif; font-size:.8rem; color:var(--muted); min-height:1.2rem}
+
+  footer{padding:3rem 0 4rem; color:var(--muted); font-size:.88rem; border-top:1px solid var(--line); margin-top:3rem}
+  footer a{color:var(--accent)}
+  .progreso-leido{font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:.8rem}
+  .check-leido{display:flex; gap:.5rem; align-items:center; font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:1rem; cursor:pointer}
+
+  @media print{nav.barra,.botones,.lienzo-marco,#notas,#barra-progreso{display:none!important} section{padding:1.5rem 0;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="barra-progreso" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Fiódor Dostoyevski · 1880</span>
+      <h1>Los hermanos <em>Karamázov</em></h1>
+      <p class="lead">Guía interactiva de lectura: cuatro partes, doce libros y epílogo, personajes, ideas, contexto y texto completo en castellano.</p>
+      <div class="botones">
+        <a class="btn" href="../../index.html">← Biblioteca</a>
+        <a class="btn primary" href="los_hermanos_karamazov.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a>
+        <a class="btn ui" href="#intro">Empezar la lectura ↓</a>
+        <button id="tema" aria-label="Cambiar tema">◐ Modo noche</button>
+        <button id="imprimir" aria-label="Imprimir documento">⎙ Imprimir</button>
+      </div>
+      <p class="aviso"><strong>Nota:</strong> esta guía ofrece resúmenes propios, análisis y citas breves; no reproduce la novela. El texto íntegro se encuentra en la sección «Texto completo».</p>
+    </div>
+    <div class="lienzo-marco">
+      <canvas id="vela" width="640" height="420" role="img" aria-label="Animación de una vela y tres siluetas alrededor de una mesa"></canvas>
+      <div class="lienzo-controles">
+        <small>«Todos somos culpables por todos ante todo el mundo»</small>
+        <button id="animacion">❚❚ Pausar</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="barra" aria-label="Navegación por secciones">
+  <div class="wrap">
+    <ul>
+      <li><a href="#intro">La pregunta</a></li>
+      <li><a href="#estructura">Estructura</a></li>
+      <li><a href="#capitulos">Libros</a></li>
+      <li><a href="#personajes">Personajes</a></li>
+      <li><a href="#conceptos">Ideas</a></li>
+      <li><a href="#final">El giro</a></li>
+      <li><a href="#linea">Contexto</a></li>
+      <li><a href="#texto">Texto completo</a></li>
+      <li><a href="#notas">Mis notas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="intro">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">01 · El punto de partida</span>
+    <h2>Una familia, una pregunta, dos respuestas</h2>
+    <p>Un padre grotesco, tres hijos muy distintos y una casa que parece el laboratorio donde se prueban las ideas más difíciles del siglo: la libertad, la fe, el crimen y la responsabilidad. Dostoyevski no resuelve la pregunta: la reparte entre sus personajes y deja que se peleen en cada capítulo.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">La familia</span>
+      <h3>Tres hijos, tres caminos</h3>
+      <p>Dmitri quiere vivir con intensidad y acaba acusado de parricidio. Iván piensa hasta el extremo y se rompe. Aliosha, el menor, intenta creer y acompañar. El padre, Fiódor Pávlovich, es el caos que los obliga a definirse.</p>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">La pregunta</span>
+      <h3>¿Todo está permitido?</h3>
+      <p>La frase circula por la novela como una tentación. Si no hay inmortalidad, ¿qué impide hacer lo que se quiera? Frente a ella, el starets Zosima propone otra respuesta: la vida ya es un paraíso si se aprende a amar de verdad.</p>
+    </article>
+  </div>
+  <p class="frase">«Todos somos culpables por todos ante todo el mundo, solo que la gente no lo sabe, si lo supieran, ¡esto sería el paraíso!» Zosima lo dice recordando un duelo que no llegó a consumarse.</p>
+</section>
+
+<section id="estructura">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">02 · Mapa de la obra</span>
+    <h2>Cuatro partes, doce libros y un epílogo</h2>
+    <p>La novela se reparte en 93 capítulos dentro de doce libros, más un epílogo de tres capítulos. Cada libro tiene su propio título: la familia, el monasterio, los lujuriosos, los desgarros, la herejía, el fiscal y así sucesivamente, hasta el error judicial.</p>
+  </div>
+  <div class="rejilla cols-3">
+    <article class="tarjeta num"><span class="numero">I</span><span class="etiqueta">Libros I-III · 24 cap.</span><h3>La familia</h3><p>Historia de una familia, una reunión inoportuna y los lujuriosos.</p></article>
+    <article class="tarjeta num"><span class="numero">II</span><span class="etiqueta">Libros IV-VI · 17 cap.</span><h3>La herejía</h3><p>Los desgarros, pro y contra, y las enseñanzas del monje ruso.</p></article>
+    <article class="tarjeta num"><span class="numero">III</span><span class="etiqueta">Libros VII-IX · 21 cap.</span><h3>La pesquisa</h3><p>Aliosha, Mitia y las diligencias previas tras el crimen.</p></article>
+    <article class="tarjeta num"><span class="numero">IV</span><span class="etiqueta">Libros X-XII · 31 cap.</span><h3>El juicio</h3><p>Los niños, el hermano Iván y un error judicial.</p></article>
+    <article class="tarjeta num"><span class="numero">E</span><span class="etiqueta">Epílogo · 3 cap.</span><h3>Después</h3><p>Planes para salvar a Mitia, una mentira y el entierro de Iliusha.</p></article>
+    <article class="tarjeta num"><span class="numero">✓</span><span class="etiqueta">Tu lectura</span><h3>Marca tu avance</h3><p>Abre los bloques de abajo y ve marcando los que ya has trabajado.</p><label class="check-leido"><input type="checkbox" id="check-general"> He repasado la estructura</label></article>
+  </div>
+  <div class="progreso-leido" id="progreso-leido">Progreso: 0 de 6 apartados</div>
+</section>
+
+<section id="capitulos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">03 · Los libros</span>
+    <h2>Abre cada bloque y lee su resumen</h2>
+    <p>Los resúmenes son propios y agrupan los libros por partes. Marca los que hayas leído: el avance se guarda en este navegador.</p>
+  </div>
+
+  <details class="cap" open>
+    <summary><span class="cifra">1</span> Primera parte · Libros I-III</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Libro I · Historia de una familia (5 cap.):</strong> los dos matrimonios de Fiódor Pávlovich, el abandono de sus hijos, la entrega de Mitia al criado Grigori y el origen de Smerdiakov.</li>
+        <li><strong>Libro II · Una reunión inoportuna (8 cap.):</strong> la visita al monasterio, el viejo bufón, las mujeres de fe, la dama escéptica y el escándalo que rodea al starets Zosima.</li>
+        <li><strong>Libro III · Los lujuriosos (11 cap.):</strong> Iván expone su confesión y su artículo «Cabeza abajo»; aparecen Smerdiakov y Grúshenka, y una reputación se derrumba en el pabellón del servicio.</li>
+      </ul>
+      <p class="frase">La familia se presenta primero como chisme y caricatura; enseguida se vuelve el escenario donde cada broma esconde una herida.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap1"> Parte leída</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">2</span> Segunda parte · Libros IV-VI</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Libro IV · Los desgarros (7 cap.):</strong> Zosima está moribundo; Fiódor provoca a sus hijos, los escolares se cruzan en la historia y la tensión entre Katerina y Grúshenka estalla en dos escenas separadas.</li>
+        <li><strong>Libro V · Pro y contra (7 cap.):</strong> el compromiso de Mitia con Katerina, Smerdiakov con la guitarra, el encuentro de los hermanos, la rebelión de Iván y el poema «El gran inquisidor».</li>
+        <li><strong>Libro VI · El monje ruso (3 cap.):</strong> Zosima habla con sus huéspedes, narra la vida en Dios del hieromonje y deja sus enseñanzas: no hay infierno sino el sufrimiento de no poder amar, y la vida es paraíso si se comprende.</li>
+      </ul>
+      <p class="frase">Dos textos gemelos se responden: el Inquisidor ofrece pan y milagros a cambio de libertad; Zosima ofrece una responsabilidad que nadie puede delegar.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap2"> Parte leída</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">3</span> Tercera parte · Libros VII-IX</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Libro VII · Aliosha (4 cap.):</strong> el cuerpo de Zosima es preparado para la inhumación, el olor se vuelve escándalo, la parábola de la cebolla abre el camino y «Caná de Galilea» envía a Aliosha fuera del monasterio.</li>
+        <li><strong>Libro VIII · Mitia (8 cap.):</strong> Kuzmá Samsónov, Liagavy, las minas de oro, la noche de Mókroie, la decisión repentina, el «¡Aquí estoy!» y el delirio del hijo mayor.</li>
+        <li><strong>Libro IX · Diligencias previas (9 cap.):</strong> el funcionario Perjotin, la alarma, el viaje del alma por los tormentos, la caza del fiscal, el secreto de los tres mil rublos, los testigos y la detención de Mitia.</li>
+      </ul>
+      <p class="frase">La novela policiaca se construye con prisas, dinero mal contado y palabras dichas de más; la verdad jurídica se vuelve tan frágil como la familiar.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap3"> Parte leída</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">4</span> Cuarta parte · Libros X-XII</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Libro X · Los niños (7 cap.):</strong> Kolia Krasotkin, los pequeños, el escolar, Zhuchka, la cama de Iliusha y el desarrollo precoz de unos muchachos que juzgan a los adultos con más rigor que ellos.</li>
+        <li><strong>Libro XI · El hermano Iván Fiódorovich (10 cap.):</strong> Grúshenka, el piececito lastimado, el diablillo, el himno y el secreto, las tres entrevistas con Smerdiakov y la pesadilla con el diablo.</li>
+        <li><strong>Libro XII · Un error judicial (14 cap.):</strong> el juicio de Mitia, los testigos peligrosos, el informe médico, los alegatos del fiscal y del defensor, y la condena de un hombre que quizá no mató a su padre.</li>
+      </ul>
+      <p class="frase">Los niños y el error judicial cierran el círculo: los adultos no saben escuchar, pero los muchachos todavía creen que la verdad debe salvar.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="cap4"> Parte leída</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">E</span> Epílogo · Tres capítulos</summary>
+    <div class="cuerpo-cap">
+      <ul>
+        <li><strong>Planes para salvar a Mitia:</strong> Aliosha y Katerina organizan una fuga; Iván, enfermo, queda al cuidado de ella.</li>
+        <li><strong>Una mentira se vuelve verdad:</strong> el plan se apoya en una ficción que acabará transformándose en un proyecto de vida.</li>
+        <li><strong>El entierro de Iliúshechka:</strong> los compañeros de colegio despiden al muchacho y Aliosha pronuncia el discurso junto a la roca.</li>
+      </ul>
+      <p class="frase">El final no absuelve a todos, pero deja una promesa: recordar a un niño puede ser el primer acto de una vida mejor.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="epilogo"> Epílogo leído</label>
+    </div>
+  </details>
+</section>
+
+<section id="personajes">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">04 · Personajes</span>
+    <h2>Quienes sostienen la novela</h2>
+    <p>Pulsa una tarjeta para ver quién es cada personaje y qué función cumple en la historia.</p>
+  </div>
+  <div class="rejilla cols-3" id="personajes-grid"></div>
+  <div class="tarjeta" id="ficha-personaje" aria-live="polite" style="margin-top:1rem; min-height:7rem">
+    <h3>Elige un personaje</h3>
+    <p>Sus descripciones aparecen aquí.</p>
+  </div>
+</section>
+
+<section id="conceptos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">05 · Ideas</span>
+    <h2>Las palabras que explican la novela</h2>
+    <p>Pulsa un término para ver su definición en el contexto de Los hermanos Karamázov.</p>
+  </div>
+  <div class="rejilla" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))" id="chips">
+    <button class="chip" data-k="permitido">Todo está permitido</button>
+    <button class="chip" data-k="inquisidor">El gran inquisidor</button>
+    <button class="chip" data-k="starets">Stárets</button>
+    <button class="chip" data-k="amor">Amor activo</button>
+    <button class="chip" data-k="culpables">Culpables por todos</button>
+    <button class="chip" data-k="paraiso">El paraíso</button>
+    <button class="chip" data-k="diligencias">Diligencias previas</button>
+    <button class="chip" data-k="error">Error judicial</button>
+    <button class="chip" data-k="diablo">El diablo</button>
+    <button class="chip" data-k="ninos">Los niños</button>
+  </div>
+  <div class="tarjeta" id="definicion" aria-live="polite" style="margin-top:1rem; min-height:8.5rem">
+    <h3>Elige un concepto</h3>
+    <p>Las definiciones aparecen aquí al pulsar cualquiera de las etiquetas.</p>
+  </div>
+</section>
+
+<section id="final">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">06 · El giro</span>
+    <h2>Una frase que todos repiten</h2>
+  </div>
+  <div class="cita-hero">
+    <blockquote>«Todo está permitido, ¿no es eso? ¿No es eso?»</blockquote>
+    <div class="autor">Aliosha interroga a Iván · libro quinto, capítulo V</div>
+    <p style="max-width:62ch;margin:1.6rem auto 0;color:var(--muted)">Iván no se retracta, pero la novela se encarga de probar esa frase en cada cuerpo: en el de Mitia, en el de Smerdiakov, en el del propio Iván. La respuesta de Zosima no es una ley nueva, sino una tarea imposible y necesaria: amar activamente, aceptar la culpa compartida y reconocer el paraíso en la vida cotidiana. Entre ambas posiciones se mueven los hermanos hasta el final.</p>
+  </div>
+</section>
+
+<section id="linea">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">07 · Contexto</span>
+    <h2>Alrededor de la novela</h2>
+    <p>Algunas fechas para situar al autor, la obra y la edición en castellano.</p>
+  </div>
+  <div class="timeline">
+    <div class="hito"><strong>1821</strong><p>Nace Fiódor Dostoyevski en Moscú.</p></div>
+    <div class="hito"><strong>1849-1854</strong><p>Detención, condena conmutada y trabajos forzados en Siberia: experiencia que atraviesa toda su obra.</p></div>
+    <div class="hito"><strong>1879-1880</strong><p><em>Los hermanos Karamázov</em> aparece por entregas en <em>El mensajero ruso</em> y se publica en libro en 1880.</p></div>
+    <div class="hito"><strong>1881</strong><p>Muere el autor en San Petersburgo. Su obra original es de dominio público en España y en la Unión Europea desde 1952.</p></div>
+    <div class="hito"><strong>2021</strong><p>Se publica la traducción de Fernando Otero, Marta Sánchez‑Nieves y Marta Rebón en Editorial Alba; el PDF de esta biblioteca procede de la edición electrónica de la Fundación Carlos Slim.</p></div>
+    <div class="hito"><strong>Hoy</strong><p>El texto completo se publica aquí con autorización confirmada del usuario para su difusión en esta biblioteca.</p></div>
+  </div>
+</section>
+
+<section id="texto">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">08 · Texto completo</span>
+    <h2>Leer la novela íntegra</h2>
+    <p>Edición en castellano en PDF, con las cuatro partes, los doce libros, el epílogo y las 796 páginas de la edición electrónica.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">PDF · difusión autorizada</span>
+      <h3>Los hermanos Karamázov, Fiódor Dostoyevski</h3>
+      <p>796 páginas. Edición electrónica de la Fundación Carlos Slim (PruebaT), con la traducción difundida en 2021. Descarga directa desde esta biblioteca.</p>
+      <div class="botones">
+        <a class="btn primary" href="los_hermanos_karamazov.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a>
+        <a class="btn" href="los_hermanos_karamazov.pdf" download>Descargar PDF</a>
+      </div>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">Origen del texto</span>
+      <h3>Una novela, dos plazos</h3>
+      <p>La novela original es de dominio público, pero la traducción y la edición electrónica no pueden darse por libres. La portada del PDF limita su distribución a medios de la Fundación Carlos Slim; esta copia se publica con autorización confirmada para esta biblioteca.</p>
+      <div class="botones"><a class="btn" href="https://cdn.pruebat.org/libros/pdf/Los-hermanos-karamazov.pdf" target="_blank" rel="noopener">Ver edición de origen ↗</a></div>
+    </article>
+  </div>
+  <p class="aviso"><strong>Derechos:</strong> novela de dominio público; traducción y edición electrónica difundidas aquí con autorización confirmada del usuario. Los resúmenes, definiciones y análisis de esta ficha son originales y contienen solo citas breves.</p>
+</section>
+
+<section id="notas">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">09 · Tu espacio</span>
+    <h2>Mis notas de lectura</h2>
+    <p>Escribe aquí tus citas, dudas o ideas. El contenido se guarda automáticamente en este navegador y puedes descargarlo como texto.</p>
+  </div>
+  <textarea id="area-notas" placeholder="Ej.: ¿Qué diferencias hay entre la libertad de Iván y la de Zosima?&#10;¿Por qué es tan importante el discurso junto a la roca?"></textarea>
+  <div class="botones">
+    <button id="descargar">⬇ Descargar notas (.txt)</button>
+    <button id="borrar">Borrar notas</button>
+  </div>
+  <div class="guardado" id="estado-notas"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Los hermanos Karamázov · guía interactiva.</strong> Resúmenes y definiciones originales para orientar la lectura de la novela de Fiódor Dostoyevski. Para contrastar datos, consulta la <a href="https://es.wikipedia.org/wiki/Los_hermanos_Karam%C3%A1zov" target="_blank" rel="noopener">entrada de Wikipedia</a> y la <a href="https://cdn.pruebat.org/libros/pdf/Los-hermanos-karamazov.pdf" target="_blank" rel="noopener">edición electrónica de origen</a>.</p>
+    <p><a href="../../index.html">← Volver a la biblioteca</a> · Hecho con HTML, CSS y JavaScript sin dependencias externas.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  /* Tema compartido con la portada */
+  const guardarTema = t => { try{ localStorage.setItem('biblioteca-tema', t); }catch(e){} };
+  let tema = 'claro';
+  try{ tema = localStorage.getItem('biblioteca-tema') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro'); }catch(e){}
+
+  const canvas = $('#vela'), ctx = canvas.getContext('2d');
+  const btnAnim = $('#animacion');
+  let enMarcha = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0;
+
+  function colores(){
+    const oscuro = document.documentElement.dataset.theme === 'dark';
+    return oscuro
+      ? {muro:'#27212a', suelo:'#1d1920', mesa:'#4a3a34', tela:'#332b34', luz:'#e0bd7c', llama:'#f2d38f', sombra:'#151217', texto:'#b9ada8'}
+      : {muro:'#e3d9c6', suelo:'#d3c4ad', mesa:'#8a6a52', tela:'#6d2f3a', luz:'#d9a64f', llama:'#f6df9b', sombra:'#4b3a31', texto:'#6e665d'};
+  }
+  function dibujarEscena(){
+    if(!ctx) return;
+    const c = colores(), W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = c.muro; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle = c.suelo; ctx.fillRect(0,330,W,90);
+
+    // Resplandor que parpadea
+    const parpadeo = .86 + Math.sin(t*.09)*.08 + Math.sin(t*.037)*.05;
+    const halo = ctx.createRadialGradient(320,250,10,320,250,210);
+    halo.addColorStop(0,'rgba(255,214,130,' + (.42*parpadeo).toFixed(3) + ')');
+    halo.addColorStop(1,'rgba(255,214,130,0)');
+    ctx.fillStyle = halo; ctx.fillRect(0,0,W,H);
+
+    // Tres siluetas sentadas alrededor de la mesa
+    const personas = [140,320,500];
+    personas.forEach((x,i) => {
+      ctx.fillStyle = c.sombra; ctx.globalAlpha = .85;
+      ctx.beginPath(); ctx.ellipse(x,250-i%2*6,54,72,0,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x,182-i%2*6,25,0,Math.PI*2); ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+
+    // Mesa y vela
+    ctx.fillStyle = c.mesa; ctx.fillRect(60,322,520,22);
+    ctx.fillStyle = c.tela; ctx.fillRect(305,238,30,84);
+    ctx.fillStyle = c.luz; ctx.fillRect(305,240,30,12);
+    const oscilacion = Math.sin(t*.07)*3;
+    ctx.fillStyle = c.llama;
+    ctx.beginPath(); ctx.ellipse(320+oscilacion,222,9,19,0,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle = c.luz;
+    ctx.beginPath(); ctx.ellipse(320+oscilacion,226,4,10,0,0,Math.PI*2); ctx.fill();
+
+    ctx.fillStyle = c.texto; ctx.font = '15px system-ui,sans-serif';
+    ctx.fillText('Tres hermanos, una pregunta, una vela que no se apaga', 24, 38);
+  }
+  function bucle(){
+    if(!enMarcha) return;
+    t += 1;
+    dibujarEscena();
+    requestAnimationFrame(bucle);
+  }
+  function aplicarTema(){
+    document.documentElement.dataset.theme = tema === 'oscuro' ? 'dark' : 'light';
+    $('#tema').textContent = tema === 'oscuro' ? '☀ Modo día' : '◐ Modo noche';
+    dibujarEscena();
+  }
+  $('#tema').addEventListener('click', () => { tema = tema === 'oscuro' ? 'claro' : 'oscuro'; guardarTema(tema); aplicarTema(); });
+  $('#imprimir').addEventListener('click', () => print());
+  btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+  btnAnim.addEventListener('click', () => {
+    enMarcha = !enMarcha;
+    btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+    if(enMarcha) requestAnimationFrame(bucle); else dibujarEscena();
+  });
+  aplicarTema();
+  if(enMarcha) requestAnimationFrame(bucle);
+  addEventListener('resize', dibujarEscena);
+
+  /* Progreso y navegación */
+  const barra = $('#barra-progreso');
+  function actualizarProgreso(){
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    barra.style.width = (total > 0 ? (h.scrollTop / total) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', actualizarProgreso, {passive:true});
+  addEventListener('resize', actualizarProgreso);
+  actualizarProgreso();
+
+  if('IntersectionObserver' in window){
+    const enlaces = $$('nav.barra a');
+    const observer = new IntersectionObserver(entradas => {
+      entradas.forEach(e => {
+        if(e.isIntersecting){
+          enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, {rootMargin:'-25% 0px -65% 0px'});
+    $$('main section').forEach(s => observer.observe(s));
+  }
+
+  /* Personajes */
+  const personajes = [
+    {n:"Fiódor Pávlovich",i:"🎭",d:"El padre. Inmoral, bufón y sorprendentemente hábil para los negocios. Su conducta obliga a los hijos a tomar partido y convierte la casa en un polvorín."},
+    {n:"Dmitri (Mitia)",i:"🔥",d:"El hijo mayor. Generoso, violento y enamorado de Grúshenka. Acusado de matar a su padre, se debate entre la dignidad y la vergüenza."},
+    {n:"Iván",i:"📉",d:"El intelectual de la familia. Formula la pregunta del «todo está permitido» y escribe El gran inquisidor; su lucidez acaba convirtiéndose en una enfermedad."},
+    {n:"Aliosha",i:"🕊️",d:"El menor y el más sensible. Novicio junto a Zosima, sale al mundo para escuchar, perdonar y acompañar. Es el puente entre todos los personajes."},
+    {n:"Grúshenka",i:"🌹",d:"Comerciante deseada por padre e hijo. Aparece como objeto de disputa y se revela como una persona capaz de ternura y de cambiar de vida."},
+    {n:"Katerina Ivánovna",i:"💌",d:"Prometida de Mitia. Orgullosa y generosa, se humilla para salvar al hombre que ama y termina cuidando de Iván tras el juicio."},
+    {n:"Smerdiakov",i:"🕯️",d:"Criado de la casa, hijo probable de Fiódor. Callado y meticuloso, se convierte en la sombra que potencialmente resuelve el crimen."},
+    {n:"Stárets Zosima",i:"📖",d:"Monje y maestro de Aliosha. Enseña que el infierno es no poder amar y que cada persona es culpable ante todas; sus palabras son el contrapeso de Iván."},
+    {n:"Iliusha",i:"🧒",d:"Niño enfermo hijo del capitán Snegiriov. Amigo de Aliosha y de los escolares; su entierro cierra la novela con una promesa de memoria y ternura."}
+  ];
+  const pg = $('#personajes-grid');
+  personajes.forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'tarjeta personaje';
+    b.innerHTML = '<span class="icono">' + p.i + '</span><h3>' + p.n + '</h3>';
+    b.addEventListener('click', () => {
+      $$('#personajes-grid .tarjeta').forEach(x => x.style.borderColor = '');
+      b.style.borderColor = 'var(--accent)';
+      $('#ficha-personaje').innerHTML = '<h3>' + p.n + '</h3><p>' + p.d + '</p>';
+    });
+    pg.appendChild(b);
+  });
+
+  /* Conceptos */
+  const definiciones = {
+    permitido:['Todo está permitido','Frase que resume la tentación de Iván y que Mitia repite sin entender del todo. Si no hay Ley por encima del hombre, parece que todo queda autorizado; la novela demuestra el coste de esa conclusión.'],
+    inquisidor:['El gran inquisidor','Poema que Iván cuenta a Aliosha. Un cardenal encarcela a Cristo y le reprocha haber dado a los hombres una libertad que no saben soportar: prefiere darles pan, milagro y autoridad.'],
+    starets:['Stárets','Monje anciano y respetado que sirve de guía espiritual. Zosima no predica desde el pulpito: habla en su celda, escucha y ofrece una disciplina de amor concreto.'],
+    amor:['Amor activo','La respuesta de Zosima a la desesperación. No es un sentimiento cómodo, sino una acción: acercarse, perdonar, cargar con la culpa de los demás y trabajar incluso cuando nadie lo agradece.'],
+    culpables:['Culpables por todos','La idea de que cada persona participa en el mal del mundo. No es una acusación judicial, sino una forma de rechazar la indiferencia y de tomarse en serio la vida de los otros.'],
+    paraiso:['El paraíso','Zosima lo sitúa en la vida cotidiana: el sol, los pájaros, el perdón, el abrazo. No es un premio lejano, sino una manera de mirar el presente que casi nadie consigue sostener.'],
+    diligencias:['Diligencias previas','Las investigaciones anteriores al juicio. El fiscal construye una versión de los hechos con pistas, prisas y prejuicios; la novela muestra lo fácil que es equivocarse con rapidez'],
+    error:['Error judicial','El proceso contra Mitia termina con una condena que el propio lector sabe que es dudosa. El tribunal se parece a la familia: escucha mal, repite historias y necesita una víctima.'],
+    diablo:['El diablo','No solo aparece en la pesadilla de Iván: es la voz que intenta convencerlo de que la desesperación es la única conclusión razonable.'],
+    ninos:['Los niños','Los escolares de la cuarta parte no son decorado. Su amistad con Iliusha y su reacción ante el juicio ofrecen una moral más limpia que la de los adultos.']
+  };
+  $$('#chips .chip').forEach(chip => chip.addEventListener('click', () => {
+    $$('#chips .chip').forEach(c => c.classList.remove('activo'));
+    chip.classList.add('activo');
+    const d = definiciones[chip.dataset.k];
+    $('#definicion').innerHTML = '<h3>' + d[0] + '</h3><p>' + d[1] + '</p>';
+  }));
+
+  /* Progreso guardado */
+  const checks = $$('.cap-check');
+  const checkGeneral = $('#check-general');
+  const clave = 'karamazov-leidos';
+  let leidos = {};
+  try{ leidos = JSON.parse(localStorage.getItem(clave) || '{}'); }catch(e){ leidos = {}; }
+  function sincronizar(){
+    checks.forEach(c => c.checked = !!leidos[c.value]);
+    checkGeneral.checked = !!leidos.general;
+    const n = Object.values(leidos).filter(Boolean).length;
+    $('#progreso-leido').textContent = 'Progreso: ' + n + ' de 6 apartados';
+  }
+  function guardarProgreso(){
+    leidos = {};
+    checks.forEach(c => { if(c.checked) leidos[c.value] = true; });
+    if(checkGeneral.checked) leidos.general = true;
+    try{ localStorage.setItem(clave, JSON.stringify(leidos)); }catch(e){}
+    sincronizar();
+  }
+  checks.forEach(c => c.addEventListener('change', guardarProgreso));
+  checkGeneral.addEventListener('change', guardarProgreso);
+  sincronizar();
+
+  /* Notas personales */
+  const area = $('#area-notas'), estado = $('#estado-notas');
+  try{ area.value = localStorage.getItem('karamazov-notas') || ''; }catch(e){}
+  let temporizador;
+  area.addEventListener('input', () => {
+    clearTimeout(temporizador);
+    estado.textContent = 'Escribiendo…';
+    temporizador = setTimeout(() => {
+      try{ localStorage.setItem('karamazov-notas', area.value); estado.textContent = 'Guardado ✔'; }
+      catch(e){ estado.textContent = 'No se pudo guardar en este navegador.'; }
+    }, 400);
+  });
+  $('#descargar').addEventListener('click', () => {
+    const blob = new Blob([area.value], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mis-notas-karamazov.txt';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('#borrar').addEventListener('click', () => {
+    if(!confirm('¿Borrar todas las notas guardadas?')) return;
+    area.value = '';
+    try{ localStorage.removeItem('karamazov-notas'); }catch(e){}
+    estado.textContent = 'Notas borradas.';
+  });
+})();
+</script>
+</body>
+</html>

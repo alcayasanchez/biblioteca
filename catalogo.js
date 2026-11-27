@@ -152,5 +152,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 254 páginas · traducción de Rafael Vázquez Zamora; difusión autorizada",
     destacado: true
+  },
+  {
+    id: "hermanos-karamazov",
+    titulo: "Los hermanos Karamázov",
+    autor: "Fiódor Dostoyevski",
+    anio: "1880",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Las cuatro partes, doce libros y epílogo, personajes, ideas, línea temporal y texto completo en castellano.",
+    resumen: "Tres hermanos y un padre grotesco convierten una casa de provincias en el laboratorio de las preguntas más difíciles: si todo está permitido, si existe la responsabilidad compartida y si el paraíso puede estar en la vida cotidiana. Entre la rebelión de Iván, el amor de Aliosha y el proceso que condena a Mitia, Dostoyevski construye una novela donde cada idea se vuelve destino.",
+    etiquetas: ["Clásico ruso", "Fe y libertad", "Autorizada"],
+    portada: "🎭",
+    color: ["#6d2f3a", "#a2762f"],
+    ruta: "libros/hermanos-karamazov/index.html",
+    pdf: "libros/hermanos-karamazov/los_hermanos_karamazov.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 796 páginas · traducción de 2021; difusión autorizada",
+    destacado: true
   }
 ];
