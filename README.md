@@ -48,6 +48,9 @@ biblioteca/
 │   ├── divina-comedia/     # Ficha: guía interactiva
 │   │   ├── index.html
 │   │   └── divina_comedia.pdf         # PDF publicado (difusión autorizada)
+│   ├── meditaciones/       # Ficha: guía interactiva
+│   │   ├── index.html
+│   │   └── meditaciones.pdf           # PDF publicado (difusión autorizada)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -67,6 +70,7 @@ biblioteca/
 - *Cien años de soledad*, de Gabriel García Márquez: novela publicada en 1967 y todavía protegida por derechos de autor en España y en la Unión Europea (el autor murió en 2014). El PDF procede de eBooket (creado en 2001, modificado en 2002) y no incluye licencia de redistribución; se publica aquí con autorización confirmada del usuario para esta biblioteca.
 - *El conde de Montecristo*, de Alejandro Dumas: novela publicada en 1844 (el autor murió en 1870); la obra original es de dominio público en España desde 1941. El PDF procede de escolar.com y está editado por Ediciones La Cueva (creado en 2001), sin licencia de redistribución declarada; se publica aquí con autorización confirmada del usuario para esta biblioteca.
 - *La Divina Comedia*, de Dante Alighieri: poema compuesto hacia 1321 (el autor murió ese año), de dominio público. El PDF usa la traducción en verso de Bartolomé Mitre (1821-1906), también de dominio público, en la edición definitiva de 1922 dirigida por Nicolás Besio Moreno (1879-1962); el prólogo y las notas de este último podrían estar protegidos hasta 2033. El archivo se publica aquí con autorización confirmada del usuario para esta biblioteca.
+- *Meditaciones*, de Marco Aurelio: texto griego del siglo II, de dominio público. El PDF corresponde a la Biblioteca Clásica Gredos, 5: introducción de Carlos García Gual y traducción y notas de Ramón Bach Pellicer (Editorial Gredos, 1977; reimpresión de 2005), elementos todavía protegidos; se publica aquí con autorización confirmada del usuario para esta biblioteca.
 
 Las guías interactivas son elaboraciones originales: contienen resúmenes propios, análisis y citas breves, no una copia de las obras.
 
@@ -83,7 +87,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 5. Comprueba que la ficha abre y que aparece en el catálogo.
 6. Antes de publicar un texto, confirma que es de dominio público o que tienes autorización de distribución, y anótalo aquí y en la sección «Derechos de los textos publicados».
 
-Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra*, *El extranjero*, *Crimen y castigo*, *1984*, *Los hermanos Karamázov*, *Cien años de soledad*, *El conde de Montecristo* y *La Divina Comedia* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
+Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra*, *El extranjero*, *Crimen y castigo*, *1984*, *Los hermanos Karamázov*, *Cien años de soledad*, *El conde de Montecristo*, *La Divina Comedia* y *Meditaciones* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
 ## Publicar cambios
 

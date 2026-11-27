@@ -224,5 +224,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 667 páginas · traducción de Bartolomé Mitre, edición de 1922; difusión autorizada",
     destacado: true
+  },
+  {
+    id: "meditaciones",
+    titulo: "Meditaciones",
+    autor: "Marco Aurelio",
+    anio: "180",
+    genero: "Filosofía",
+    tipo: "Guía interactiva",
+    descripcion: "Los doce libros, el método estoico de las impresiones, personajes, conceptos, línea temporal y texto completo en la traducción de Ramón Bach Pellicer.",
+    resumen: "Un emperador escribe para sí mismo mientras gobierna un imperio en guerra. Sus cuadernos repiten una disciplina sencilla y difícil: examinar la impresión, quitarle el juicio añadido y responder solo con lo que está en el propio poder. Doce libros después, la despedida es un gesto de confianza: irse con ánimo propicio, como quien sale de escena.",
+    etiquetas: ["Estoicismo", "Filosofía práctica", "Autorizada"],
+    portada: "🧭",
+    color: ["#3d5a4c", "#9a7b3f"],
+    ruta: "libros/meditaciones/index.html",
+    pdf: "libros/meditaciones/meditaciones.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 215 páginas · traducción de Ramón Bach Pellicer, Gredos (1977/2005); difusión autorizada",
+    destacado: true
   }
 ];
