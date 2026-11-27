@@ -134,5 +134,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 496 páginas · traducción anónima de 1951, dominio público",
     destacado: true
+  },
+  {
+    id: "1984",
+    titulo: "1984",
+    autor: "George Orwell",
+    anio: "1949",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Las tres partes y el apéndice, personajes, vocabulario del poder, línea temporal y texto completo en castellano.",
+    resumen: "Winston Smith escribe un diario prohibido en un mundo donde una telepantalla puede vigilarlo todo y el Ministerio de la Verdad corrige el pasado cada vez que cambia el enemigo. Su encuentro con Julia y el libro de Goldstein lo llevan desde la sospecha hasta la Habitación 101, donde el Partido no le exige solo una confesión: quiere que acepte que dos y dos son cinco.",
+    etiquetas: ["Distopía", "Vigilancia", "Autorizada"],
+    portada: "👁️",
+    color: ["#254a5a", "#b04038"],
+    ruta: "libros/1984/index.html",
+    pdf: "libros/1984/1984.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 254 páginas · traducción de Rafael Vázquez Zamora; difusión autorizada",
+    destacado: true
   }
 ];
