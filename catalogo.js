@@ -62,5 +62,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 46 páginas · Wikisource, dominio público en España",
     destacado: true
+  },
+  {
+    id: "iliada",
+    titulo: "La Ilíada",
+    autor: "Homero",
+    anio: "siglo VIII a. C.",
+    genero: "Épica",
+    tipo: "Guía interactiva",
+    descripcion: "Los 24 cantos explicados en bloques, episodios clave, héroes, vocabulario griego, línea temporal y texto completo en castellano.",
+    resumen: "En el décimo año de la guerra, Aquiles se aparta del combate porque Agamenón le arrebata a Briseida. Su cólera hunde a los aqueos, envía a Patroclo a la muerte y acaba con el rescate del cadáver de Héctor por su padre, Príamo: un poema sobre la ira, la gloria y la piedad.",
+    etiquetas: ["Guerra de Troya", "Épica clásica", "Autorizada"],
+    portada: "🛡️",
+    color: ["#6e2f28", "#c08a3e"],
+    ruta: "libros/iliada/index.html",
+    pdf: "libros/iliada/iliada.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 567 páginas · publicado con autorización de distribución",
+    destacado: true
   }
 ];

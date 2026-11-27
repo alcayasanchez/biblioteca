@@ -21,10 +21,22 @@ biblioteca/
 │   ├── bodas-de-sangre/    # Ficha: guía interactiva
 │   │   ├── index.html
 │   │   └── bodas_de_sangre.pdf    # PDF publicado (dominio público)
+│   ├── iliada/             # Ficha: guía interactiva
+│   │   ├── index.html
+│   │   └── iliada.pdf             # PDF publicado (autorización de distribución)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
 ```
+
+## Derechos de los textos publicados
+
+- *El mito de Sísifo*, de Albert Camus: PDF publicado con autorización confirmada de su titular.
+- *Don Quijote de la Mancha*, de Miguel de Cervantes: dominio público; texto de Project Gutenberg (ebook n.º 2000).
+- *Bodas de sangre*, de Federico García Lorca: dominio público en España; texto de Wikisource.
+- *La Ilíada*, de Homero: PDF publicado con autorización de distribución confirmada por el usuario. No se considera automáticamente de dominio público; cualquier redistribución debe respetar esa autorización.
+
+Las guías interactivas son elaboraciones originales: contienen resúmenes propios, análisis y citas breves, no una copia de las obras.
 
 ## Cómo verla
 
@@ -35,9 +47,11 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 1. Copia `libros/_plantilla/` a `libros/nombre-del-libro/`.
 2. Sustituye los marcadores `{{...}}` por los datos reales.
 3. Añade un objeto en `catalogo.js` con: `id`, `titulo`, `autor`, `anio`, `genero`, `tipo`, `descripcion`, `resumen` (el que aparece en la tarjeta), `etiquetas`, `portada` (emoji), `color` (dos colores), `ruta`, `pdf` (URL o `""`), `pdfLabel` (texto del botón), `pdfNota` y `destacado`.
-4. Comprueba que la ficha abre y que aparece en el catálogo.
+4. Si vas a publicar el PDF, añade una excepción para ese archivo en `.gitignore` (por defecto todos los PDF se ignoran).
+5. Comprueba que la ficha abre y que aparece en el catálogo.
+6. Antes de publicar un texto, confirma que es de dominio público o que tienes autorización de distribución, y anótalo aquí y en la sección «Derechos de los textos publicados».
 
-Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha* y *Bodas de sangre* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
+Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre* y *La Ilíada* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
 ## Publicar cambios
 
