@@ -2,32 +2,6 @@
 
 Una biblioteca personal en HTML: catálogo con búsqueda y filtros, fichas de lectura interactivas y enlaces a textos completos. No necesita servidor, base de datos ni dependencias.
 
-## Estructura
-
-```text
-biblioteca/
-├── index.html              # Portada y catálogo
-├── catalogo.js             # Lista de libros (aquí se añaden las entradas)
-├── assets/
-│   ├── biblioteca.css      # Estilos de la portada
-│   └── biblioteca.js       # Tema, búsqueda, filtros y render del catálogo
-├── libros/
-│   ├── mito-de-sisifo/     # Ficha: guía interactiva
-│   │   ├── index.html
-│   │   └── el_mito_de_sisifo.pdf   # PDF publicado (autorizado por su titular)
-│   ├── don-quijote/        # Ficha: guía interactiva
-│   │   ├── index.html
-│   │   └── don_quijote.pdf        # PDF publicado (dominio público)
-│   ├── bodas-de-sangre/    # Ficha: guía interactiva
-│   │   ├── index.html
-│   │   └── bodas_de_sangre.pdf    # PDF publicado (dominio público)
-│   ├── iliada/             # Ficha: guía interactiva
-│   │   ├── index.html
-│   │   └── iliada.pdf             # PDF publicado (autorización de distribución)
-│   └── _plantilla/         # Plantilla para fichas nuevas
-│       └── index.html
-└── README.md
-```
 
 ## Derechos de los textos publicados
 
