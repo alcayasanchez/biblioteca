@@ -242,5 +242,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 215 páginas · traducción de Ramón Bach Pellicer, Gredos (1977/2005); difusión autorizada",
     destacado: true
+  },
+  {
+    id: "el-principe",
+    titulo: "El príncipe",
+    autor: "Nicolás Maquiavelo",
+    anio: "1532",
+    genero: "Ensayo político",
+    tipo: "Guía interactiva",
+    descripcion: "Los 26 capítulos explicados uno a uno, personajes, vocabulario del poder, línea temporal y texto completo en la traducción de Antonio Zozaya.",
+    resumen: "Un florentino despojado del cargo escribe para convencer a un Medici de que puede gobernar una Italia dividida. Su tratado clasifica los principados, desconfía de los mercenarios y pregunta si conviene ser amado o temido, mientras la fortuna cambia el tablero. Veintiséis capítulos después, el libro termina con una exhortación a liberar Italia.",
+    etiquetas: ["Teoría política", "Renacimiento", "Dominio público"],
+    portada: "👑",
+    color: ["#8a3b2f", "#a67c32"],
+    ruta: "libros/el-principe/index.html",
+    pdf: "libros/el-principe/principe.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 56 páginas · traducción de Antonio Zozaya, edición de la Imprenta Nacional de Costa Rica (2019); dominio público",
+    destacado: true
   }
 ];

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El príncipe · Biblioteca digital</title>
+<meta name="description" content="Guía interactiva de lectura de El príncipe de Nicolás Maquiavelo: los 26 capítulos, personajes, conceptos de teoría política, línea temporal y texto completo en la traducción de Antonio Zozaya.">
+<style>
+  :root{
+    --bg:#f2ede5; --bg2:#e4d8c5; --card:#fdfbf6; --ink:#2b251e; --muted:#6d6255;
+    --accent:#8a3b2f; --accent2:#a67c32; --line:#ddd1bd; --shadow:0 10px 30px rgba(93,61,35,.14);
+    --radius:16px; --max:1080px;
+  }
+  [data-theme="dark"]{
+    --bg:#1b1917; --bg2:#28231f; --card:#2c2722; --ink:#f0e8dc; --muted:#c0b4a4;
+    --accent:#e2a08e; --accent2:#e0bd7b; --line:#463d34; --shadow:0 10px 30px rgba(0,0,0,.42);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:92px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; line-height:1.7;
+    transition:background .25s,color .25s}
+  h1,h2,h3,.ui{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  h2{font-size:1.9rem; line-height:1.2; margin:0 0 .6rem}
+  h3{margin:.2rem 0 .5rem; font-size:1.05rem}
+  p{margin:.7rem 0}
+  a{color:var(--accent)}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 1.2rem}
+  .eyebrow{font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+
+  #barra-progreso{position:fixed; top:0; left:0; height:4px; width:0; background:linear-gradient(90deg,var(--accent),var(--accent2)); z-index:100; transition:width .1s linear}
+
+  header.hero{position:relative; overflow:hidden; background:linear-gradient(160deg,var(--bg2),var(--bg) 65%); border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center; padding:4.4rem 0 3.2rem}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem); line-height:1.05; margin:.4rem 0 .8rem; letter-spacing:-.03em}
+  .hero h1 em{color:var(--accent); font-style:normal}
+  .hero .lead{font-size:1.15rem; max-width:46ch; color:var(--muted)}
+  .botones{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem}
+  button,.btn{font:inherit; cursor:pointer; border-radius:999px; border:1px solid var(--line); padding:.55rem 1.05rem; background:var(--card); color:var(--ink); font-size:.9rem; text-decoration:none; display:inline-block; transition:transform .15s,border-color .15s}
+  button:hover,.btn:hover{transform:translateY(-2px); border-color:var(--accent)}
+  button.primary,.btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+  [data-theme="dark"] button.primary,[data-theme="dark"] .btn.primary{color:#1b1917}
+  .lienzo-marco{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:.8rem}
+  canvas{display:block; width:100%; height:auto; border-radius:10px}
+  .lienzo-controles{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:.55rem}
+  .lienzo-controles small{color:var(--muted); font-family:system-ui,sans-serif}
+
+  .aviso{margin:1.6rem 0 0; padding:.9rem 1.1rem; border-left:4px solid var(--accent2); background:var(--card); border-radius:0 12px 12px 0; font-size:.92rem; color:var(--muted)}
+
+  nav.barra{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.barra ul{display:flex; gap:.25rem; list-style:none; margin:0; padding:.55rem 0; overflow-x:auto; scrollbar-width:none}
+  nav.barra ul::-webkit-scrollbar{display:none}
+  nav.barra a{white-space:nowrap; text-decoration:none; color:var(--muted); font-family:system-ui,sans-serif; font-size:.85rem; padding:.45rem .75rem; border-radius:999px}
+  nav.barra a:hover,nav.barra a.activo{background:var(--card); color:var(--accent)}
+
+  section{padding:4rem 0 1rem}
+  section+section{border-top:1px solid var(--line)}
+  .cabecera-seccion{margin-bottom:1.8rem}
+  .cabecera-seccion p{color:var(--muted); max-width:70ch}
+  .rejilla{display:grid; gap:1rem}
+  .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:800px){.hero-grid,.cols-2,.cols-3{grid-template-columns:1fr}}
+
+  .tarjeta{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.3rem; box-shadow:var(--shadow)}
+  .tarjeta.num{position:relative; overflow:hidden}
+  .tarjeta.num .numero{font-family:system-ui,sans-serif; font-size:2.9rem; font-weight:800; line-height:1; color:var(--accent); opacity:.18; position:absolute; right:1rem; top:.6rem}
+  .tarjeta p{font-size:.93rem; color:var(--muted); margin-bottom:0}
+  .etiqueta{display:inline-block; font-family:system-ui,sans-serif; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--accent2); margin-bottom:.4rem}
+  .personaje{text-align:center}
+  .personaje .icono{font-size:2.2rem; display:block; margin-bottom:.3rem}
+
+  details.cap{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:.8rem; overflow:hidden}
+  details.cap summary{cursor:pointer; list-style:none; padding:1.05rem 1.2rem; display:flex; align-items:center; gap:.9rem; font-family:system-ui,sans-serif; font-weight:650}
+  details.cap summary::-webkit-details-marker{display:none}
+  details.cap summary::after{content:"＋"; margin-left:auto; color:var(--accent); font-size:1.2rem}
+  details.cap[open] summary::after{content:"－"}
+  details.cap summary .cifra{background:var(--accent); color:#fff; border-radius:8px; min-width:2rem; height:2rem; display:grid; place-items:center; font-size:.85rem}
+  [data-theme="dark"] details.cap summary .cifra{color:#1b1917}
+  .cuerpo-cap{padding:0 1.2rem 1.3rem}
+  .cuerpo-cap p{font-size:.95rem}
+  .cuerpo-cap ul{margin:.5rem 0 0; padding-left:1.2rem}
+  .cuerpo-cap li{margin:.45rem 0; font-size:.92rem; color:var(--muted)}
+  .cuerpo-cap li strong{color:var(--ink)}
+  .frase{border-left:3px solid var(--accent2); padding:.4rem 0 .4rem 1rem; margin:1.1rem 0; font-style:italic; color:var(--muted)}
+
+  .chip{border:1px solid var(--line); background:var(--card); border-radius:999px; padding:.5rem 1rem; cursor:pointer; font-family:system-ui,sans-serif; font-size:.87rem}
+  .chip:hover,.chip.activo{border-color:var(--accent); color:var(--accent)}
+  #definicion{margin-top:1rem; min-height:8.5rem}
+  #definicion h3{color:var(--accent2); font-size:1.2rem}
+
+  .cita-hero{text-align:center; padding:2.5rem 1.5rem; border-radius:var(--radius); background:linear-gradient(145deg,var(--card),var(--bg2)); border:1px solid var(--line)}
+  .cita-hero blockquote{font-size:clamp(1.25rem,2.8vw,1.85rem); line-height:1.45; margin:0; font-style:italic}
+  .cita-hero .autor{font-family:system-ui,sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1.2rem}
+
+  .timeline{position:relative; padding-left:1.8rem; margin-top:1.5rem}
+  .timeline::before{content:""; position:absolute; left:.4rem; top:.4rem; bottom:.4rem; width:2px; background:var(--line)}
+  .hito{position:relative; margin-bottom:1.4rem}
+  .hito::before{content:""; position:absolute; left:-1.58rem; top:.6rem; width:12px; height:12px; border-radius:50%; background:var(--accent2); box-shadow:0 0 0 4px var(--bg)}
+  .hito strong{font-family:system-ui,sans-serif; color:var(--accent2)}
+  .hito p{margin:.15rem 0; color:var(--muted); font-size:.93rem}
+
+  textarea{width:100%; min-height:190px; resize:vertical; padding:1rem; border-radius:14px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-family:Georgia,serif; font-size:1rem; line-height:1.6}
+  .guardado{font-family:system-ui,sans-serif; font-size:.8rem; color:var(--muted); min-height:1.2rem}
+
+  footer{padding:3rem 0 4rem; color:var(--muted); font-size:.88rem; border-top:1px solid var(--line); margin-top:3rem}
+  footer a{color:var(--accent)}
+  .progreso-leido{font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:.8rem}
+  .check-leido{display:flex; gap:.5rem; align-items:center; font-family:system-ui,sans-serif; font-size:.85rem; color:var(--muted); margin-top:1rem; cursor:pointer}
+
+  @media print{nav.barra,.botones,.lienzo-marco,#notas,#barra-progreso{display:none!important} section{padding:1.5rem 0;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="barra-progreso" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Nicolás Maquiavelo · 1469-1527</span>
+      <h1><em>El príncipe</em></h1>
+      <p class="lead">Guía interactiva de lectura: los 26 capítulos explicados uno a uno, las figuras que los pueblan, el vocabulario del poder, la fortuna y la Italia del Renacimiento, con el texto completo en la traducción de Antonio Zozaya.</p>
+      <div class="botones">
+        <a class="btn" href="../../index.html">← Biblioteca</a>
+        <a class="btn primary" href="principe.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a>
+        <a class="btn ui" href="#resumen">Empezar la lectura ↓</a>
+        <button id="tema" aria-label="Cambiar tema">◐ Modo noche</button>
+        <button id="imprimir" aria-label="Imprimir documento">⎙ Imprimir</button>
+      </div>
+      <p class="aviso"><strong>Nota:</strong> esta guía contiene resúmenes y análisis originales, además de citas breves de la traducción; el texto íntegro se ofrece en la sección «Texto completo».</p>
+    </div>
+    <div class="lienzo-marco">
+      <canvas id="fortuna" width="640" height="420" role="img" aria-label="Animación de una fortaleza sobre una colina y una rueda de la fortuna que gira frente al mar"></canvas>
+      <div class="lienzo-controles">
+        <small>«declaro que es más seguro ser temido que amado» · capítulo XVII</small>
+        <button id="animacion">❚❚ Pausar</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="barra" aria-label="Navegación por secciones">
+  <div class="wrap">
+    <ul>
+      <li><a href="#resumen">Resumen</a></li>
+      <li><a href="#estructura">Mapa</a></li>
+      <li><a href="#capitulos">Capítulos</a></li>
+      <li><a href="#personajes">Personajes</a></li>
+      <li><a href="#conceptos">Ideas</a></li>
+      <li><a href="#cita">Cita</a></li>
+      <li><a href="#linea">Contexto</a></li>
+      <li><a href="#texto">Texto completo</a></li>
+      <li><a href="#notas">Mis notas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="resumen">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">01 · El punto de partida</span>
+    <h2>Un manual incómodo sobre el poder</h2>
+    <p><em>El príncipe</em> fue escrito en 1513, cuando Maquiavelo estaba fuera del cargo y escribía para convencer a un Medici de que podía unificar Italia. No es un tratado moral ni una descripción neutral del poder: es un manual para gobernar en un mundo que el autor observa fragmentado, violento y cambiante. Su provocación consiste en separar lo que se desea que fuera del gobernante de lo que, según él, los gobernantes hacen para conservarse.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">La pregunta</span>
+      <h3>¿Cómo se conserva un Estado?</h3>
+      <p>Maquiavelo empieza por la forma: principados hereditarios, nuevos, mixtos o eclesiásticos. Después pasa a los instrumentos —armas propias, mercenarios, fortalezas— y, por último, a la conducta del príncipe: qué conviene parecer, cuándo cumplir la palabra y cómo tratar a los cortesanos.</p>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">La tensión</span>
+      <h3>Virtud, fortuna y apariencia</h3>
+      <p>La <em>virtù</em> maquiavélica no es conducta cristiana, sino energía, capacidad de adaptación y decisión. La fortuna cambia el escenario; el príncipe debe construir diques para contenerla. Buena parte del libro se dedica a discernir cuándo conviene ser clemente, generoso o leal, y cuándo esas cualidades pueden arruinar al Estado.</p>
+    </article>
+  </div>
+  <p class="frase">«No he adornado ni hinchado esta obra con cláusulas interminables, ni con palabras ampulosas y magníficas…» Dedicatoria a Lorenzo de' Medici.</p>
+</section>
+
+<section id="estructura">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">02 · Mapa de la obra</span>
+    <h2>Una dedicatoria y veintiséis capítulos</h2>
+    <p>El recorrido no es cronológico, sino deliberado: primero los tipos de Estado, luego los medios de defensa, después el carácter del gobernante y, al final, Italia y la fortuna. Los bloques siguientes agrupan los capítulos para leerlos sin perder el hilo.</p>
+  </div>
+  <div class="rejilla cols-3">
+    <article class="tarjeta num"><span class="numero">I-V</span><span class="etiqueta">Formas</span><h3>Clases de principados</h3><p>Hereditarios, nuevos, mixtos y eclesiásticos; cómo se conservan y por qué fracasan los que dependen de otros.</p></article>
+    <article class="tarjeta num"><span class="numero">VI-IX</span><span class="etiqueta">Fundación</span><h3>Adquirir un Estado</h3><p>Armas propias, fortuna ajena, crímenes y apoyo popular: las vías de acceso al poder y sus costos.</p></article>
+    <article class="tarjeta num"><span class="numero">X-XIV</span><span class="etiqueta">Fuerza</span><h3>Medios de defensa</h3><p>Medir las fuerzas, evitar mercenarios y auxiliares, formar milicias propias y hacer de la guerra un oficio.</p></article>
+    <article class="tarjeta num"><span class="numero">XV-XIX</span><span class="etiqueta">Carácter</span><h3>El príncipe ante los demás</h3><p>Generosidad, avaricia, clemencia, temor, fe jurada y popularidad: la conducta se juzga por sus resultados.</p></article>
+    <article class="tarjeta num"><span class="numero">XX-XXIII</span><span class="etiqueta">Gobierno</span><h3>Prudencia y corte</h3><p>Fortalezas, secretarios, aduladores y la imagen pública: el libro se vuelve una guía de decisiones concretas.</p></article>
+    <article class="tarjeta num"><span class="numero">XXIV-XXVI</span><span class="etiqueta">Final</span><h3>Italia y fortuna</h3><p>Diagnóstico de la decadencia italiana, resistencia a la suerte y exhortación final a liberar el país.</p></article>
+    <article class="tarjeta num"><span class="numero">✓</span><span class="etiqueta">Tu lectura</span><h3>Marca tu avance</h3><p>Abre los siete bloques y ve marcando los que hayas trabajado. El progreso se guarda en este navegador.</p><label class="check-leido"><input type="checkbox" id="check-general"> He repasado el mapa</label></article>
+  </div>
+  <div class="progreso-leido" id="progreso-leido">Progreso: 0 de 8 apartados</div>
+</section>
+
+<section id="capitulos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">03 · Capítulo a capítulo</span>
+    <h2>Los veintiséis pasos del argumento</h2>
+    <p>Abre cada bloque para ver el título y una síntesis de todos sus capítulos. Las negritas señalan el asunto central de cada uno.</p>
+  </div>
+
+  <details class="cap" open>
+    <summary><span class="cifra">01</span> Dedicatoria y capítulos I-V · Los tipos de Estado</summary>
+    <div class="cuerpo-cap">
+      <p>Maquiavelo ofrece su libro a Lorenzo de' Medici y enseguida clasifica los principados. La pregunta inicial es siempre la misma: ¿qué clase de poder se heredó, cómo se adquirió y qué hace falta para conservarlo?</p>
+      <ul>
+        <li><strong>Dedicatoria.</strong> El autor presenta su experiencia política como el regalo más útil que puede hacer al príncipe.</li>
+        <li><strong>I. Distintas clases de principados.</strong> República o principado; hereditario o nuevo; adquirido con armas propias, ajenas, suerte o virtud.</li>
+        <li><strong>II. Principados hereditarios.</strong> Basta con no alterar el orden heredado y contemporizar con los cambios.</li>
+        <li><strong>III. Principados mixtos.</strong> Las dificultades aparecen al incorporar un territorio distinto: los antiguos señores y los nuevos súbditos tensionan el gobierno.</li>
+        <li><strong>IV. El reino de Darío.</strong> Alejandro lo conquista sin sublevaciones; el ejemplo sirve para explicar por qué los grandes imperios pueden caer sin resistencia.</li>
+        <li><strong>V. Ciudades con leyes propias.</strong> Conservarlas exige residir allí, respetar sus costumbres o arrasarlas: los caminos intermedios son peligrosos.</li>
+      </ul>
+      <p class="frase">«Los dominios así adquiridos están acostumbrados a vivir bajo un príncipe o a ser libres; y se adquieren por las armas propias o por las ajenas, por la suerte o por la virtud» Capítulo I.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="bloque1"> Bloque leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">02</span> Capítulos VI-IX · Cómo se adquiere el poder</summary>
+    <div class="cuerpo-cap">
+      <p>Aquí el tono se vuelve más crudo: el autor examina el mérito personal, la fortuna ajena, el crimen y el consentimiento popular como vías de acceso al principado.</p>
+      <ul>
+        <li><strong>VI. Armas propias y talento.</strong> Moisés, Ciro, Teseo y Rómulo aparecen como fundadores que supieron crear instituciones nuevas.</li>
+        <li><strong>VII. Fortuna de otros.</strong> Quien llega con ejércitos ajenos depende de quien se los presta; apenas cambian las alianzas, el Estado se deshace.</li>
+        <li><strong>VIII. Crímenes para reinar.</strong> Agátocles y Oliverotto muestran que el éxito puede obtenerse sin virtud moral, aunque no sin infamia.</li>
+        <li><strong>IX. Principado civil.</strong> El apoyo del pueblo puede sostener al príncipe mejor que el de los nobles, porque sus aspiraciones son más sencillas.</li>
+      </ul>
+      <p class="frase">«Verdad que no se puede llamar virtud el matar a los conciudadanos, el traicionar a los amigos y el carecer de fe, de piedad y de religión…» Capítulo VIII.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="bloque2"> Bloque leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">03</span> Capítulos X-XIV · Las armas y el territorio</summary>
+    <div class="cuerpo-cap">
+      <p>La independencia militar es una condición de supervivencia. Maquiavelo recorre las fuerzas de los príncipes, denuncia a los mercenarios y exige un ejército propio.</p>
+      <ul>
+        <li><strong>X. Medir las fuerzas.</strong> Un príncipe debe saber si puede resistir por sí solo o si necesita aliados antes de cometer una imprudencia.</li>
+        <li><strong>XI. Principados eclesiásticos.</strong> Los Estados de la Iglesia se mantienen por la religión y la costumbre; el autor los considera un caso aparte.</li>
+        <li><strong>XII. Mercenarios.</strong> Son caros, desleales y rápidos en huir: el peligro no está solo en la batalla, sino en depender de ellos.</li>
+        <li><strong>XIII. Auxiliares, mixtos y propios.</strong> Los refuerzos ajenos pueden decidir la victoria, pero quien los envía se convierte en árbitro del Estado.</li>
+        <li><strong>XIV. Deberes militares.</strong> El príncipe debe estudiar la guerra, entrenar a los suyos y conocer el terreno.</li>
+      </ul>
+      <p class="frase">«Concluyo, pues, que sin milicias propias no hay principado seguro» Capítulo XIV.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="bloque3"> Bloque leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">04</span> Capítulos XV-XIX · Reputación, fe y temor</summary>
+    <div class="cuerpo-cap">
+      <p>El corazón polémico del libro. Maquiavelo analiza las cualidades por las que un príncipe es alabado o censurado y las somete a una pregunta: ¿sirven para conservar el Estado?</p>
+      <ul>
+        <li><strong>XV. Alabanzas y censuras.</strong> Algunas virtudes arruinan y algunos vicios salvan; importa el juicio de los resultados.</li>
+        <li><strong>XVI. Prodigalidad y avaricia.</strong> Gastar demasiado agota al pueblo; ser tacaño, si permite defender el Estado sin nuevas cargas, acaba pareciendo generoso.</li>
+        <li><strong>XVII. Clemencia y temor.</strong> La clemencia mal usada alimenta el desorden; cuando no se puede ser amado y temido, conviene ser temido sin caer en la crueldad.</li>
+        <li><strong>XVIII. Cumplir promesas.</strong> El príncipe debe saber actuar como hombre y como bestia: la letra del pacto no puede aplicarse cuando las circunstancias han cambiado.</li>
+        <li><strong>XIX. Evitar el desprecio y el odio.</strong> La avaricia, la ligereza y la cambiante conducta pública fabrican enemigos; la estabilidad y la dignidad protegen.</li>
+      </ul>
+      <p class="frase">«Digamos primero que hay dos maneras de combatir: una, con las leyes; otra, con la fuerza» Capítulo XVIII.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="bloque4"> Bloque leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">05</span> Capítulos XX-XXIII · Prudencia cotidiana y cortesanos</summary>
+    <div class="cuerpo-cap">
+      <p>El análisis se vuelve casi doméstico: fortalezas, consejeros y aduladores. Lo que antes eran grandes principios aquí se convierte en reglas de conducta diaria.</p>
+      <ul>
+        <li><strong>XX. Fortalezas y otras medidas.</strong> Las fortalezas sirven en unos territorios y estorban en otros; tampoco conviene confiscar bienes ni multiplicar cargos sin medida.</li>
+        <li><strong>XXI. Cómo ser estimado.</strong> El príncipe debe aparecer como amante de la virtud, honrar las artes, premiar el trabajo y mantener la dignidad del cargo.</li>
+        <li><strong>XXII. Los secretarios.</strong> Un buen secretario conoce el carácter del príncipe y sabe anticipar sus deseos; el mal secretario se apoya solo en la confianza.</li>
+        <li><strong>XXIII. Los aduladores.</strong> El remedio no es prohibir hablar, sino preguntar a personas de buen juicio, escucharlas y decidir con firmeza.</li>
+      </ul>
+      <p class="frase">«no hay otra manera de evitar la adulación que el hacer comprender a los hombres que no ofenden al decir la verdad» Capítulo XXIII.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="bloque5"> Bloque leído</label>
+    </div>
+  </details>
+
+  <details class="cap">
+    <summary><span class="cifra">06</span> Capítulos XXIV-XXVI · Italia y la fortuna</summary>
+    <div class="cuerpo-cap">
+      <p>El libro se cierra con un diagnóstico histórico y una exhortación. Maquiavelo pasa de la técnica de gobierno a la esperanza —y la exigencia— de un príncipe que renueve Italia.</p>
+      <ul>
+        <li><strong>XXIV. Por qué perdieron sus Estados los príncipes italianos.</strong> Las causas son la dependencia de tropas ajenas, la desunión y la costumbre de no prever el peligro.</li>
+        <li><strong>XXV. Fortuna y medios para resistirla.</strong> La suerte golpea donde no hay defensas; la virtud humana levanta diques y reprocha a Italia su falta de ellos.</li>
+        <li><strong>XXVI. Exhortación final.</strong> El autor reclama un nuevo príncipe que libere Italia y cierra con una cita de Petrarca sobre el valor que aún no ha muerto.</li>
+      </ul>
+      <p class="frase">«Así sucede con la fortuna, que se manifiesta con todo su poder allí donde no hay virtud preparada para resistirle…» Capítulo XXV.</p>
+      <label class="check-leido"><input type="checkbox" class="cap-check" value="bloque6"> Bloque leído</label>
+    </div>
+  </details>
+</section>
+
+<section id="personajes">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">04 · Personajes</span>
+    <h2>Los nombres que cruzan el tratado</h2>
+    <p>Pulsa una tarjeta para descubrir quién es cada figura y qué función cumple en el argumento de Maquiavelo.</p>
+  </div>
+  <div class="rejilla cols-3" id="personajes-grid"></div>
+  <div class="tarjeta" id="ficha-personaje" aria-live="polite" style="margin-top:1rem; min-height:7rem">
+    <h3>Elige un personaje</h3>
+    <p>Las descripciones aparecen aquí.</p>
+  </div>
+</section>
+
+<section id="conceptos">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">05 · Ideas</span>
+    <h2>El vocabulario del poder</h2>
+    <p>Pulsa una etiqueta para ver qué significa cada término en el contexto de <em>El príncipe</em>.</p>
+  </div>
+  <div class="rejilla" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))" id="chips">
+    <button class="chip" data-k="principado">Principado</button>
+    <button class="chip" data-k="virtud">Virtù</button>
+    <button class="chip" data-k="fortuna">Fortuna</button>
+    <button class="chip" data-k="armas">Armas propias</button>
+    <button class="chip" data-k="mercenarios">Mercenarios</button>
+    <button class="chip" data-k="apariencia">Apariencia</button>
+    <button class="chip" data-k="clemencia">Clemencia</button>
+    <button class="chip" data-k="fe">Fe jurada</button>
+    <button class="chip" data-k="temor">Temor</button>
+    <button class="chip" data-k="pueblo">El pueblo</button>
+    <button class="chip" data-k="adulacion">Adulación</button>
+    <button class="chip" data-k="razon">Razón de Estado</button>
+  </div>
+  <div class="tarjeta" id="definicion" aria-live="polite" style="margin-top:1rem; min-height:8.5rem">
+    <h3>Elige un concepto</h3>
+    <p>Las definiciones aparecen aquí al pulsar cualquiera de las etiquetas.</p>
+  </div>
+</section>
+
+<section id="cita">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">06 · La frase más discutida</span>
+    <h2>Amar, temer y gobernar</h2>
+  </div>
+  <div class="cita-hero">
+    <blockquote>«de la generalidad de los hombres se puede decir esto: que son ingratos, volubles, simuladores, cobardes ante el peligro y ávidos de lucro»</blockquote>
+    <div class="autor">Maquiavelo · El príncipe, capítulo XVII</div>
+    <p style="max-width:62ch;margin:1.6rem auto 0;color:var(--muted)">La frase suele citarse sola, pero pertenece a un argumento más matizado: Maquiavelo prefiere ser amado y temido a la vez y solo presenta el temor como opción cuando los hombres no se mantienen unidos por la gratitud. Más adelante añade otra advertencia: el príncipe debe evitar el odio, aunque no pueda evitar el temor.</p>
+  </div>
+</section>
+
+<section id="linea">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">07 · Contexto</span>
+    <h2>Entre Florencia y los Medici</h2>
+    <p>Algunas fechas para situar la escritura del libro, su recepción y la edición digital que se publica aquí.</p>
+  </div>
+  <div class="timeline">
+    <div class="hito"><strong>1469</strong><p>Nace en Florencia, en una familia de escasos recursos. Su formación humanística le da una sólida cultura clásica y latina.</p></div>
+    <div class="hito"><strong>1494-1498</strong><p>Cae los Medici y se instaura la república. Maquiavelo entra en la cancillería florentina y empieza a viajar como enviado diplomático.</p></div>
+    <div class="hito"><strong>1502-1512</strong><p>Observa de cerca a César Borgia, organiza la milicia florentina y escribe sus informes políticos y militares, además de <em>Discursos</em>.</p></div>
+    <div class="hito"><strong>1513</strong><p>Con los Medici de nuevo en el poder, es apartado del cargo y escribe <em>El príncipe</em> en el exilio de Sant'Andrea in Percussina. La obra se dedica a Lorenzo de' Medici.</p></div>
+    <div class="hito"><strong>1521 / 1527</strong><p>Publica <em>Del arte de la guerra</em> y muere en Florencia en 1527. <em>El príncipe</em> se difunde primero en copias manuscritas y se imprime en 1532.</p></div>
+    <div class="hito"><strong>Siglos XIX-XXI</strong><p>Antonio Zozaya (1859-1943) realiza una traducción castellana que hoy es de dominio público. Wikisource la difunde y la Imprenta Nacional de Costa Rica prepara una edición digital en 2019.</p></div>
+    <div class="hito"><strong>2019 / hoy</strong><p>El PDF consultado tiene 56 páginas e ISBN 978-9977-58-505-5. Se publica en esta biblioteca por tratarse de una obra y una traducción de dominio público.</p></div>
+  </div>
+</section>
+
+<section id="texto">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">08 · Texto completo</span>
+    <h2>Leer el tratado íntegro</h2>
+    <p>Podrás consultar la dedicatoria y los veintiséis capítulos en la edición digital de la Imprenta Nacional de Costa Rica, con la traducción de Antonio Zozaya.</p>
+  </div>
+  <div class="rejilla cols-2">
+    <article class="tarjeta">
+      <span class="etiqueta">PDF · dominio público</span>
+      <h3>El príncipe, Nicolás Maquiavelo</h3>
+      <p>Editorial Digital, Imprenta Nacional, San José de Costa Rica, primera edición de mayo de 2019; 56 páginas. Fuente declarada: Wikisource; traducción castellana de Antonio Zozaya.</p>
+      <div class="botones">
+        <a class="btn primary" href="principe.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a>
+        <a class="btn" href="principe.pdf" download>Descargar PDF</a>
+      </div>
+    </article>
+    <article class="tarjeta">
+      <span class="etiqueta">Situación de derechos</span>
+      <h3>Obra y traducción libres</h3>
+      <p>Maquiavelo murió en 1527 y el traductor Antonio Zozaya en 1943, de modo que tanto el texto original como esta versión castellana están en dominio público en España y en la Unión Europea. La edición digital indicada declara como fuente Wikisource.</p>
+      <div class="botones"><a class="btn" href="https://es.wikisource.org/wiki/El_pr%C3%ADncipe" target="_blank" rel="noopener">Fuente en Wikisource ↗</a></div>
+    </article>
+  </div>
+  <p class="aviso"><strong>Derechos:</strong> la obra y la traducción son de dominio público; la edición digital procede de la Imprenta Nacional de Costa Rica y declara Wikisource como fuente. Los resúmenes, definiciones y análisis de esta ficha son originales y contienen solo citas breves.</p>
+</section>
+
+<section id="notas">
+  <div class="cabecera-seccion">
+    <span class="eyebrow">09 · Tu espacio</span>
+    <h2>Mis notas de lectura</h2>
+    <p>Escribe aquí tus citas, dudas o ideas. El contenido se guarda automáticamente en este navegador y puedes descargarlo como texto.</p>
+  </div>
+  <textarea id="area-notas" placeholder="Ej.: ¿es el temor una herramienta legítima de gobierno en este argumento?&#10;¿qué capítulo resulta más incómodo y por qué?"></textarea>
+  <div class="botones">
+    <button id="descargar">⬇ Descargar notas (.txt)</button>
+    <button id="borrar">Borrar notas</button>
+  </div>
+  <div class="guardado" id="estado-notas"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>El príncipe · guía interactiva.</strong> Resúmenes y definiciones originales para orientar la lectura del tratado de Maquiavelo. Para contrastar datos, consulta la <a href="https://es.wikipedia.org/wiki/El_pr%C3%ADncipe" target="_blank" rel="noopener">entrada de Wikipedia</a> y la <a href="https://es.wikisource.org/wiki/El_pr%C3%ADncipe" target="_blank" rel="noopener">fuente en Wikisource</a>.</p>
+    <p><a href="../../index.html">← Volver a la biblioteca</a> · Hecho con HTML, CSS y JavaScript sin dependencias externas.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  /* Tema compartido con la portada */
+  const guardarTema = t => { try{ localStorage.setItem('biblioteca-tema', t); }catch(e){} };
+  let tema = 'claro';
+  try{ tema = localStorage.getItem('biblioteca-tema') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro'); }catch(e){}
+
+  const canvas = $('#fortuna'), ctx = canvas.getContext('2d');
+  const btnAnim = $('#animacion');
+  let enMarcha = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0;
+
+  function colores(){
+    const oscuro = document.documentElement.dataset.theme === 'dark';
+    return oscuro
+      ? {cielo:'#28231f', mar:'#352d27', colina:'#4a3d31', muro:'#6b5847', torre:'#8c6f56', rueda:'#e0bd7b', luz:'#f2c98c', texto:'#c0b4a4'}
+      : {cielo:'#e4d8c5', mar:'#c5b39a', colina:'#9c8769', muro:'#b19a7c', torre:'#c3a986', rueda:'#8a3b2f', luz:'#f0cd88', texto:'#6d6255'};
+  }
+  function dibujarEscena(){
+    if(!ctx) return;
+    const c = colores(), W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+
+    const cielo = ctx.createLinearGradient(0,0,0,H);
+    cielo.addColorStop(0,c.cielo); cielo.addColorStop(1,c.mar);
+    ctx.fillStyle = cielo; ctx.fillRect(0,0,W,H);
+
+    ctx.fillStyle = c.luz;
+    ctx.beginPath(); ctx.arc(548,72,24,0,Math.PI*2); ctx.fill();
+    for(let i=0;i<24;i++){
+      ctx.globalAlpha = .25 + .4*Math.abs(Math.sin(i+t*.01));
+      ctx.beginPath(); ctx.arc((i*137)%W,26+((i*53)%130),1.3,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    ctx.fillStyle = c.colina;
+    ctx.beginPath(); ctx.moveTo(0,330); ctx.quadraticCurveTo(210,176,470,336); ctx.lineTo(640,336); ctx.lineTo(640,420); ctx.lineTo(0,420); ctx.fill();
+
+    ctx.fillStyle = c.muro;
+    ctx.fillRect(292,230,86,86);
+    ctx.fillStyle = c.torre;
+    ctx.fillRect(282,208,106,24);
+    ctx.fillRect(296,176,22,34); ctx.fillRect(352,176,22,34);
+    ctx.fillRect(326,262,18,54);
+    ctx.fillStyle = c.luz; ctx.fillRect(320,200,10,12);
+
+    ctx.save();
+    ctx.translate(130,286);
+    ctx.rotate(t*.012);
+    ctx.strokeStyle = c.rueda; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.arc(0,0,54,0,Math.PI*2); ctx.stroke();
+    for(let i=0;i<8;i++){
+      const a = i*Math.PI/4;
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(Math.cos(a)*54,Math.sin(a)*54); ctx.stroke();
+    }
+    ctx.fillStyle = c.rueda;
+    ctx.beginPath(); ctx.arc(0,0,9,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+
+    ctx.strokeStyle = c.luz; ctx.lineWidth = 2; ctx.globalAlpha = .5;
+    for(let i=0;i<4;i++){
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=18){ const y=366+i*13+Math.sin((x*.02)+t*.03+i)*4; if(x===0)ctx.moveTo(x,y); else ctx.lineTo(x,y); }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    ctx.fillStyle = c.texto; ctx.font = '14px system-ui,sans-serif';
+    ctx.fillText('fortuna · virtù · timore', 24, 402);
+  }
+  function bucle(){
+    if(!enMarcha) return;
+    t += 1;
+    dibujarEscena();
+    requestAnimationFrame(bucle);
+  }
+  function aplicarTema(){
+    document.documentElement.dataset.theme = tema === 'oscuro' ? 'dark' : 'light';
+    $('#tema').textContent = tema === 'oscuro' ? '☀ Modo día' : '◐ Modo noche';
+    dibujarEscena();
+  }
+  $('#tema').addEventListener('click', () => { tema = tema === 'oscuro' ? 'claro' : 'oscuro'; guardarTema(tema); aplicarTema(); });
+  $('#imprimir').addEventListener('click', () => print());
+  btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+  btnAnim.addEventListener('click', () => {
+    enMarcha = !enMarcha;
+    btnAnim.textContent = enMarcha ? '❚❚ Pausar' : '▶ Reanudar';
+    if(enMarcha) requestAnimationFrame(bucle); else dibujarEscena();
+  });
+  aplicarTema();
+  if(enMarcha) requestAnimationFrame(bucle);
+  addEventListener('resize', dibujarEscena);
+
+  /* Progreso y navegación */
+  const barra = $('#barra-progreso');
+  function actualizarProgreso(){
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    barra.style.width = (total > 0 ? (h.scrollTop / total) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', actualizarProgreso, {passive:true});
+  addEventListener('resize', actualizarProgreso);
+  actualizarProgreso();
+
+  if('IntersectionObserver' in window){
+    const enlaces = $$('nav.barra a');
+    const observer = new IntersectionObserver(entradas => {
+      entradas.forEach(e => {
+        if(e.isIntersecting){
+          enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, {rootMargin:'-25% 0px -65% 0px'});
+    $$('main section').forEach(s => observer.observe(s));
+  }
+
+  /* Personajes */
+  const personajes = [
+    {n:"Nicolás Maquiavelo",i:"🖋️",d:"Florentino secretario de la república, enviado diplomático y autor del tratado. Escribe desde la experiencia y desde la marginación política."},
+    {n:"Lorenzo de' Medici",i:"💍",d:"Destinatario de la dedicatoria. Maquiavelo le ofrece su conocimiento del gobierno con la esperanza de que renueve el poder florentino."},
+    {n:"César Borgia",i:"⚔️",d:"Hijo del papa Alejandro VI y modelo ambiguo del libro: cruel, audaz y capaz de fundar un Estado, aunque privado de virtud moral."},
+    {n:"Alejandro VI",i:"⛪",d:"Papa de la familia Borgia. Bajo su pontificado se mueven varias de las figuras que el autor usa como ejemplos."},
+    {n:"Moisés",i:"📜",d:"Fundador de un pueblo y de leyes. Aparece entre quienes adquieren un principado con armas propias y talento personal."},
+    {n:"Ciro",i:"🏹",d:"Rey persa que funda un imperio. Sirve de ejemplo de fundador que crea instituciones duraderas."},
+    {n:"Teseo",i:"🐂",d:"Héroe ateniense citado como fundador. Su paso muestra que el origen de los Estados nuevos no siempre es pacífico."},
+    {n:"Rómulo",i:"🐺",d:"Fundador de Roma. Completa la serie de grandes fundadores que Maquiavelo presenta en el capítulo VI."},
+    {n:"Agátocles",i:"🔪",d:"Tirano de Siracusa. Consiguió el poder por crímenes; el autor lo admira por su energía y lo excluye de los hombres ilustres."},
+    {n:"Oliverotto da Fermo",i:"🎭",d:"Condottiero que llegó al poder mediante la traición. Su historia ilustra el precio y la fragilidad del principado criminal."},
+    {n:"Carmagnola",i:"🛡️",d:"Capitán de los venecianos. Su caso demuestra los peligros de depender de un jefe militar poderoso."},
+    {n:"Fray Lucas Rinaldi",i:"🎙️",d:"Embajador ante Maximiliano. Su observación sobre el emperador sirve para explicar por qué cambiar de parecer destruye la autoridad."}
+  ];
+  const pg = $('#personajes-grid');
+  personajes.forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'tarjeta personaje';
+    b.innerHTML = '<span class="icono">' + p.i + '</span><h3>' + p.n + '</h3>';
+    b.addEventListener('click', () => {
+      $$('#personajes-grid .tarjeta').forEach(x => x.style.borderColor = '');
+      b.style.borderColor = 'var(--accent)';
+      $('#ficha-personaje').innerHTML = '<h3>' + p.n + '</h3><p>' + p.d + '</p>';
+    });
+    pg.appendChild(b);
+  });
+
+  /* Conceptos */
+  const definiciones = {
+    principado:['Principado','Estado gobernado por un príncipe. Maquiavelo lo distingue de la república y lo clasifica según su origen: hereditario, nuevo, mixto o eclesiástico.'],
+    virtud:['Virtù','Energía, capacidad de decisión y adaptación a las circunstancias. No se identifica con la moral cristiana, sino con la fuerza que permite fundar y conservar un Estado.'],
+    fortuna:['Fortuna','El azar y la mudanza de las cosas humanas. El libro no niega su poder, pero exige preparar defensas —«diques y reparos»— antes de que llegue la inundación.'],
+    armas:['Armas propias','Ejército formado y dirigido por el propio príncipe. Para el autor es la base de la seguridad: las tropas ajenas crean dependencia.'],
+    mercenarios:['Mercenarios','Soldados contratados por dinero. Maquiavelo los describe como caros, poco leales y peligrosos precisamente cuando se les necesita.'],
+    apariencia:['Apariencia','La imagen que el príncipe muestra en público. El consejo no es solo parecer bueno, sino saber no serlo cuando conservar el Estado lo exige.'],
+    clemencia:['Clemencia','Perdón y trato benigno. El libro advierte contra su empleo mal calculado: una piedad que prolonga el desorden puede causar más daño que el rigor.'],
+    fe:['Fe jurada','Cumplimiento de la palabra dada. Maquiavelo reconoce que es digno de alabanza, pero sostiene que un príncipe prudente no puede atarse a ella cuando las circunstancias cambian.'],
+    temor:['Temor','Una de las dos vías de obediencia, junto al amor. El autor la considera más segura, pero recomienda no llegar a la crueldad ni al odio.'],
+    pueblo:['El pueblo','Para Maquiavelo, sus deseos son más moderados que los de los nobles: quiere seguridad y poder vivir tranquilo. Por eso puede ser un apoyo más estable.'],
+    adulacion:['Adulación','Alabanza interesada que impide oír la verdad. El remedio propuesto es elegir consejeros de buen juicio, preguntarles y decidir con firmeza.'],
+    razon:['Razón de Estado','La lógica que evalúa las decisiones por su utilidad para conservar el Estado. Es el marco en el que se interpretan muchas recomendaciones polémicas del libro.']
+  };
+  $$('#chips .chip').forEach(chip => chip.addEventListener('click', () => {
+    $$('#chips .chip').forEach(c => c.classList.remove('activo'));
+    chip.classList.add('activo');
+    const d = definiciones[chip.dataset.k];
+    $('#definicion').innerHTML = '<h3>' + d[0] + '</h3><p>' + d[1] + '</p>';
+  }));
+
+  /* Progreso guardado */
+  const checks = $$('.cap-check');
+  const checkGeneral = $('#check-general');
+  const clave = 'principe-leidos';
+  let leidos = {};
+  try{ leidos = JSON.parse(localStorage.getItem(clave) || '{}'); }catch(e){ leidos = {}; }
+  function sincronizar(){
+    checks.forEach(c => c.checked = !!leidos[c.value]);
+    checkGeneral.checked = !!leidos.general;
+    const n = Object.values(leidos).filter(Boolean).length;
+    $('#progreso-leido').textContent = 'Progreso: ' + n + ' de 8 apartados';
+  }
+  function guardarProgreso(){
+    leidos = {};
+    checks.forEach(c => { if(c.checked) leidos[c.value] = true; });
+    if(checkGeneral.checked) leidos.general = true;
+    try{ localStorage.setItem(clave, JSON.stringify(leidos)); }catch(e){}
+    sincronizar();
+  }
+  checks.forEach(c => c.addEventListener('change', guardarProgreso));
+  checkGeneral.addEventListener('change', guardarProgreso);
+  sincronizar();
+
+  /* Notas personales */
+  const area = $('#area-notas'), estado = $('#estado-notas');
+  try{ area.value = localStorage.getItem('principe-notas') || ''; }catch(e){}
+  let temporizador;
+  area.addEventListener('input', () => {
+    clearTimeout(temporizador);
+    estado.textContent = 'Escribiendo…';
+    temporizador = setTimeout(() => {
+      try{ localStorage.setItem('principe-notas', area.value); estado.textContent = 'Guardado ✔'; }
+      catch(e){ estado.textContent = 'No se pudo guardar en este navegador.'; }
+    }, 400);
+  });
+  $('#descargar').addEventListener('click', () => {
+    const blob = new Blob([area.value], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mis-notas-el-principe.txt';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('#borrar').addEventListener('click', () => {
+    if(!confirm('¿Borrar todas las notas guardadas?')) return;
+    area.value = '';
+    try{ localStorage.removeItem('principe-notas'); }catch(e){}
+    estado.textContent = 'Notas borradas.';
+  });
+})();
+</script>
+</body>
+</html>
