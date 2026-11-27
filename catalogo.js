@@ -206,5 +206,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 568 páginas · edición Ediciones La Cueva/escolar.com; difusión autorizada",
     destacado: true
+  },
+  {
+    id: "divina-comedia",
+    titulo: "La Divina Comedia",
+    autor: "Dante Alighieri",
+    anio: "1321",
+    genero: "Poesía",
+    tipo: "Guía interactiva",
+    descripcion: "Los cien cantos, tres reinos, personajes, ideas, línea temporal y texto completo en la traducción de Bartolomé Mitre.",
+    resumen: "Un caminante se pierde en una selva oscura y recorre el infierno, el purgatorio y los cielos guiado sucesivamente por Virgilio, Beatriz y san Bernardo. Cien cantos después, el poema se detiene ante una luz que la lengua no alcanza: el amor que mueve el sol y las estrellas.",
+    etiquetas: ["Poesía épica", "Viaje alegórico", "Autorizada"],
+    portada: "🌌",
+    color: ["#33477d", "#a8792c"],
+    ruta: "libros/divina-comedia/index.html",
+    pdf: "libros/divina-comedia/divina_comedia.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 667 páginas · traducción de Bartolomé Mitre, edición de 1922; difusión autorizada",
+    destacado: true
   }
 ];
