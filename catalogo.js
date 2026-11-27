@@ -116,5 +116,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 79 páginas · publicado con autorización del titular",
     destacado: true
+  },
+  {
+    id: "crimen-y-castigo",
+    titulo: "Crimen y castigo",
+    autor: "Fiódor Dostoyevski",
+    anio: "1866",
+    genero: "Novela",
+    tipo: "Guía interactiva",
+    descripcion: "Las seis partes y el epílogo, personajes, claves del delito y la conciencia, línea temporal y texto completo en castellano.",
+    resumen: "Un estudiante pobre de Petersburgo lleva su teoría sobre los hombres extraordinarios hasta el asesinato de una usurera y descubre que el verdadero castigo empieza antes del juicio: fiebre, miedo y una conciencia que no acepta explicaciones. Dostoyevski convierte la pesquisa policial en un interrogatorio interior y termina con una confesión que es también un primer paso para volver a vivir.",
+    etiquetas: ["Clásico ruso", "Conciencia", "Dominio público"],
+    portada: "🕯️",
+    color: ["#6b4c6e", "#a77a53"],
+    ruta: "libros/crimen-y-castigo/index.html",
+    pdf: "libros/crimen-y-castigo/crimen_y_castigo.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 496 páginas · traducción anónima de 1951, dominio público",
+    destacado: true
   }
 ];
