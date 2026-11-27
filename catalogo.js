@@ -80,5 +80,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 567 páginas · publicado con autorización de distribución",
     destacado: true
+  },
+  {
+    id: "arte-de-la-guerra",
+    titulo: "El arte de la guerra",
+    autor: "Sun Tzu",
+    anio: "siglo V a. C.",
+    genero: "Tratado",
+    tipo: "Guía interactiva",
+    descripcion: "Los 13 capítulos explicados en bloques, seis principios de estrategia, vocabulario, contexto y texto completo en castellano.",
+    resumen: "Sun Tzu invierte la lógica del combate: la victoria superior no se consigue peleando mejor, sino evitando la pelea innecesaria. Evaluar, engañar, atacar lo desprotegido y adaptarse al terreno convierten este breve tratado militar en una guía de decisión que sigue aplicándose a la empresa, la política y la vida.",
+    etiquetas: ["Estrategia", "Pensamiento chino", "Libre difusión"],
+    portada: "📜",
+    color: ["#3f4a3b", "#7c8b5a"],
+    ruta: "libros/arte-de-la-guerra/index.html",
+    pdf: "libros/arte-de-la-guerra/el_arte_de_la_guerra.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 57 páginas · texto de libre difusión",
+    destacado: true
   }
 ];
