@@ -54,6 +54,9 @@ biblioteca/
 │   ├── el-principe/        # Ficha: guía interactiva
 │   │   ├── index.html
 │   │   └── principe.pdf               # PDF publicado (dominio público)
+│   ├── hamlet/             # Ficha: guía interactiva
+│   │   ├── index.html
+│   │   └── hamlet.pdf                 # PDF publicado (dominio público)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -75,6 +78,7 @@ biblioteca/
 - *La Divina Comedia*, de Dante Alighieri: poema compuesto hacia 1321 (el autor murió ese año), de dominio público. El PDF usa la traducción en verso de Bartolomé Mitre (1821-1906), también de dominio público, en la edición definitiva de 1922 dirigida por Nicolás Besio Moreno (1879-1962); el prólogo y las notas de este último podrían estar protegidos hasta 2033. El archivo se publica aquí con autorización confirmada del usuario para esta biblioteca.
 - *Meditaciones*, de Marco Aurelio: texto griego del siglo II, de dominio público. El PDF corresponde a la Biblioteca Clásica Gredos, 5: introducción de Carlos García Gual y traducción y notas de Ramón Bach Pellicer (Editorial Gredos, 1977; reimpresión de 2005), elementos todavía protegidos; se publica aquí con autorización confirmada del usuario para esta biblioteca.
 - *El príncipe*, de Nicolás Maquiavelo: obra escrita en 1513 y publicada en 1532 (el autor murió en 1527), de dominio público. El PDF usa la traducción castellana de Antonio Zozaya (1859-1943), también de dominio público, y procede de la edición digital de la Imprenta Nacional de Costa Rica de 2019, que declara «Fuente: Wikisource»; por tanto puede difundirse sin autorización adicional.
+- *Hamlet*, de William Shakespeare: tragedia publicada en 1602 (el autor murió en 1616), de dominio público. El PDF usa la traducción de Leandro Fernández de Moratín (1760-1828) para Casa Editorial Maucci y procede de Elejandría, que declara este libro electrónico libre de restricciones de derechos de autor en España; por tanto puede difundirse sin autorización adicional.
 
 Las guías interactivas son elaboraciones originales: contienen resúmenes propios, análisis y citas breves, no una copia de las obras.
 
@@ -91,7 +95,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 5. Comprueba que la ficha abre y que aparece en el catálogo.
 6. Antes de publicar un texto, confirma que es de dominio público o que tienes autorización de distribución, y anótalo aquí y en la sección «Derechos de los textos publicados».
 
-Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra*, *El extranjero*, *Crimen y castigo*, *1984*, *Los hermanos Karamázov*, *Cien años de soledad*, *El conde de Montecristo*, *La Divina Comedia*, *Meditaciones* y *El príncipe* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
+Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra*, *El extranjero*, *Crimen y castigo*, *1984*, *Los hermanos Karamázov*, *Cien años de soledad*, *El conde de Montecristo*, *La Divina Comedia*, *Meditaciones*, *El príncipe* y *Hamlet* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
 ## Publicar cambios
 

@@ -260,5 +260,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 56 páginas · traducción de Antonio Zozaya, edición de la Imprenta Nacional de Costa Rica (2019); dominio público",
     destacado: true
+  },
+  {
+    id: "hamlet",
+    titulo: "Hamlet",
+    autor: "William Shakespeare",
+    anio: "1602",
+    genero: "Tragedia",
+    tipo: "Guía interactiva",
+    descripcion: "Los cinco actos y sus 85 escenas, personajes, temas, monólogos, línea temporal y texto completo en la traducción de Leandro Fernández de Moratín.",
+    resumen: "La sombra del rey pide venganza a Hamlet y lo arrastra a una espiral de duda, espionaje y representaciones. Mientras la corte se vigila a sí misma, el príncipe intenta distinguir la verdad del engaño y acaba convirtiendo la pregunta por la muerte en el centro de la tragedia.",
+    etiquetas: ["Tragedia", "Venganza", "Dominio público"],
+    portada: "🎭",
+    color: ["#6d3152", "#a87c39"],
+    ruta: "libros/hamlet/index.html",
+    pdf: "libros/hamlet/hamlet.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 135 páginas · traducción de Leandro Fernández de Moratín, edición de Elejandría; dominio público",
+    destacado: true
   }
 ];
