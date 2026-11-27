@@ -57,6 +57,9 @@ biblioteca/
 │   ├── hamlet/             # Ficha: guía interactiva
 │   │   ├── index.html
 │   │   └── hamlet.pdf                 # PDF publicado (dominio público)
+│   ├── romeo-y-julieta/    # Ficha: guía interactiva
+│   │   ├── index.html
+│   │   └── romeo-y-julieta.pdf        # PDF publicado (dominio público)
 │   └── _plantilla/         # Plantilla para fichas nuevas
 │       └── index.html
 └── README.md
@@ -79,6 +82,7 @@ biblioteca/
 - *Meditaciones*, de Marco Aurelio: texto griego del siglo II, de dominio público. El PDF corresponde a la Biblioteca Clásica Gredos, 5: introducción de Carlos García Gual y traducción y notas de Ramón Bach Pellicer (Editorial Gredos, 1977; reimpresión de 2005), elementos todavía protegidos; se publica aquí con autorización confirmada del usuario para esta biblioteca.
 - *El príncipe*, de Nicolás Maquiavelo: obra escrita en 1513 y publicada en 1532 (el autor murió en 1527), de dominio público. El PDF usa la traducción castellana de Antonio Zozaya (1859-1943), también de dominio público, y procede de la edición digital de la Imprenta Nacional de Costa Rica de 2019, que declara «Fuente: Wikisource»; por tanto puede difundirse sin autorización adicional.
 - *Hamlet*, de William Shakespeare: tragedia publicada en 1602 (el autor murió en 1616), de dominio público. El PDF usa la traducción de Leandro Fernández de Moratín (1760-1828) para Casa Editorial Maucci y procede de Elejandría, que declara este libro electrónico libre de restricciones de derechos de autor en España; por tanto puede difundirse sin autorización adicional.
+- *Romeo y Julieta*, de William Shakespeare: tragedia publicada en 1597 (el autor murió en 1616), de dominio público. El PDF usa la traducción de Marcelino Menéndez Pelayo (1856-1912), publicada en Barcelona en 1881, y procede de Elejandría, que declara este libro electrónico libre de restricciones de derechos de autor en España; por tanto puede difundirse sin autorización adicional.
 
 Las guías interactivas son elaboraciones originales: contienen resúmenes propios, análisis y citas breves, no una copia de las obras.
 
@@ -95,7 +99,7 @@ Abre `index.html` con doble clic. Para publicarla en GitHub Pages: `Settings →
 5. Comprueba que la ficha abre y que aparece en el catálogo.
 6. Antes de publicar un texto, confirma que es de dominio público o que tienes autorización de distribución, y anótalo aquí y en la sección «Derechos de los textos publicados».
 
-Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra*, *El extranjero*, *Crimen y castigo*, *1984*, *Los hermanos Karamázov*, *Cien años de soledad*, *El conde de Montecristo*, *La Divina Comedia*, *Meditaciones*, *El príncipe* y *Hamlet* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
+Las fichas de *El mito de Sísifo*, *Don Quijote de la Mancha*, *Bodas de sangre*, *La Ilíada*, *El arte de la guerra*, *El extranjero*, *Crimen y castigo*, *1984*, *Los hermanos Karamázov*, *Cien años de soledad*, *El conde de Montecristo*, *La Divina Comedia*, *Meditaciones*, *El príncipe*, *Hamlet* y *Romeo y Julieta* son autosuficientes (CSS y JS incluidos), así que puedes copiar cualquiera como base si quieres una guía más elaborada.
 
 ## Publicar cambios
 

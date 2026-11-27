@@ -278,5 +278,23 @@ window.CATALOGO = [
     pdfLabel: "Abrir PDF ↗",
     pdfNota: "Castellano · 135 páginas · traducción de Leandro Fernández de Moratín, edición de Elejandría; dominio público",
     destacado: true
+  },
+  {
+    id: "romeo-y-julieta",
+    titulo: "Romeo y Julieta",
+    autor: "William Shakespeare",
+    anio: "1597",
+    genero: "Tragedia",
+    tipo: "Guía interactiva",
+    descripcion: "Los cinco actos y sus 24 escenas, el balcón, la boda secreta, personajes, temas, línea temporal y texto completo en la traducción de Marcelino Menéndez Pelayo.",
+    resumen: "Dos familias de Verona se odian antes de que Romeo y Julieta se conozcan. En el baile se enamoran, en el balcón descubren que el enemigo es solo un apellido y en secreto se casan. Una carta que no llega y una pócima mal interpretada convierten el amor en una tragedia que termina en el mausoleo.",
+    etiquetas: ["Tragedia", "Amor", "Dominio público"],
+    portada: "🌹",
+    color: ["#8c2f52", "#c2798f"],
+    ruta: "libros/romeo-y-julieta/index.html",
+    pdf: "libros/romeo-y-julieta/romeo-y-julieta.pdf",
+    pdfLabel: "Abrir PDF ↗",
+    pdfNota: "Castellano · 148 páginas · traducción de Marcelino Menéndez Pelayo, edición de Elejandría (1881); dominio público",
+    destacado: true
   }
 ];
